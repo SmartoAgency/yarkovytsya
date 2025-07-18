@@ -1,0 +1,40 @@
+.construction-popup(data-lenis-prevent data-construction-popup)
+  .construction-popup__content
+    button(type="button" data-construction-popup-close).construction-popup__close
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M6 18L18 6M6 6L18 18" stroke="#DBE2EA" stroke-width="2"/>
+      </svg>
+
+    .construction-popup__slider.swiper-container(data-construction-popup-slider)
+      .construction-popup__nav
+        button(type="button" data-construction-popup-slider-prev).construction-popup__button
+          <svg xmlns="http://www.w3.org/2000/svg" width="25" height="24" viewBox="0 0 25 24" fill="none">
+            <path d="M12.0385 6L6.5 12M6.5 12L12.0385 18M6.5 12L18.5 12" stroke="#DBE2EA" stroke-width="2"/>
+          </svg>
+        .construction-popup__counter
+          span(data-construction-popup-slider-counter) 1
+          span /
+          span(data-construction-popup-slider-total) 3
+        button(type="button" data-construction-popup-slider-next).construction-popup__button
+          <svg width="25" height="24" viewBox="0 0 25 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M12.9615 6L18.5 12M18.5 12L12.9615 18M18.5 12L6.5 12" stroke="#DBE2EA" stroke-width="2"/>
+          </svg>
+      .swiper-wrapper(data-construction-popup-slides)
+        .swiper-slide
+          img(src="./assets/images/construction-popup-img-1.jpg", alt="")
+    .construction-popup__text
+      .construction-popup__text-top
+        .construction-card-label
+          span(data-construction-popup-img-count) 12 
+          span ФОТО
+        .construction-card-date(data-construction-popup-date) 05.05.2025
+      .construction-popup__text-content(data-construction-popup-text)
+        div На сьогодні вже введені в експлуатацію, приймають гостей та приносять власникам пасивний дохід перші два будинки апарт-готелю.
+        div Зараз тривають роботи над зведенням третього будинку:
+        div •   Монолітний каркас вже залили на 80 відсотків.
+        div •   Зовнішні стіни виконали на 50%.
+        div •   Внутрішні стіни та перегородки влаштували на 15%
+        div •   Сходові марші та майданчики залиті до рівня восьмого поверху.
+        div •   В будинку розпочали влаштування металопластикових вікон.
+        div Завдяки злагодженій та організованій роботі будівництво йде швидкими темпами, графік запланованих будівельних робіт суттєво випереджено.
+      +button-primary('ДІЗНАТИСЯ БІЛЬШЕ')(data-callback-popup-call data-construction-popup-close)

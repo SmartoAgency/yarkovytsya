@@ -1,0 +1,156 @@
+
+extends ../layout/main
+block variable
+  -
+    var title_page = 'Планування'
+    var id_page = 'id-page-plannings'
+    var class_page = 'class-page-plannings'
+    var breadcrumbsSubitem = [
+    ]
+  
+block meta
+  title= title_page
+  meta(name='description', content='')
+block head
+    link(rel='stylesheet', href="./assets/styles/main.min.css")
+block scripts
+  script(defer src='./assets/scripts/vendors.bundle.js')
+  script(defer src='./assets/scripts/index.bundle.js')
+  script(defer src='./assets/scripts/plannings.bundle.js')
+block content
+  .inner-front-screen
+    .inner-front-screen__bg
+      img(src="./assets/images/inner-front-screen-bg.svg", alt="", srcset="")
+    .inner-front-screen__decor
+      .inner-front-screen__decor-wrapper
+        img(src="./assets/images/inner-front-screen-decor.svg", alt="", srcset="")
+    .inner-front-screen__content 
+      include ../includes/breadcrumbs.pug
+      .inner-front-screen__top 
+        .inner-front-screen__title.color-red.text-style-1920-h-1.text-style-768-h-1.text-style-375-h-1 ПЛАНУВАННЯ
+        .inner-front-screen__right.hide-on-mobile.hide-on-tablet
+          .inner-front-screen__slogan.color-white
+            span СТВОРЮЄМО 
+            span.color-red СЕРЕДОВИЩЕ ДЛЯ ЖИТТЯ,
+            span А НЕ ПРОСТО МЕТРИ НА ПЛАНІ
+  .plannings
+    .plannings__content
+      .plannings__filter.js-s3d-filter.js-s3d-filter__checkboxes
+        .plannings__filter-title.hide-on-desktop.hide-on-tablet.color-black ФІЛЬТР
+        .plannings__filter-group
+          div.text-style-1920-tiny КІМНАТНІСТЬ:
+          label.planning-checkbox(for="rooms1")
+            input#rooms1(type="checkbox" name="" value="1" data-type="roomsforfilter" data-roomsforfilter="1")
+            span 1-к
+          label.planning-checkbox(for="rooms2")
+            input#rooms2(type="checkbox" name="" value="2" data-type="roomsforfilter" data-roomsforfilter="2")
+            span 2-к
+          label.planning-checkbox(for="rooms3")
+            input#rooms3(type="checkbox" name="" value="3" data-type="roomsforfilter" data-roomsforfilter="3")
+            span 3-к
+          label.planning-checkbox(for="parking")
+            input#parking(type="checkbox", name="" value="parking" data-type="parking" data-parking="1")
+            span Паркінги
+          label.planning-checkbox(for="level2")
+            input#level2(type="checkbox", name="" value="level" data-type="level" data-level="2")
+            span Дворівневі
+          label.planning-checkbox(for="commercial")
+            input#commercial(type="checkbox", name="" value="objecttype" data-type="objecttype" data-objecttype="2")
+            span Комерція
+        .plannings__filter-group.plannings__filter-group--range
+          <div class="Range js-filter-range">
+            <div class="Range__title text-style-1920-tiny">ПЛОЩА</div>
+            <input class="Range__input Range__input--first" data-type="area" data-border="min"/>
+            <input class="Range__input" data-type="area" data-border="max"/>
+            <div class="Range__item ">
+              <input class="js-s3d-filter__area--input " data-type="area" data-min="0" data-max="20" data-from="0" data-to="20">
+            </div>
+          </div>
+        .plannings__filter-group.plannings__filter-group--range
+          <div class="Range js-filter-range">
+            <div class="Range__title text-style-1920-tiny">ПОВЕРХ</div>
+            <input class="Range__input Range__input--first" data-type="floor" data-border="min"/>
+            <input class="Range__input" data-type="floor" data-border="max"/>
+            <div class="Range__item ">
+              <input class="js-s3d-filter__floor--input " data-type="floor" data-min="0" data-max="20" data-from="0" data-to="20">
+            </div>
+          </div>
+        .plannings__filter-group
+          div.text-style-1920-tiny ДАТА ЗДАЧІ:
+          label.planning-checkbox(for="queue8")
+            input#queue8(type="checkbox", name="" value="queue" data-type="queue" data-queue="8")
+            span 8 черга здана в експлуатацію
+          label.planning-checkbox(for="queue9")
+            input#queue9(type="checkbox", name="" value="queue" data-type="queue" data-queue="9")
+            span 9 черга ІІ квартал 2025
+        .planning-reset-button(id="resetFilter")
+          span СКИНУТИ ФІЛЬТРИ
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path fill-rule="evenodd" clip-rule="evenodd" d="M3.64645 3.64645C3.84171 3.45118 4.15829 3.45118 4.35355 3.64645L8 7.29289L11.6464 3.64645C11.8417 3.45118 12.1583 3.45118 12.3536 3.64645C12.5488 3.84171 12.5488 4.15829 12.3536 4.35355L8.70711 8L12.3536 11.6464C12.5488 11.8417 12.5488 12.1583 12.3536 12.3536C12.1583 12.5488 11.8417 12.5488 11.6464 12.3536L8 8.70711L4.35355 12.3536C4.15829 12.5488 3.84171 12.5488 3.64645 12.3536C3.45118 12.1583 3.45118 11.8417 3.64645 11.6464L7.29289 8L3.64645 4.35355C3.45118 4.15829 3.45118 3.84171 3.64645 3.64645Z" fill="#EFF0F7"/>
+          </svg>
+
+      .plannings__list(data-planning-list data-not-found-title="Планування не знайдено")
+        for val in [1,2]
+          a(href="#").planning-card
+            .planning-card__top 2-к / 247.4 м²
+            .planning-card__image
+              img(src="./assets/images/eoselya.svg").planning-card__image-label
+              .planning-card__image-wrap
+                img(src="./assets/images/test-plan.png", alt="", srcset="")
+            .planning-card__bottom Будинок: 3 Секція: 2 Поверх: 15
+      .plannings__load-more
+        .pagination.pagination--plannings
+          button(type="button" disabled).pagination__button.pagination__button--dark
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M11.5385 6L6 12M6 12L11.5385 18M6 12H18" stroke="#101820" stroke-width="2"/>
+            </svg>
+          .pagination__middle
+            input(type="text", name="pagination-current").pagination__input
+            .pagination__span.text-style-1920-tiny.color-gray 
+              | з 
+              span 02 
+              | сторінок
+          button(type="button").pagination__button.pagination__button--dark
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M12.4615 6L18 12M18 12L12.4615 18M18 12L6 12" stroke="#101820" stroke-width="2"/>
+            </svg>
+        button(type="button" data-more).incredible-button.incredible-button--dark
+          .incredible-button__title(data-title="ЗАВАНТАЖИТИ ЩЕ") ЗАВАНТАЖИТИ ЩЕ
+          .incredible-button__circle
+          .incredible-button__line
+          .incredible-button__line2
+  include ../includes/incredible-block.pug
+  include ../includes/contact-screen.pug
+  include ../includes/form-screen.pug
+  template#empty-planning-list
+    .empty-planning-list
+      .empty-planning-list__text.text-style-1920-body
+        | Планування не знайдено
+  template#flat-card-template
+    a.planning-card(href='/single-flat?id={{id}}' data-id='{{id}}')
+      .planning-card__top 
+        .planning-card__label {{project}} 
+        button(type="button" data-favourite-single-button='{{id}}').plannings-favourite-button
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+            <path d="M16.9 13.3333C17.943 12.36 19 11.1933 19 9.66667C19 8.69421 18.5944 7.76158 17.8724 7.07394C17.1503 6.38631 16.1711 6 15.15 6C13.918 6 13.05 6.33333 12 7.33333C10.95 6.33333 10.082 6 8.85 6C7.82892 6 6.84965 6.38631 6.12764 7.07394C5.40562 7.76158 5 8.69421 5 9.66667C5 11.2 6.05 12.3667 7.1 13.3333L12 18L16.9 13.3333Z" stroke="#4D5858" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+      .planning-card__image
+        .planning-card__image-wrap
+          img(src='{{img_big}}' loading='lazy' alt='' onerror='this.style.opacity = 0;')
+      .planning-card__middle
+        .text-style-1920-h-4.color-gray {{rooms}}-к
+        span /
+        .text-style-1920-h-4.color-gray {{area}} м²
+      .planning-card__bottom
+        .planning-card__bottom-group
+          | Будинок:&nbsp; {{build}}
+        .planning-card__bottom-group
+          | Секція:&nbsp; {{section}}
+        .planning-card__bottom-group
+          | Поверх:&nbsp; {{floor}}
+  
+block footer
+  include ../includes/footer.pug
+
+block header
+  include ../includes/header.pug

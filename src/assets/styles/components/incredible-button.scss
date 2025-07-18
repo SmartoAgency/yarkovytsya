@@ -1,0 +1,113 @@
+.incredible-button {
+    position: relative;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    --animation-primary: cubic-bezier(0.83, 0, 0.17, 1);
+    width: max-content;
+    color: var(--color-white);
+    padding-bottom: 5px;
+    &__title {
+        @include text-style-1920-body;
+        position: relative;
+        overflow: hidden;
+        display: block;
+        &:before {
+            content: attr(data-title);
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            color: var(--color-white);
+            transition: 0.2s ease-in-out;
+        }
+        &:after {
+            content: attr(data-title);
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            color: var(--color-white);
+            transition: 0.2s ease-in-out;
+            transform: translateY(100%);
+        }
+    }
+    &__line {
+        position: absolute;
+        left: 0;
+        width: 100%;
+        height: 2px;
+        background-color: var(--color-white);
+        transition: transform 0.725s var(--animation-primary);
+        transform-origin: left;
+        transform: scaleX(1) rotate(0.001deg);
+        transition-delay: 0.2s;
+        bottom: 0;
+    }
+    &__line2 {
+        position: absolute;
+        left: 0;
+        bottom: 0;
+        width: 100%;
+        height: 2px;
+        background-color: var(--color-white);
+        transition: transform 0.725s var(--animation-primary);
+        transform-origin: right;
+        transform: scaleX(0) rotate(0.001deg);
+        transition-delay: 0s;
+    }
+    &__circle {
+        width: 8px;
+        height: 8px;
+        border-radius: 100px;
+        border: 1px solid var(--color-white);
+        
+        transition: 0.2s ease-in-out;
+    }
+    @media (hover: hover) {
+        &__title {
+            color: transparent;
+        }
+        &:hover &__line {
+            transform-origin: right;
+            transform: scaleX(0) rotate(0.001deg);
+            transition-delay: 0s;
+        }
+        &:hover &__line2 {
+            transform-origin: left;
+            transform: scaleX(1) rotate(0.001deg);
+            transition-delay: 0.2s;
+        }
+        &:hover &__circle {
+            background-color: var(--color-white);
+            transform: scale(0.87);
+        }
+        &--dark:hover &__circle {
+            background-color: var(--color-black);
+        }
+        &:hover &__title:before {
+            transform: translateY(-100%);
+        }
+        &:hover &__title:after {
+            transform: translateY(0%);
+        }
+    }
+    &--dark {
+        color: var(--color-black);
+    }
+    &--dark &__title:before {
+        color: var(--color-black);
+    }
+    &--dark &__title:after {
+        color: var(--color-black);
+    }
+    &--dark &__line,
+    &--dark &__line2 {
+        background-color: var(--color-black);
+    }
+    &--dark &__circle {
+        border: 1px solid var(--color-black);
+    }
+}

@@ -1,0 +1,398 @@
+
+extends ../layout/main
+block variable
+  -
+    var title_page = 'Детальний проект'
+    var id_page = 'id-page-single-project'
+    var class_page = 'class-page-single-project'
+    var breadcrumbsSubitem = [
+      {
+        label: 'Проекти',
+        link: '/projects'
+      }
+    ]
+    var projectStatusList = [
+        {
+          title: "ТЕРМІН ЗДАЧІ:",
+          description: "III КВАРТАЛ 2026 РОКУ",
+          icon: `
+            <svg xmlns="http://www.w3.org/2000/svg" width="80" height="80" viewBox="0 0 80 80" fill="none">
+              <path d="M30.2941 38.5319L23.0471 45.0426M30.2941 38.5319L35.0824 50.0213H44.4L49.0588 38.5319M30.2941 38.5319H39.6765M49.0588 38.5319L56.8235 45.0426M49.0588 38.5319H39.6765M56.8235 45.0426V49.6383M56.8235 45.0426L54.7529 50.7378M56.8235 49.6383C56.4004 49.9459 55.7093 50.3329 54.7529 50.7378M56.8235 49.6383C57.6 49.0426 59.3341 47.5702 60.0588 46.4468V53.0851M23.0471 45.0426L23.1765 49.6383M23.0471 45.0426L24.9882 50.6258M23.1765 49.6383C23.5605 49.9174 24.165 50.2619 24.9882 50.6258M23.1765 49.6383C22.1412 49.1277 20.9765 47.8511 19.9412 46.4468M24.9882 50.6258C27.6793 51.8154 32.7064 53.2128 40 53.2128C47.0659 53.2128 52.0047 51.9013 54.7529 50.7378M19.9412 46.4468C19.9412 48.7957 19.9412 51.8511 19.9412 53.0851M19.9412 46.4468V53.0851M19.9412 53.0851C20.6314 53.1702 22.0118 53.9532 22.0118 56.4043C22.0118 58.8553 20.6314 59.383 19.9412 59.3404M19.9412 53.0851C19.2941 53.0851 18 53.5957 18 56.4043C18 58.6511 19.2941 59.2979 19.9412 59.3404M19.9412 59.3404C19.9412 59.9532 19.9412 60.617 19.9412 60.8723M19.9412 59.3404V60.8723M19.9412 60.8723C20.8039 62.9149 26.0235 67 40 67C53.9765 67 59.1961 62.9149 60.0588 60.8723V59.3404M60.0588 53.0851C59.3686 53.1702 57.9882 53.9532 57.9882 56.4043C57.9882 58.8553 59.3686 59.383 60.0588 59.3404M60.0588 53.0851C60.7059 53.0851 62 53.5957 62 56.4043C62 58.6511 60.7059 59.2979 60.0588 59.3404M39.6765 38.5319C34.8235 38.5319 30.5529 35.5957 30.5529 27.4255M30.5529 27.4255C29.1294 27.4255 29 26.5319 29 25.8936C29 25.2553 29.2588 24.3617 30.2941 24.3617C30.2941 23.0146 30.5943 17.7188 35.8588 15.419M30.5529 27.4255H48.9294M38.3176 14.6596C38.3176 15.2723 38.3176 15.766 38.3176 15.9362V14.6596ZM38.3176 14.6596C38.3176 14.1064 38.6024 13 39.7412 13C40.88 13 41.1647 14.1064 41.1647 14.6596M38.3176 14.6596C37.3966 14.8444 36.581 15.1035 35.8588 15.419M35.8588 15.419L37.2824 20.5319M49.1882 38.5319H39.8059C44.6588 38.5319 48.9294 35.5957 48.9294 27.4255M48.9294 27.4255C50.3529 27.4255 50.4824 26.5319 50.4824 25.8936C50.4824 25.2553 50.2235 24.3617 49.1882 24.3617C49.1882 23.0146 48.888 17.7187 43.6235 15.419M41.1647 14.6596V15.9362M41.1647 14.6596C42.0858 14.8444 42.9014 15.1035 43.6235 15.419M43.6235 15.419L42.2 20.5319" stroke="#4D5858" stroke-miterlimit="16" stroke-linecap="square"/>
+            </svg>
+          `
+        },
+        {
+          title: "ПОБУДОВАНО:",
+          description: "27% ЖИТЛОВОГО КОМПЛЕКСУ",
+          icon: `
+            <svg width="80" height="80" viewBox="0 0 80 80" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M40.7679 37.7692H33.7262M33.7262 37.7692V33.7308M33.7262 37.7692V50.4615H26.375M33.7262 17H17V50.4615H26.375M33.7262 17V23.2143M33.7262 17H62V37.7692H57.4762M50.8452 37.7692H57.4762M57.4762 37.7692V62H26.375V50.4615" stroke="#4D5858" stroke-miterlimit="16" stroke-linecap="square"/>
+            </svg>
+          `
+        },
+        {
+          title: "ПРОДАНО:",
+          description: "59% КВАРТИР",
+          icon: `
+            <svg width="80" height="80" viewBox="0 0 80 80" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M11.9908 53.9258L12.7147 51.0424M12.7147 51.0424H22.6687M12.7147 51.0424H10V42.5724M22.6687 51.0424V53.2049M22.6687 51.0424C22.6687 48.7886 25.9905 44.8091 28.8926 42.5724M31.1748 34.1025C31.5971 32.7208 33.3466 29.9576 36.9663 29.9576C40.5859 29.9576 44.3865 29.9576 45.8344 29.9576H54.7025C58.3221 29.9576 60.0716 32.7208 60.4939 34.1025V35.5672M31.1748 34.1025V35.5672M31.1748 34.1025H17.0583M30.6319 41.8516H47.2822M61.7607 41.8516C61.9417 41.371 62.3037 39.8332 62.3037 37.5265C62.3037 36.6394 61.5632 36.0082 60.4939 35.5672M61.7607 41.8516H47.2822M61.7607 41.8516C64.1738 43.6537 69 48.0148 69 51.0424V53.2049M47.2822 41.8516C47.1012 41.371 46.7393 39.8332 46.7393 37.5265C46.7393 35.2198 51.7464 34.6431 54.5215 34.6431C56.2293 34.6431 58.7826 34.8615 60.4939 35.5672M29.908 41.8516H44.3865C44.5675 41.371 44.9295 39.8332 44.9295 37.5265C44.9295 35.2198 39.9223 34.6431 37.1472 34.6431C35.4394 34.6431 32.8861 34.8615 31.1748 35.5672M29.908 41.8516C29.727 41.371 29.365 39.8332 29.365 37.5265C29.365 36.6394 30.1055 36.0082 31.1748 35.5672M29.908 41.8516C29.5797 42.0631 29.2391 42.3053 28.8926 42.5724M22.6687 59.3322V66H25.5644C25.5644 62.6841 28.4601 60.1731 29.908 59.3322M22.6687 59.3322H29.908M22.6687 59.3322V53.2049M29.908 59.3322H45.8344H61.7607M22.6687 53.2049H45.8344H69M69 59.3322V66H66.1043C66.1043 62.6841 63.2086 60.1731 61.7607 59.3322M69 59.3322H61.7607M69 59.3322V53.2049M10 42.5724V34.1025H17.0583M10 42.5724H28.8926M17.0583 34.1025C17.0583 31.0389 18.3252 31.0389 20.6779 31.0389M20.6779 31.0389C23.0307 31.0389 24.2975 31.0389 24.2975 34.1025M20.6779 31.0389V23.6502M20.6779 23.6502C19.411 23.6502 18.4155 23.2898 17.4506 22.3887M20.6779 23.6502C21.9448 23.6502 22.9403 23.2898 23.9052 22.3887M19.592 15C20.1325 15 20.5162 15 20.6779 15C20.8396 15 21.2233 15 21.7638 15M19.592 15C19.3258 15 19.0216 15 18.6871 15C17.4202 15 17.2393 15.5406 17.0583 16.2615C16.8773 16.9823 15.9724 20.0459 14.3436 22.0283C13.4387 23.2898 14.7055 23.8304 16.3344 23.2898C16.7805 23.1417 17.1451 22.8179 17.4506 22.3887M19.592 15C19.592 15.4205 19.4834 16.6219 19.0491 18.0636C18.6548 19.3722 18.2606 21.2508 17.4506 22.3887M21.7638 15C22.03 15 22.3343 15 22.6687 15C23.9356 15 24.1166 15.5406 24.2975 16.2615C24.4785 16.9823 25.3834 20.0459 27.0123 22.0283C27.9172 23.2898 26.6503 23.8304 25.0215 23.2898C24.5754 23.1417 24.2107 22.8179 23.9052 22.3887M21.7638 15C21.7638 15.4205 21.8724 16.6219 22.3067 18.0636C22.701 19.3722 23.0952 21.2508 23.9052 22.3887M19.954 37.3463H22.1258M19.954 45.8163H22.1258" stroke="#4D5858" stroke-miterlimit="16" stroke-linecap="square"/>
+            </svg>
+          `
+        }
+    ];
+    var advantages = [
+      {
+        title: "Елітне розташування",
+        description: "Уявіть собі ранок, коли ви відкриваєте очі, і перше, що бачите, — це мальовничі Карпати, або зелене море із крон дерев парку ім. Т.Г. Шевченка. Ви виходите на терасу з чашкою кави, вдихаючи свіже повітря парку, що знаходиться буквально на відстані витягнутої руки від вашого дому. Це не просто житловий комплекс, це стиль життя, де природа і сучасний комфорт поєдналися в єдине ціле. Всього декілька хвилин пішої прогулянки — і ви на міському озері, або декілька хвилин авто — і ви в центрі міста.",
+        img: "./assets/images/single-project/advantage-slider-img.jpg"
+      },
+      {
+        title: "Преміум клас",
+        description: "Квартири преміум класу з панорамними вікнами",
+        img: "./assets/images/single-project/advantage-slider-img1.jpg"
+      },
+      {
+        title: "Зелена зона",
+        description: "Частина території комплексу плавно переходить у парк ім. Т.Г. Шевченка",
+        img: "./assets/images/single-project/2.jpg"
+      },
+      {
+        title: "Сучасна архітектура",
+        description: "Архітектурні рішення, що поєднують естетику і функціональність",
+        img: "./assets/images/single-project/3.jpg"
+      },
+      {
+        title: "Сучасна архітектура",
+        description: "Архітектурні рішення, що поєднують естетику і функціональність",
+        img: "./assets/images/single-project/4.jpg"
+      },
+      {
+        title: "Сучасна архітектура",
+        description: "Архітектурні рішення, що поєднують естетику і функціональність",
+        img: "./assets/images/single-project/5.jpg"
+      },
+    ];
+    var smallAdvantages = [
+      {
+        img: "./assets/images/single-project/3.jpg"
+      },
+      {
+        img: "./assets/images/single-project/4.jpg"
+      },
+      {
+        img: "./assets/images/single-project/5.jpg"
+      },
+      {
+        img: "./assets/images/single-project/advantage-slider-img.jpg"
+      },
+      {
+        img: "./assets/images/single-project/advantage-slider-img1.jpg"
+      },
+      {
+        img: "./assets/images/single-project/2.jpg"
+      },
+      
+      
+    ]
+  
+block meta
+  title= title_page
+  meta(name='description', content='')
+block head
+    link(rel='stylesheet', href="./assets/styles/main.min.css")
+block scripts
+  script(defer src='./assets/scripts/vendors.bundle.js')
+  script(defer src='./assets/scripts/index.bundle.js')
+  script(defer src='./assets/scripts/single-project.bundle.js')
+block content
+  .single-project-front-screen
+    .single-project-front-screen__content
+      include ../includes/breadcrumbs.pug
+      .single-project-front-screen__lines
+        each val, index in [1,2,3,4,5]
+          .single-project-front-screen__slider-line(data-front-screen-line-index=index)
+            .single-project-front-screen__slider-line-inner
+      .single-project-front-screen__subtitle.color-white.hide-on-mobile.hide-on-tablet ПАРК ШЕВЧЕНКА, ВУЛ. ДОРОШЕНКА
+      .single-project-front-screen__subtitle.color-white.hide-on-mobile.hide-on-tablet ЦІНА ВІД 169 031 грн/м²
+      .single-project-front-screen__subtitle-large.text-style-375-h-3.text-style-768-h-3.text-style-1920-h-3.color-white.hide-on-mobile.hide-on-tablet КОЛИ ТВІЙ ДВІР ЦІЛИЙ ПАРК. ОБИРАЙ КВАРТИРИ ПРЕМІУМ КЛАСУ 
+      .single-project-front-screen__title.text-style-375-h-1.text-style-768-h-1.text-style-1920-h-1.color-white PARK AVENUE
+      button(type="button").down-arrow.text-style-1920-small-buttons
+        <svg width="68" height="68" viewBox="0 0 68 68" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <g class="down-arrow__anim" >
+            <path d="M33.6836 40.8372L34.0254 41.1575L34.3672 40.8372L42.3672 33.3372L41.6836 32.6067L34.5254 39.3176L34.5254 25.4719L33.5254 25.4719L33.5254 39.3176L26.3672 32.6067L25.6836 33.3372L33.6836 40.8372Z" fill="#EFF0F7"/>
+            <path transform="translate(0,-60)" d="M33.6836 40.8372L34.0254 41.1575L34.3672 40.8372L42.3672 33.3372L41.6836 32.6067L34.5254 39.3176L34.5254 25.4719L33.5254 25.4719L33.5254 39.3176L26.3672 32.6067L25.6836 33.3372L33.6836 40.8372Z" fill="#EFF0F7"/>
+          </g>
+          <rect x="0.5" y="0.5" width="67" height="67" rx="33.5" stroke="#EFF0F7" stroke-opacity="0.2"/>
+          <defs>
+            <clipPath id="clip0_5625_845">
+              <rect width="68" height="68" rx="34" fill="white"/>
+            </clipPath>
+          </defs>
+        </svg>
+      .single-project-front-screen__logo
+        img(src="./assets/images/single-project/lgoo.svg", alt="", srcset="")
+
+    .gallery 
+      .slick-arrows 
+        .slick-arrow-up
+          <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 12 12" fill="none">
+            <path d="M11 6.07692L6 1M6 1L1 6.07692M6 1C6 4.00855 6 8.44273 6 11" stroke="#0F0F0F" stroke-linecap="square"/>
+          </svg>
+        .slick-arrow-down
+          <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 12 12" fill="none">
+            <path d="M11 6.07692L6 1M6 1L1 6.07692M6 1C6 4.00855 6 8.44273 6 11" stroke="#0F0F0F" stroke-linecap="square"/>
+          </svg>
+      .split-slideshow
+        .slideshow
+          .slider
+            .item
+              picture
+                source(
+                  srcset="https://raw.githubusercontent.com/supahfunk/supah-codepen/master/canyon-2.jpg" media="(min-width: 768px)"
+                  )
+                img(src="https://raw.githubusercontent.com/supahfunk/supah-codepen/master/canyon-2.jpg" alt="Canyon 2" loading="lazy")
+            .item
+              picture
+                source(
+                  srcset="https://raw.githubusercontent.com/supahfunk/supah-codepen/master/canyon-3.jpg" media="(min-width: 768px)"
+                  )
+                img(src="https://raw.githubusercontent.com/supahfunk/supah-codepen/master/canyon-3.jpg" alt="Canyon 3" loading="lazy")
+            .item
+              picture
+                source(
+                  srcset="https://raw.githubusercontent.com/supahfunk/supah-codepen/master/canyon-4.jpg" media="(min-width: 768px)"
+                  )
+                img(src="https://raw.githubusercontent.com/supahfunk/supah-codepen/master/canyon-4.jpg" alt="Canyon 4" loading="lazy")
+            .item
+              picture
+                source(
+                  srcset="https://raw.githubusercontent.com/supahfunk/supah-codepen/master/canyon-1.jpg" media="(min-width: 768px)"
+                  )
+                img(src="https://raw.githubusercontent.com/supahfunk/supah-codepen/master/canyon-1.jpg" alt="Canyon 1" loading="lazy")
+            .item
+              picture
+                source(
+                  srcset="https://raw.githubusercontent.com/supahfunk/supah-codepen/master/canyon-1.jpg" media="(min-width: 768px)"
+                  )
+                img(src="https://raw.githubusercontent.com/supahfunk/supah-codepen/master/canyon-1.jpg" alt="Canyon 1" loading="lazy")
+  .single-project-big-block
+    .single-project-big-block__decor
+      img(src="./assets/images/single-project/yarko-logo.svg", alt="", srcset="" loading="lazy")
+    .single-project-big-block__bg
+      img(src="./assets/images/single-project/big-block-bg.svg", alt="" loading="lazy")
+    .project-status
+      .project-status__content
+        .project-status__not-desktop-block.hide-on-desktop
+          .text-style-768-h-3.text-style-375-h-3.color-white КОЛИ ТВІЙ ДВІР ЦІЛИЙ ПАРК. ОБИРАЙ КВАРТИРИ ПРЕМІУМ КЛАСУ 
+          div
+            .project-status__not-desktop-block-subtitle ПАРК ШЕВЧЕНКА, ВУЛ. ДОРОШЕНКА
+            .text-style-768-h-3.text-style-375-h-3.color-white ЦІНА ВІД 169 031 грн/м²
+        .project-status__list
+          each item in projectStatusList
+            .project-status__item
+              .project-status__item-icon-wrapper 
+                .project-status__item-icon !{item.icon}
+              .project-status__item-right
+                .project-status__item-title.text-style-375-h-3.text-style-768-h-3.text-style-1920-h-3.color-white
+                  div #{item.title}
+                div #{item.description}
+        .project-status__text
+          .project-status__text-title.text-style-1920-h-3.text-style-768-h-3.text-style-375-h-3.color-white 
+            span.color-red PARK AVENUE premium 
+            span — це не просто житловий комплекс. Це місце, де місто зустрічається з природою, а дім починається з парку.
+          p.text-style-1920-h-4.project-status__text-text Частина території комплексу плавно переходить у зелену зону парку імені Шевченка, даруючи щоденний контакт із тишею, свіжим повітрям і краєвидами на Карпати. Жити тут — означає мати простір, у якому хочеться дихати глибше, відпочивати, працювати й залишатися в гармонії. Це вибір тих, хто цінує естетику, атмосферу і внутрішній спокій.
+          +button-primary-link('САЙТ ПРОЕКТУ', '#', true)(class="button-primary--light")
+    .advantages-slider
+      .advantages-slider__content
+        .advantages-slider__title.text-style-375-h-1.text-style-768-h-1.text-style-1920-h-1.color-red ПЕРЕВАГИ
+        .advantages-slider__slogan.text-style-1920-decorative.text-style-768-decorative.text-style-375-decorative.color-white Park Avenue
+        .advantages-slider__mini-slider-wrapper
+          .advantages-slider__mini-slider.swiper-container(data-advantages-slider-small)
+            .swiper-wrapper
+              each val in smallAdvantages
+                .swiper-slide
+                  .advantages-slider__small-item
+                    img(src=val.img, alt="", srcset="" loading="lazy")
+        .advantages-slider__large-slider-wrapper
+          .advantages-slider__large-slider.swiper-container(data-advantages-slider-large)
+            .swiper-wrapper
+              each val in advantages
+                .swiper-slide
+                  .advantages-slider__large-item
+                    img(src=val.img, alt="", srcset="" loading="lazy")
+        .advantages-slider__text-slider-wrapper
+          .advantages-slider__text-slider.swiper-container(data-advantages-slider-texts)
+            .swiper-wrapper
+              each val in advantages
+                .swiper-slide
+                  .text-style-1920-h-3.text-style-768-h-3.text-style-375-h-3.color-white #{val.title}
+                  p #{val.description}
+        .advantages-slider__numbers.text-style-1920-h-3.text-style-768-h-3.text-style-375-h-3
+          span.color-white(data-advantages-slider-current) 01
+          span /
+          span(data-advantages-slider-all) 07
+        .advantages-slider__nav.slider-navigation
+          button(type="button" data-advantages-slider-prev).navigation-button.navigation-button--black
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M11.3846 4L4.00001 12M4.00001 12L11.3846 20M4.00001 12H20" stroke="#DBE2EA" stroke-width="2"/>
+            </svg>
+          button(type="button" data-advantages-slider-next).navigation-button.navigation-button--black
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+              <path d="M12.6154 4L20 12M20 12L12.6154 20M20 12L4 12" stroke="#DBE2EA" stroke-width="2"/>
+            </svg>
+    include ../includes/home/home-apps.pug
+    include ../includes/home-gallery-screen.pug
+  .single-project-big-block2
+    .single-project-big-block2__bg
+      img(src="./assets/images/single-project/big-block2-bg.svg", alt="" loading="lazy")
+    .location
+      .location__content
+        .location__left
+          .location__title.text-style-375-h-1.text-style-768-h-1.text-style-1920-h-1.color-red ЛОКАЦІЯ
+          .location__subtitle.text-style-768-h-4.text-style-1920-h-4.color-white РОЗТАШУВАННЯ PARK AVENUE PREMIUM — ОДНА З ЙОГО НАЙСИЛЬНІШИХ ПЕРЕВАГ.
+          .location__text
+            p Комплекс знаходиться в одній з найзеленіших частин Івано-Франківська — просто біля входу до парку імені Тараса Шевченка та за кілька хвилин пішки від міського озера.
+            p Тут усе поруч: тиша природи, пішохідні маршрути, спортивні зони, кав’ярні, дитячі майданчики й улюблені точки міської інфраструктури. Це місце, де справді хочеться жити.
+          .location__items
+            .location__item
+              .location__item-title.text-style-768-h-4.text-style-1920-h-4.color-red 1 ХВИЛИНА
+              .location__item-subtitle до парку
+              <svg width="18" height="29" viewBox="0 0 18 29" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M10.416 5.46707C11.6565 5.46707 12.6621 4.43998 12.6621 3.17299C12.6621 1.906 11.6565 0.878906 10.416 0.878906C9.17552 0.878906 8.16992 1.906 8.16992 3.17299C8.16992 4.43998 9.17552 5.46707 10.416 5.46707Z" stroke="#DBE2EA"/>
+                <path d="M13.1924 25.7227C13.1921 26.5698 12.5054 27.2568 11.6582 27.2568C10.811 27.2568 10.1243 26.5699 10.124 25.7227V20.5566L8.4209 19.2744L8.04395 21.5244L8.02441 21.6416L7.95508 21.7373L4.36621 26.6514C3.8452 27.3643 2.83018 27.4889 2.15234 26.9229C1.52299 26.3973 1.42046 25.4686 1.91992 24.8184L5.28418 20.4385L6.08496 16.1221L6.72266 12.6816L6.67871 12.7041L5.85254 15.2461C5.56699 16.1247 4.56343 16.5392 3.74121 16.1182C3.05614 15.7671 2.74694 14.9545 3.02637 14.2373L4.39746 10.7207L4.4668 10.5439L4.63574 10.457L8.2793 8.59863C8.69107 8.38858 9.15393 8.29962 9.61426 8.3418C10.5424 8.42691 11.3421 9.03231 11.6758 9.90234C12.0852 10.9697 12.4122 11.8243 12.8818 13.0488L15.4688 14.0225C16.276 14.3261 16.6797 15.2308 16.3662 16.0342C16.058 16.8233 15.172 17.2188 14.3789 16.9209L11.1426 15.7051L10.96 15.6367L10.8721 15.4629L10.7207 15.165L10.3643 16.8535L13.0244 19.2217L13.1924 19.3711V25.7227Z" stroke="#DBE2EA"/>
+              </svg>
+              .location__item-line
+              <svg xmlns="http://www.w3.org/2000/svg" width="9" height="15" viewBox="0 0 9 15" fill="none">
+                <path d="M3.65052 7.28778L1.03148 1.70049C0.800814 1.2084 1.4102 0.753509 1.81639 1.11457L8.57958 7.1263C8.80334 7.32519 8.80334 7.67481 8.57958 7.8737L1.81639 13.8854C1.4102 14.2465 0.800814 13.7916 1.03148 13.2995L3.65052 7.71222C3.71355 7.57776 3.71355 7.42224 3.65052 7.28778Z" fill="#999FA4"/>
+              </svg>
+              .color-white 10 м
+            .location__item 
+              .location__item-title.text-style-768-h-4.text-style-1920-h-4.color-red 4 ХВИЛИНИ
+              .location__item-subtitle до супермаркету “Сільпо”
+              <svg width="18" height="29" viewBox="0 0 18 29" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M10.416 5.46707C11.6565 5.46707 12.6621 4.43998 12.6621 3.17299C12.6621 1.906 11.6565 0.878906 10.416 0.878906C9.17552 0.878906 8.16992 1.906 8.16992 3.17299C8.16992 4.43998 9.17552 5.46707 10.416 5.46707Z" stroke="#DBE2EA"/>
+                <path d="M13.1924 25.7227C13.1921 26.5698 12.5054 27.2568 11.6582 27.2568C10.811 27.2568 10.1243 26.5699 10.124 25.7227V20.5566L8.4209 19.2744L8.04395 21.5244L8.02441 21.6416L7.95508 21.7373L4.36621 26.6514C3.8452 27.3643 2.83018 27.4889 2.15234 26.9229C1.52299 26.3973 1.42046 25.4686 1.91992 24.8184L5.28418 20.4385L6.08496 16.1221L6.72266 12.6816L6.67871 12.7041L5.85254 15.2461C5.56699 16.1247 4.56343 16.5392 3.74121 16.1182C3.05614 15.7671 2.74694 14.9545 3.02637 14.2373L4.39746 10.7207L4.4668 10.5439L4.63574 10.457L8.2793 8.59863C8.69107 8.38858 9.15393 8.29962 9.61426 8.3418C10.5424 8.42691 11.3421 9.03231 11.6758 9.90234C12.0852 10.9697 12.4122 11.8243 12.8818 13.0488L15.4688 14.0225C16.276 14.3261 16.6797 15.2308 16.3662 16.0342C16.058 16.8233 15.172 17.2188 14.3789 16.9209L11.1426 15.7051L10.96 15.6367L10.8721 15.4629L10.7207 15.165L10.3643 16.8535L13.0244 19.2217L13.1924 19.3711V25.7227Z" stroke="#DBE2EA"/>
+              </svg>
+              .location__item-line
+              <svg xmlns="http://www.w3.org/2000/svg" width="9" height="15" viewBox="0 0 9 15" fill="none">
+                <path d="M3.65052 7.28778L1.03148 1.70049C0.800814 1.2084 1.4102 0.753509 1.81639 1.11457L8.57958 7.1263C8.80334 7.32519 8.80334 7.67481 8.57958 7.8737L1.81639 13.8854C1.4102 14.2465 0.800814 13.7916 1.03148 13.2995L3.65052 7.71222C3.71355 7.57776 3.71355 7.42224 3.65052 7.28778Z" fill="#999FA4"/>
+              </svg>
+              .color-white 200 м
+            .location__item 
+              .location__item-title.text-style-768-h-4.text-style-1920-h-4.color-red 10 ХВИЛИН
+              .location__item-subtitle до школи
+              <svg width="18" height="29" viewBox="0 0 18 29" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M10.416 5.46707C11.6565 5.46707 12.6621 4.43998 12.6621 3.17299C12.6621 1.906 11.6565 0.878906 10.416 0.878906C9.17552 0.878906 8.16992 1.906 8.16992 3.17299C8.16992 4.43998 9.17552 5.46707 10.416 5.46707Z" stroke="#DBE2EA"/>
+                <path d="M13.1924 25.7227C13.1921 26.5698 12.5054 27.2568 11.6582 27.2568C10.811 27.2568 10.1243 26.5699 10.124 25.7227V20.5566L8.4209 19.2744L8.04395 21.5244L8.02441 21.6416L7.95508 21.7373L4.36621 26.6514C3.8452 27.3643 2.83018 27.4889 2.15234 26.9229C1.52299 26.3973 1.42046 25.4686 1.91992 24.8184L5.28418 20.4385L6.08496 16.1221L6.72266 12.6816L6.67871 12.7041L5.85254 15.2461C5.56699 16.1247 4.56343 16.5392 3.74121 16.1182C3.05614 15.7671 2.74694 14.9545 3.02637 14.2373L4.39746 10.7207L4.4668 10.5439L4.63574 10.457L8.2793 8.59863C8.69107 8.38858 9.15393 8.29962 9.61426 8.3418C10.5424 8.42691 11.3421 9.03231 11.6758 9.90234C12.0852 10.9697 12.4122 11.8243 12.8818 13.0488L15.4688 14.0225C16.276 14.3261 16.6797 15.2308 16.3662 16.0342C16.058 16.8233 15.172 17.2188 14.3789 16.9209L11.1426 15.7051L10.96 15.6367L10.8721 15.4629L10.7207 15.165L10.3643 16.8535L13.0244 19.2217L13.1924 19.3711V25.7227Z" stroke="#DBE2EA"/>
+              </svg>
+              .location__item-line
+              <svg xmlns="http://www.w3.org/2000/svg" width="9" height="15" viewBox="0 0 9 15" fill="none">
+                <path d="M3.65052 7.28778L1.03148 1.70049C0.800814 1.2084 1.4102 0.753509 1.81639 1.11457L8.57958 7.1263C8.80334 7.32519 8.80334 7.67481 8.57958 7.8737L1.81639 13.8854C1.4102 14.2465 0.800814 13.7916 1.03148 13.2995L3.65052 7.71222C3.71355 7.57776 3.71355 7.42224 3.65052 7.28778Z" fill="#999FA4"/>
+              </svg>
+              .color-white 1 км
+            .location__item 
+              .location__item-title.text-style-768-h-4.text-style-1920-h-4.color-red 5-10 ХВИЛИН
+              .location__item-subtitle центр міста
+              <svg width="50" height="29" viewBox="0 0 50 29" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <circle cx="10.5" cy="19.0098" r="4" stroke="#DBE2EA"/>
+                <circle cx="39.5" cy="19.0098" r="4" stroke="#DBE2EA"/>
+                <path d="M9.87163 8.09175C11.0451 7.3945 14.147 6 17.1673 6C19.1735 6 20.2853 6 20.8406 6M9.87163 8.09175C12.1647 10.4576 17.6037 11.2141 20.8406 11.338M9.87163 8.09175L7.06562 9.92841H3.13721C2.79708 9.94542 2.11684 10.1427 2.11684 10.7957C2.11684 11.4488 2.11684 13.0745 2.11684 13.8058L1.35156 14.367V17.071L6.4132 19.0785M35.3298 11.3569C35.5427 11.3569 35.7471 11.3569 35.942 11.3569C46.5028 11.3569 48.7476 14.367 48.6456 15.2853C48.5436 16.2037 48.4925 17.4281 48.2885 18.7546C48.1573 19.6069 45.415 19.8799 43.4681 19.928M35.3298 11.3569C31.4849 11.3569 24.8769 11.3569 21.912 11.3569C21.5936 11.3588 21.2333 11.353 20.8406 11.338M35.3298 11.3569C30.3912 7.1122 23.9187 6.01701 21.2997 6C21.2598 6 21.1213 6 20.8406 6M20.8406 6V11.338M35.5843 19.9564C28.0672 20.1771 18.7511 20.0696 14.3957 19.9621" stroke="#DBE2EA"/>
+              </svg>
+              .location__item-line
+              <svg xmlns="http://www.w3.org/2000/svg" width="9" height="15" viewBox="0 0 9 15" fill="none">
+                <path d="M3.65052 7.28778L1.03148 1.70049C0.800814 1.2084 1.4102 0.753509 1.81639 1.11457L8.57958 7.1263C8.80334 7.32519 8.80334 7.67481 8.57958 7.8737L1.81639 13.8854C1.4102 14.2465 0.800814 13.7916 1.03148 13.2995L3.65052 7.71222C3.71355 7.57776 3.71355 7.42224 3.65052 7.28778Z" fill="#999FA4"/>
+              </svg>
+              .color-white 4 км
+        .location__right
+          .location__map-wrap
+            iframe(src="./assets/images/single-project/map.jpg", frameborder="0" loading="lazy")
+    include ../includes/home-characteristics.pug
+  .single-project-big-block3
+    .single-project-big-block3__bg
+      //- big-block3-tablet-bg
+      <picture>
+        <source srcset="./assets/images/single-project/big-block3-bg.svg" media="(min-width: 1025px)">
+        <source srcset="./assets/images/single-project/big-block3-tablet-bg.svg" media="(min-width: 767px) and (max-width: 1024px)">
+        <source srcset="./assets/images/single-project/big-block3-bg.svg" media="(max-width: 767px)">
+        <img src="#" alt="" loading="lazy">
+      </picture>
+      //- img(src="./assets/images/single-project/big-block3-bg.svg", alt="")
+    .construction
+      .construction__content
+        .construction__top
+          .construction__title.text-style-1920-h-1.text-style-768-h-1.text-style-375-h-1.color-red ХІД РОБІТ
+          .slider-navigation
+            button(type="button" data-single-project-construction-slide-prev).navigation-button.navigation-button--black
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M11.3846 4L4.00001 12M4.00001 12L11.3846 20M4.00001 12H20" stroke="#DBE2EA" stroke-width="2"/>
+              </svg>
+            button(type="button" data-single-project-construction-slide-next).navigation-button.navigation-button--black
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+                <path d="M12.6154 4L20 12M20 12L12.6154 20M20 12L4 12" stroke="#DBE2EA" stroke-width="2"/>
+              </svg>
+        .swiper-container(data-single-project-construction-slider)
+          .swiper-wrapper
+            each val in [1,2,3,4,5,6]
+              .swiper-slide(data-construction-popup-open)
+                .construction-card(data-construction-id=val)
+                  .construction-card__image
+                    .construction-card__image-wrap
+                      img(src="./assets/images/single-project/construction-card.jpg", alt="", srcset="" loading="lazy")
+                  .construction-card__content
+                    .construction-card-label 12 ФОТО
+                    .construction-card__bottom
+                      .construction-card-date 14.03.2025
+                      +diagonal-arrow('project-card__arrow')
+    .home-double-screen
+      .home-double-screen__title1.text-style-1920-h-1.text-style-768-h-1.text-style-375-h-1.color-red(data-split-lines) ДОКУМЕНТИ
+      table.home-double-screen__table
+        tr
+          td.text-style-1920-h-4.text-style-768-h-4.home-double-screen__table-dot 
+            a(href="#") 
+              span Договір на землю 
+          td
+            a(href="#").home-double-screen__table-link.text-style-1920-button
+              span ЗАВАНТАЖИТИ
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path fill-rule="evenodd" clip-rule="evenodd" d="M11.472 15.7674L15.6184 11.621L16.3255 12.3281L11.3255 17.3281L10.972 17.6816L10.6184 17.3281L5.61841 12.3281L6.32551 11.621L10.472 15.7674L10.472 6.97453L11.472 6.97453L11.472 15.7674Z" fill="#EFF0F7"/>
+              </svg>
+        tr 
+          td.text-style-1920-h-4.text-style-768-h-4.home-double-screen__table-dot 
+            a(href="#") 
+              span Містобудівні умови та обмеження 
+          td
+            a(href="#").home-double-screen__table-link.text-style-1920-button
+              span ЗАВАНТАЖИТИ
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path fill-rule="evenodd" clip-rule="evenodd" d="M11.472 15.7674L15.6184 11.621L16.3255 12.3281L11.3255 17.3281L10.972 17.6816L10.6184 17.3281L5.61841 12.3281L6.32551 11.621L10.472 15.7674L10.472 6.97453L11.472 6.97453L11.472 15.7674Z" fill="#EFF0F7"/>
+              </svg>
+        tr 
+          td.text-style-1920-h-4.text-style-768-h-4.home-double-screen__table-dot 
+            a(href="#") 
+              span Дозвіл на підготовчі роботи 
+          td
+            a(href="#").home-double-screen__table-link.text-style-1920-button
+              span ЗАВАНТАЖИТИ
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path fill-rule="evenodd" clip-rule="evenodd" d="M11.472 15.7674L15.6184 11.621L16.3255 12.3281L11.3255 17.3281L10.972 17.6816L10.6184 17.3281L5.61841 12.3281L6.32551 11.621L10.472 15.7674L10.472 6.97453L11.472 6.97453L11.472 15.7674Z" fill="#EFF0F7"/>
+              </svg>
+        tr 
+          td.text-style-1920-h-4.text-style-768-h-4.home-double-screen__table-dot 
+            a(href="#") 
+              span Дозвіл на будівництво 
+          td
+            a(href="#").home-double-screen__table-link.text-style-1920-button
+              span ЗАВАНТАЖИТИ
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path fill-rule="evenodd" clip-rule="evenodd" d="M11.472 15.7674L15.6184 11.621L16.3255 12.3281L11.3255 17.3281L10.972 17.6816L10.6184 17.3281L5.61841 12.3281L6.32551 11.621L10.472 15.7674L10.472 6.97453L11.472 6.97453L11.472 15.7674Z" fill="#EFF0F7"/>
+              </svg>
+  include ../includes/home/home-projects.pug
+  include ../includes/home/home-news.pug
+  include ../includes/incredible-block.pug
+  include ../includes/contact-screen.pug
+  include ../includes/form-screen.pug
+block footer
+  include ../includes/footer.pug
+
+block header
+  include ../includes/header.pug

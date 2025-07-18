@@ -1,0 +1,122 @@
+extends ../layout/main
+block variable
+  -
+    var title_page = 'Липень 2024'
+    var id_page = 'id-page-single-construction'
+    var class_page = 'class-page-single-construction'
+    var breadcrumbsSubitem = [
+      {
+        label: 'Хід будівництва',
+        link: '/construction'
+      }
+    ];
+    var slides = [
+      './assets/images/home/home-projects/park-avenue.jpg',
+      './assets/images/home/home-projects/park-avenue.jpg',
+      './assets/images/home/home-projects/park-avenue.jpg',
+      './assets/images/home/home-projects/park-avenue.jpg',
+    ]
+  
+block meta
+  title= title_page
+  meta(name='description', content='')
+block head
+    link(rel='stylesheet', href="./assets/styles/main.min.css")
+block scripts
+  script(defer src='./assets/scripts/vendors.bundle.js')
+  script(defer src='./assets/scripts/index.bundle.js')
+  script(defer src='./assets/scripts/single-news.bundle.js')
+block content
+  .inner-front-screen
+    .inner-front-screen__bg
+      img(src="./assets/images/inner-front-screen-bg.svg", alt="", srcset="")
+    .inner-front-screen__content 
+      include ../includes/breadcrumbs.pug
+  .single-construction
+    a(href="/news").single-flat-back-button.single-flat-back-button--light
+      .single-flat-back-button__icon
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+          <path d="M11.3846 4L4 12M4 12L11.3846 20M4 12H20" stroke="#DBE2EA" stroke-width="2"/>
+        </svg>
+      span.hide-on-tablet.hide-on-mobile Назад
+    .single-construction__top 
+      .single-construction__title ГАРМОНІЯ ПРИРОДИ ТА АРХІТЕКТУРИ: ЕФЕКТИВНИЙ ЛАНДШАФТНИЙ ДИЗАЙН НА ПРИКЛАДІ ПРОЄКТІВ КОМПАНІЇ «ЯРКОВИЦЯ»
+      .news-card__label Нована
+      .news-card__date 05.05.2025
+    .single-construction-slider
+      .slider-navigation
+        button(type="button" data-gallery="prev").navigation-button
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M11.3846 4L4.00001 12M4.00001 12L11.3846 20M4.00001 12H20" stroke="#DBE2EA" stroke-width="2"/>
+          </svg>
+        button(type="button" data-gallery="next").navigation-button
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+            <path d="M12.6154 4L20 12M20 12L12.6154 20M20 12L4 12" stroke="#DBE2EA" stroke-width="2"/>
+          </svg>
+      .single-construction-slider__counter
+        .color-white(data-gallery="current") 01
+        .color-gray /
+        .color-gray(data-gallery="all") 07
+      .swiper-container(data-single-construction-slider)
+        .swiper-wrapper
+          each val in slides
+            img(src=val, alt="", srcset="" loading="lazy").swiper-slide
+    .single-construction__content
+      h1 2-кімнатна квартира 65,1 м² у ЖК бізнес-класу Sofiivka
+      h2 2-кімнатна квартира 65,1 м² у ЖК бізнес-класу Sofiivka
+      h3 2-кімнатна квартира 65,1 м² у ЖК бізнес-класу Sofiivka
+      h4 2-кімнатна квартира 65,1 м² у ЖК бізнес-класу Sofiivka
+      h5 2-кімнатна квартира 65,1 м² у ЖК бізнес-класу Sofiivka
+      h6 2-кімнатна квартира 65,1 м² у ЖК бізнес-класу Sofiivka
+      ul 
+        li 2-кімнатна квартира 65,1 м² у ЖК бізнес-класу Sofiivka
+        li 2-кімнатна квартира 65,1 м² у ЖК бізнес-класу Sofiivka
+      ol 
+        li 2-кімнатна квартира 65,1 м² у ЖК бізнес-класу Sofiivka
+        li 2-кімнатна квартира 65,1 м² у ЖК бізнес-класу Sofiivka
+      <p><span style="font-weight: 700;">Встигніть придбати </span><b>2-кімнатна квартира 65,1 м² у ЖК бізнес-класу Sofiivka</b><b><br>
+          </b><span style="font-weight: 400;"> </span><b>Готова для заселення вже цього літа!</b></p>
+      <p><span style="font-weight: 400;"> </span><b>White-box комплектація:</b><b><br>
+          </b><span style="font-weight: 400;">– Всі чорнові роботи виконані, залишилось лише втілити ваш дизайн!</span><span style="font-weight: 400;"><br>
+          </span><span style="font-weight: 400;">– Ідеально для родини – простора кухня-вітальня, окремі кімнати, панорамні вікна.</span></p>
+      <p><span style="font-weight: 400;"> </span><b>Умови акції:</b><b><br>
+          </b><span style="font-weight: 400;"> </span><b>Перший внесок – $24,738</b><b><br>
+          </b><span style="font-weight: 400;"> </span><b>Розтермінування на 12 місяців без здорожчання!</b><b><br>
+          </b><span style="font-weight: 400;"> </span><b>Можливість заселитися одразу після купівлі</b></p>
+      <p><span style="font-weight: 400;"> </span><b>ЖК Sofiivka – це:</b><b><br>
+          </b><span style="font-weight: 400;"> </span><b>Комплекс бізнес-класу</b><span style="font-weight: 400;"> з власним </span><b>ТРЦ, спорткомплексом, басейнами, Сільпо та кінотеатром</b><b><br>
+          </b><span style="font-weight: 400;"> </span><b>Закрита територія</b><span style="font-weight: 400;"> з озелененням, фонтанами та зонами відпочинку</span><span style="font-weight: 400;"><br>
+          </span><span style="font-weight: 400;"> </span><b>Зручна інфраструктура</b><span style="font-weight: 400;"> – дитячі садочки, школи та магазини поруч</span></p>
+      <p><span style="font-weight: 400;"> </span><b>Кількість квартир за акційною ціною обмежена!</b><b><br>
+          </b><span style="font-weight: 400;">Не втрачайте можливість заселитися вже цього літа – залишайте заявку прямо зараз! </span><span style="font-weight: 400;"><br>
+          </span></p>
+    .single-construction-slider
+      .single-construction__video
+        .single-construction__video-wrap
+          video(controls poster="./assets/images/home/home-projects/park-avenue.jpg" playsinline)
+            source(src="https://smarto.agency/wp-content/themes/smartoagency/static/smartorange_showreel1.mp4", type="video/mp4")
+            <p>Ваш браузер не підтримує HTML5 відео.</p>
+    .single-construction-slider
+      +button-primary-link('ПЕРЕЙТИ ДО ВИБОРУ КВАРТИР', '/plannings')
+  .home-news
+    .home-news__content
+      .home-news__title
+        .text-style-1920-h-1.text-style-768-h-1.text-style-375-h-1.color-red.text-uppercase(data-split-lines-new-animation) БІЛЬШЕ НОВИН
+      each val in [1,2,3]
+        .news-card
+          .news-card__img
+            .news-card__date date
+            .news-card__label label
+            .news-card__img-wrapper
+              img(src='./assets/images/home/news/1.jpg' alt='news-1')
+          .news-card__text 
+            .text-style-1920-h-4.text-style-768-h-4 Гармонія природи та архітектури: ефективний ландшафтний дизайн на прикладі проєктів компанії «Ярковиця»
+            +diagonal-arrow
+  include ../includes/incredible-block.pug
+  include ../includes/contact-screen.pug
+  include ../includes/form-screen.pug
+block footer
+  include ../includes/footer.pug
+
+block header
+  include ../includes/header.pug

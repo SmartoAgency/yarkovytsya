@@ -1,0 +1,79 @@
+.form-screen {
+    padding-left: var(--page-side-fields);
+    padding-right: var(--page-side-fields);
+    padding-top: calc(var(--section-v-offset) * 0.5);
+    padding-bottom: calc(var(--section-v-offset) * 0.75);
+    position: relative;
+    @include to(600px){
+        padding-bottom: var(--section-v-offset);
+    }
+    &__content {
+        @include row-flex();
+        position: relative;    
+        z-index: 2;
+        @include to(1024px){
+            gap: 60px;
+        }
+        @include to(600px){
+            gap: 40px;
+        }
+
+    }
+    &__description {
+        @include size(6);
+        @include shift(0);
+        @include size-md(12);
+        @include shift-md(0);
+        @include to(1024px){
+            text-align: center;
+        }
+        @include to(600px){
+            text-align: left;
+        }
+        p {
+            max-width: 480px;
+            @include to(1024px){
+                margin-left: auto;
+                margin-right: auto;
+            }
+            @include from(1025px){
+                max-width: 310px;
+            }
+        }
+    }
+    &__form {
+        @include size(6);
+        @include shift(0);
+        @include size-md(12);
+        @include shift-md(0);
+        @include size-xs(12);
+        @include shift-xs(0);
+        @include to(1024px){
+            padding-left: 86px;
+            padding-right: 86px;
+        }
+        @include to(600px){
+            padding-left: 0;
+            padding-right: 0;
+        }
+    }
+    &__title {
+        margin-bottom: 40px;
+        @include from(1025px){
+            padding-right: 30%;
+        }
+        @include to(1024px){
+            margin-bottom: 20px;
+        }
+    }
+    &__arrow {
+        position: absolute;
+        right: 29px;
+        bottom: 34px;
+        cursor: pointer;
+        @include to(600px){
+            right: 12px;
+            bottom: 34px;
+        }
+    }
+}

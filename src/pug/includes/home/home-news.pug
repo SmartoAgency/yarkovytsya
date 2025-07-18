@@ -1,0 +1,16 @@
+.home-news
+  .home-news__content
+    .home-news__title
+      .text-style-1920-h-1.text-style-768-h-1.text-style-375-h-1.color-red.text-uppercase(data-split-lines-new-animation) НОВИНИ
+      +button-primary-link('БІЛЬШЕ НОВИН', '/news')(class="hide-on-mobile")
+    each val in [1,2,3]
+      .news-card
+        .news-card__img
+          .news-card__date date
+          .news-card__label label
+          .news-card__img-wrapper
+            img(src='./assets/images/home/news/1.jpg' alt='news-1' loading="lazy")
+        .news-card__text 
+          .text-style-1920-h-4.text-style-768-h-4 Гармонія природи та архітектури: ефективний ландшафтний дизайн на прикладі проєктів компанії «Ярковиця»
+          +diagonal-arrow
+    +button-primary-link('БІЛЬШЕ НОВИН', '/news')(class="hide-on-tablet hide-on-desktop")

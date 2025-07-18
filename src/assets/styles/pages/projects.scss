@@ -1,0 +1,29 @@
+.projects-list {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    row-gap: 80px;
+    column-gap: 20px;
+    position: relative;
+    z-index: 2;
+    @include to(1024px){
+        grid-template-columns: 1fr;
+        row-gap: 60px;
+    }
+}
+
+
+.project-pagination {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    margin-top: 200px;
+    margin-bottom: 200px;
+    gap: 40px;
+    @include to(600px){
+        margin-top: 100px;
+        margin-bottom: 100px;
+        padding-left: 40px;
+        padding-right: 40px;
+    }
+}

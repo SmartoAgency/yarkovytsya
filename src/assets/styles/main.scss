@@ -1,0 +1,55 @@
+@import './assets/vars';  // переменные
+@import './assets/smart-grid';  // mixins smartgrid.js
+// libraries
+@import './libs';
+
+// assets
+@import './assets/mixins';  // миксины
+@import './assets/fonts';  // шрифты
+@import './assets/base';  // общие стили
+@import './assets/animation';  // анимации
+@import './assets/class'; // main style
+@import './assets/interface'; // main style
+@import './assets/breadcrubs'; // main style
+
+
+// sass dima
+@import './header';
+@import './footer';
+@import './404';
+@import './loader';
+@import './menu';
+
+@import '../../pug/components/form/form';
+@import '../../pug/components/toster/toster';
+@import './components/button-primary';
+
+
+@import './layouts/home/contact-screen';
+@import './layouts/home/form-screen';
+
+//@import 'pages/contacts';
+//@import 'pages/contact';
+//@import 'pages/home';
+@import './assets/templates'; // main style
+@import 'components/social-icon';
+@import 'components/callback-popup';
+@import 'components/dzen-form';
+@import 'components/card-planning';
+@import 'components/project-card';
+@import 'components/navigation-button';
+@import 'components/news-card';
+@import 'components/diagonal-arrow';
+
+@import './includes/incredible-block';
+@import 'components/favourite-button';
+@import 'components/button-small';
+@import 'components/button-small2';
+@import 'components/inner-front-screen';
+@import 'components/incredible-button';
+@import 'components/pagination';
+@import 'components/construction-card';
+@import 'components/planning-card';
+@import 'components/plannings-favourite-button';
+@import 'components/single-flat-back-button';
+@import 'components/construction-popup';

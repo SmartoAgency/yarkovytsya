@@ -1,0 +1,182 @@
+.card-planning {
+    --inner-vertical-offset: 32px;
+    --side-padding: #{pxWidthInVw(60)};
+    border: 1px solid var(--color-ochre);
+    background: var(--White-BB, #C1C2B2);
+    &__slider {
+        cursor: zoom-in;
+        width: 100%;
+        .swiper-slide {
+            position: relative;
+            padding-bottom: 50%;
+            @include to(600px){
+                padding-bottom: 56%;
+            }
+            img {
+                position: absolute;
+                left: 0;
+                top: 0;
+                width: 100%;
+                height: 100%;
+                object-fit: cover;
+            }
+        }
+        &-nav {
+            
+            position: absolute;
+            bottom: 12px;
+            left: 0;
+            width: 100%;
+            z-index: 3;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--color-white-light);
+            &-digits {
+                margin-left: 20px;
+                margin-right: 20px;
+                span:last-child,
+                span:first-child {
+                    display: inline-block;
+                    width: 2ch;
+                }
+            }
+            &-arrow {
+                width: 40px;
+                height: 40px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                cursor: pointer;
+            }
+        }
+    }
+    &__title {
+        
+        margin-bottom: var(--inner-vertical-offset);
+        padding-left: var(--side-padding);
+        padding-right: var(--side-padding);
+        margin-top: 40px;
+        @include to(600px){
+            margin-top: 28px;
+        }
+    }
+    &__description {
+        @include text-style-1920-body;
+        margin-bottom: var(--inner-vertical-offset);
+        padding-left: var(--side-padding);
+        padding-right: var(--side-padding);
+        
+    }
+    &__list {
+        display: flex;
+        flex-wrap: wrap;
+        row-gap: 40px;
+        margin-bottom: var(--inner-vertical-offset);
+        padding-left: var(--side-padding);
+        padding-right: var(--side-padding);
+        display: none;
+    }
+    &__info-item {
+        width: 50%;
+        
+        &-title {
+            
+            opacity: 0.5;
+            margin-bottom: 4px;
+        }
+        &-value {
+            @include text-style-1920-body;
+        }
+    }
+    &__buttons {
+        display: flex;
+        align-items: center;
+        padding-left: var(--side-padding);
+        padding-right: var(--side-padding);
+        margin-bottom: 40px;
+        justify-content: space-between;
+        @include to(600px){
+            margin-bottom: 28px;
+        }
+        &>:nth-child(2) {
+            margin-left: 4px;
+        }
+
+    }
+    &__button {
+        @include text-style-1920-body;
+        display: flex;
+        padding: 23px 40px;
+        justify-content: center;
+        align-items: center;
+        gap: 12px;
+        border-radius: 100px;
+        @include to(600px){
+            
+            padding: 16px 40px;
+        }
+        
+
+    }
+    &__button1 {
+        border: 1px solid var(--color-white-bb);
+        background-color: var(--color-white-light);
+        
+    }
+    &__button2 {
+        background-color: var(--color-black);
+        color: var(--color-white-bb);
+        flex-grow: 1;
+        overflow: hidden;
+        @media (hover: hover) {
+            transition: .2s ease-in-out;
+            position: relative;
+            background-color: transparent;
+            span,svg {
+                position: relative;
+                z-index: 2;
+            }
+            &:after {
+                content: '';
+                position: absolute;
+                left: 0;
+                top: 0;
+                width: 100%;
+                height: 100%;
+                background-color: var(--color-ochre);
+                transform: translateY(-100%);
+                transition: .2s ease-in;
+                // z-index: -1;
+                    border-radius: 100px;
+            }
+            &:before {
+                content: '';
+                position: absolute;
+                left: 0;
+                top: 0;
+                width: 100%;
+                height: 100%;
+                background-color: var(--color-black);
+                transition: .35s ease-out;
+                // z-index: -1;
+                border-radius: 100px;
+            }
+            &:hover {
+                color: var(--color-black);
+            }
+            &:hover:after {
+                transform: translateY(0);
+            }
+            &:hover:before {
+                transform: translateY(100%);
+            }
+            &:hover svg [fill] {
+                fill: var(--color-black);
+            }
+            &:hover svg [stroke] {
+                stroke: var(--color-black);
+            }
+        }
+    }
+}

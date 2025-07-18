@@ -1,0 +1,128 @@
+
+extends ../layout/main
+block variable
+  -
+    var title_page = 'compare'
+    var id_page = 'id-page-compare'
+    var class_page = 'class-page-compare'
+    var breadcrumbsSubitem = [
+    ]
+  
+block meta
+  title= title_page
+  meta(name='description', content='')
+block head
+    link(rel='stylesheet', href="./assets/styles/main.min.css")
+block scripts
+  script(defer src='./assets/scripts/vendors.bundle.js')
+  script(defer src='./assets/scripts/index.bundle.js')
+  script(defer src='./assets/scripts/compare.bundle.js')
+block content
+  .inner-front-screen
+    .inner-front-screen__bg
+      img(src="./assets/images/inner-front-screen-bg.svg", alt="", srcset="")
+    .inner-front-screen__decor
+      .inner-front-screen__decor-wrapper
+        img(src="./assets/images/inner-front-screen-decor.svg", alt="", srcset="")
+    .inner-front-screen__content 
+      include ../includes/breadcrumbs.pug
+      .inner-front-screen__top 
+        .inner-front-screen__title.color-red.text-style-1920-h-1.text-style-768-h-1.text-style-375-h-1 ПРОЕКТИ
+  .compare-slider
+    .compare-slider__content
+      .compare-slider__title.text-style-1920-h-3.text-style-768-h-3.text-style-375-h-3.color-black
+        span ДОДАНО  
+        span(data-favourites-counter) 5
+        span ПЛАНУВАНЬ
+      .compare-slider__nav
+        button(type="button" data-compare-slider-prev).compare-slider-nav-button
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M11.5385 6L6 12M6 12L11.5385 18M6 12H18" stroke="#DBE2EA" stroke-width="2"/>
+          </svg>
+        button(type="button" data-compare-slider-next).compare-slider-nav-button
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M12.4615 6L18 12M18 12L12.4615 18M18 12L6 12" stroke="#DBE2EA" stroke-width="2"/>
+          </svg>
+
+
+      .swiper-container(data-compare-slider)
+        .swiper-wrapper
+          each val in [1]
+            .swiper-slide.planning-card
+              .planning-card__top 
+                .planning-card__label PARK AVENUE
+                button(type="button").planning-card__close-button
+                  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M6 18L18 6M6 6L18 18" stroke="#4D5858" stroke-width="2"/>
+                  </svg>
+              .planning-card__image
+                .planning-card__image-wrap
+                  img(src='./assets/images/test-plan.jpg' loading='lazy' alt='' onerror='this.style.opacity = 0;')
+              .planning-card__middle
+                .text-style-1920-h-4.color-gray 4-к
+                span /
+                .text-style-1920-h-4.color-gray 74 м²
+              .planning-card__bottom
+                .planning-card__bottom-group
+                  | Будинок:&nbsp; 1
+                .planning-card__bottom-group
+                  | Секція:&nbsp; 1
+                .planning-card__bottom-group
+                  | Поверх:&nbsp; 1
+              .planning-card__bottom2
+                .planning-card__bottom2-group
+                  span РОЗТЕРМІНУВАННЯ:
+                  span.color-gray  ТАК
+                .planning-card__bottom2-group
+                  span ВИГЛЯД З ВІКНА:
+                  span.color-gray  ГОРИ
+              +button-primary('ЗАБРОНЮВАТИ')(data-callback-popup-call)
+              a(href="/single-flat?id=52").link-underlined.link.link--iocaste
+                span ВІДКРИТИ ПЛАНУВАННЯ
+                <svg class="link__graphic link__graphic--slide" width="300%" height="100%" viewBox="0 0 1200 60" preserveAspectRatio="none">
+                  <path d="M0,56.5c0,0,298.666,0,399.333,0C448.336,56.5,513.994,46,597,46c77.327,0,135,10.5,200.999,10.5c95.996,0,402.001,0,402.001,0"></path>
+                </svg>
+  include ../includes/home/home-apps.pug
+  include ../includes/incredible-block.pug
+  include ../includes/contact-screen.pug
+  include ../includes/form-screen.pug
+  template#compare-card-template
+    .swiper-slide.planning-card(data-compare-card='{{id}}')
+      .planning-card__top 
+        .planning-card__label {{project_name}}
+        button(type="button" data-delete-from-compare='{{id}}').planning-card__close-button
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M6 18L18 6M6 6L18 18" stroke="#4D5858" stroke-width="2"/>
+          </svg>
+      .planning-card__image
+        .planning-card__image-wrap
+          img(src='{{img_big}}' loading='lazy' alt='' onerror='this.style.opacity = 0;')
+      .planning-card__middle
+        .text-style-1920-h-4.color-gray {{rooms}}-к
+        span /
+        .text-style-1920-h-4.color-gray {{area}} м²
+      .planning-card__bottom
+        .planning-card__bottom-group
+          | Будинок:&nbsp; {{build}}
+        .planning-card__bottom-group
+          | Секція:&nbsp; {{section}}
+        .planning-card__bottom-group
+          | Поверх:&nbsp; {{floor}}
+      .planning-card__bottom2
+        .planning-card__bottom2-group
+          span РОЗТЕРМІНУВАННЯ:
+          span.color-gray  ТАК
+        .planning-card__bottom2-group
+          span ВИГЛЯД З ВІКНА:
+          span.color-gray  {{fron_window_view}}
+      +button-primary('ЗАБРОНЮВАТИ')(data-callback-popup-call)
+      a(href="/single-flat?id={{id}}").link-underlined.link.link--iocaste
+        span ВІДКРИТИ ПЛАНУВАННЯ
+        <svg class="link__graphic link__graphic--slide" width="300%" height="100%" viewBox="0 0 1200 60" preserveAspectRatio="none">
+          <path d="M0,56.5c0,0,298.666,0,399.333,0C448.336,56.5,513.994,46,597,46c77.327,0,135,10.5,200.999,10.5c95.996,0,402.001,0,402.001,0"></path>
+        </svg>
+block footer
+  include ../includes/footer.pug
+
+block header
+  include ../includes/header.pug

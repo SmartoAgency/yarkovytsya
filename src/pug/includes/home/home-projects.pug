@@ -1,0 +1,134 @@
+-
+  var projects = [
+    {
+      alertLabel: 'BUSINESS',
+      labels: [
+        'РОЗТЕРМІНУВАННЯ 44 МІС',
+        'РОЗТЕРМІНУВАННЯ 0%',
+        'ЗНИЖКА 15%',
+      ],
+      deadline: 'ОБ\'ЄКТ ЗДАНО',
+      adress: 'ПАРК ШЕВЧЕНКА, ВУЛ. ДОРОШЕНКА',
+      title: 'PARK AVENUE',
+      img: './assets/images/home/home-projects/park-avenue.jpg',
+      logo: './assets/images/home/home-projects/Park Avenue logo.svg',
+    },
+
+    {
+      alertLabel: 'BUSINESS',
+      labels: [
+        'РОЗТЕРМІНУВАННЯ 44 МІС',
+        'РОЗТЕРМІНУВАННЯ 0%',
+        'ЗНИЖКА 15%',
+
+      ],
+      deadline: 'ІV КВАРТАЛ 2025',
+
+      adress: 'ПІВДЕННИЙ БУЛЬВАР',
+      title: 'ЯРКО-ЦЕНТР',
+      img: './assets/images/home/home-projects/yarko-center.jpg',
+      logo: './assets/images/home/home-projects/yarko-center-logo.svg',
+    },
+    {
+      alertLabel: 'BUSINESS',
+      labels: [
+        'РОЗТЕРМІНУВАННЯ 44 МІС',
+        'РОЗТЕРМІНУВАННЯ 0%',
+        'ЗНИЖКА 15%',
+      ],
+      deadline: 'ОБ\'ЄКТ ЗДАНО',
+      adress: 'ВУЛ. О. БЛАВАЦЬКОГО',
+      title: 'ОПРИШІВСЬКА СЛОБОДА',
+      img: './assets/images/home/home-projects/opryshkivska-sloboda.jpg',
+      logo: './assets/images/home/home-projects/Sloboda logo.svg',
+    },
+    {
+      alertLabel: 'BUSINESS',
+      labels: [
+        'РОЗТЕРМІНУВАННЯ 44 МІС',
+        'РОЗТЕРМІНУВАННЯ 0%',
+        'ЗНИЖКА 15%',
+      ],
+      deadline: 'ОБ\'ЄКТ ЗДАНО',
+      adress: 'ВУЛ. БУГАЯ',
+      title: 'КАСКАД ЯРКО',
+      img: './assets/images/home/home-projects/kaskad-yarko.jpg',
+      logo: './assets/images/home/home-projects/Cascad logo.svg',
+    }
+  ]
+
+.home-projects
+  .home-projects__content
+    .home-projects__title.text-style-1920-h-1.text-style-768-h-1.text-style-375-h-1.color-red НАШІ ПРОЄКТИ
+    .swiper-container(home-projects-slider)
+      .slider-navigation
+        button(type="button" home-projects-slider-prev).navigation-button
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M11.3846 4L4.00001 12M4.00001 12L11.3846 20M4.00001 12H20" stroke="#DBE2EA" stroke-width="2"/>
+          </svg>
+        button(type="button" home-projects-slider-next).navigation-button
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+            <path d="M12.6154 4L20 12M20 12L12.6154 20M20 12L4 12" stroke="#DBE2EA" stroke-width="2"/>
+          </svg>
+      .swiper-wrapper
+        each val in projects
+          .swiper-slide
+            a(href="/single-project").project-card
+              .project-card__img
+                .project-card__img-wrap
+                  img(src=val.img, alt="", srcset="" loading="lazy")
+                .project-card__labels
+                  .project-card__label.project-card__label--alert #{val.alertLabel}
+                  each label in val.labels
+                    .project-card__label #{label}
+                .project-card__deadline
+                  .project-card__label.project-card__label--dark #{val.deadline}
+                .project-card__logo
+                    img(src=val.logo, alt="", srcset="" loading="lazy")
+                .project-card__eoselya.project-card__label
+                  img(src="./assets/images/eoselya.svg", alt="", srcset="" loading="lazy")
+              .project-card__text
+                .project-card__adress.color-body-description #{val.adress}
+                .project-card__title.text-style-1920-h-2.text-style-768-h-2.text-style-375-h-2.text-white #{val.title}
+                +diagonal-arrow('project-card__arrow')
+  .home-projects__map
+    .home-projects__map-legend
+      .home-projects__map-item.home-projects__map-item--park-avenue
+        .home-projects__map-item-img 
+          img(src='./assets/images/home/home-projects/park-avenue.jpg' loading="lazy")
+        a(href="#").home-projects__map-item-text
+          div PARK AVENUE
+          <svg width="15" height="14" viewBox="0 0 15 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M11.7574 11.2426V2.75736M11.7574 2.75736L3.51833 2.75736M11.7574 2.75736L3.27208 11.2426" stroke="#DBE2EA" stroke-width="1.3"/>
+          </svg>
+      .home-projects__map-item.home-projects__map-item--yarko-center
+        .home-projects__map-item-img 
+          img(src='./assets/images/home/home-projects/yarko-center.jpg' loading="lazy")
+        a(href="#").home-projects__map-item-text
+          div ЯРКО ЦЕНТР
+          <svg width="15" height="14" viewBox="0 0 15 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M11.7574 11.2426V2.75736M11.7574 2.75736L3.51833 2.75736M11.7574 2.75736L3.27208 11.2426" stroke="#DBE2EA" stroke-width="1.3"/>
+          </svg>
+      .home-projects__map-item.home-projects__map-item--sloboda
+        .home-projects__map-item-img 
+          img(src='./assets/images/home/home-projects/opryshkivska-sloboda.jpg' loading="lazy")
+        a(href="#").home-projects__map-item-text
+          div ОПРИШІВСЬКА СЛОБОДА
+          <svg width="15" height="14" viewBox="0 0 15 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M11.7574 11.2426V2.75736M11.7574 2.75736L3.51833 2.75736M11.7574 2.75736L3.27208 11.2426" stroke="#DBE2EA" stroke-width="1.3"/>
+          </svg>
+      .home-projects__map-item.home-projects__map-item--cascad-yarko
+        .home-projects__map-item-img 
+          img(src='./assets/images/home/home-projects/kaskad-yarko.jpg' loading="lazy")
+        a(href="#").home-projects__map-item-text
+          div КАСКАД ЯРКО
+          <svg width="15" height="14" viewBox="0 0 15 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M11.7574 11.2426V2.75736M11.7574 2.75736L3.51833 2.75736M11.7574 2.75736L3.27208 11.2426" stroke="#DBE2EA" stroke-width="1.3"/>
+          </svg>
+    <picture>
+        <source srcset="./assets/images/home/home-projects/map.jpg" media="(min-width: 1025px)">
+        <source srcset="./assets/images/home/home-projects/map-tablet.jpg" media="(min-width: 601px) and (max-width: 1024px)">
+        <source srcset="./assets/images/home/home-projects/map.jpg" media="(max-width: 600px)">
+        <img  class="home-projects__map-img" src="#" alt="" loading="lazy" style="translate: none; rotate: none; scale: none; transform: translate(0px, 0px);">
+    </picture>
+    //- img(src="./assets/images/home/home-projects/map.jpg", alt="", srcset="")

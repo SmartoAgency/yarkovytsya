@@ -1,0 +1,244 @@
+.contact-screen {
+    position: relative;
+    padding-left: var(--page-side-fields);
+    padding-right: var(--page-side-fields);
+    min-height: 60vh;
+    overflow: hidden;
+    background-color: var(--color-deep-black);
+    padding-bottom: calc(pxWidthInVw(270) + var(--section-v-offset));
+    @include from(1025px){
+        padding-top: pxWidthInVw(229);
+    }
+    @include to(1024px){
+        padding-top: var(--section-v-offset);
+        min-height: calc(100vh + var(--section-v-offset));
+        overflow: hidden;
+    }
+    @include to(600px){
+        padding-top: calc(var(--section-v-offset) + 50px);
+    }
+    &__bg { 
+        position: absolute;
+        left: 0;
+        bottom: 0;
+        width: 100%;
+        height: pxWidthInVw(270);
+        transform: translateY(50%);
+        @include to(1024px){
+            height: 36.0625vw;
+            transform: translateY(50%) translateX(-41%);
+        }
+        svg {
+            width: 100%;
+            height: auto;
+            @include to(1024px){
+                width: 200%;
+            }
+        }
+    }
+    &__content {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 20px;
+        @include to(600px){
+            gap: 40px;
+        }
+    }
+    &__title {
+        width: 100%;
+        @include to(1024px){
+            margin-bottom: 60px;
+        }
+        @include to(600px){
+            margin-bottom: 0;
+        }
+    }
+    &__project {
+        column-count: 2;
+        column-gap: pxWidthInVw(176);
+        padding-right: pxWidthInVw(156);
+        position: absolute;
+        left: 0;
+        top: 0;
+        opacity: 0;
+        visibility: hidden;
+        pointer-events: none;
+        transition: .25s ease-in-out;
+        @include to(600px){
+            display: none;
+            position: static;
+        }
+        @include to(1024px){
+            column-count: 1;
+        }
+        &.active {
+            opacity: 1;
+            visibility: visible;
+            pointer-events: auto;
+            @include to(600px){
+                display: block;
+            }
+        }
+        &>* {
+            break-inside: avoid;
+        }
+        &-socials {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+
+            margin-top: 12px;
+        }
+        &-subtitle {
+            margin-bottom: 4px;
+        }
+        &-group~&-group {
+            margin-top: 32px;
+        }
+        &-group {
+            .button-primary {
+                margin-top: 32px;
+            }
+        }
+    }
+    &__project-button {
+        display: flex;
+        align-items: center;
+        color: var(--color-gray);
+        cursor: pointer;
+        transition: .25s ease-in-out;
+        @include to(600px){
+            border-radius: 100px;
+            border: 1px solid var(--color-gray);
+            @include text-style-1920-body;
+            padding: 5px 12px;
+            color: var(--color-white);
+        }
+        span {
+            @include from(601px){
+                margin-right: 40px;
+            }
+        }
+        svg {
+            transition: .2s ease-in-out;
+            opacity: 0;
+        }
+        &-line {
+            height: 1px;
+            flex-grow: 1;
+            background-image: url("data:image/svg+xml,%3Csvg width='2' height='1' viewBox='0 0 2 1' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Crect width='1' height='1' fill='%23999FA4'/%3E%3C/svg%3E%0A");
+            background-repeat: repeat-x;
+            background-size: 2px 1px;
+            transition: opacity .2s ease-in-out;
+            opacity: 0;
+            border-radius: 4px;
+        }
+        @include to(600px){
+            &-line,svg {
+                display: none;
+            }
+        }
+    }
+    @include from(1025px){
+        &__project-button~&__project-button {
+            margin-top: 8px;
+        }
+    }
+    @include from-to(601px, 1024px){
+        &__project-button~&__project-button {
+            margin-top: 8px;
+        }
+    }
+    &__project-button.active,
+    &__project-button:hover {
+        color: var(--color-white);
+        @include to(600px){
+            background-color: var(--color-red);
+            border-color: var(--color-red);
+        }
+    }
+    &__project-button.active &__project-button-line,
+    &__project-button:hover &__project-button-line {
+        opacity: 1;
+    }
+    &__project-button.active svg,
+    &__project-button:hover svg {
+        opacity: 1;
+    }
+
+    &__projects {
+        width: calc(50% - 20px);
+        @include to(600px){
+            width: 100%;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 4px;
+        }
+    }
+    &__wrapper {
+        width: calc(50% - 20px);
+        position: relative;
+        @include to(600px){
+            width: 100%;
+        }
+    }
+    &__social-link  {
+        display: flex;
+        align-items: center;
+        color: var(--color-white);
+        text-decoration: none;
+        svg {
+            margin-right: 18px;
+        }
+        @media (hover: hover) {
+            span {
+                position: relative;
+                &:after {
+                    content: '';
+                    position: absolute;
+                    left: 0;
+                    bottom: -2px;
+                    width: 100%;
+                    height: 1px;
+                    background-color: var(--color-white);
+                    transform-origin: left;
+                    transform: scaleX(0);
+                    transition: transform .25s ease-in-out;
+                }
+            }
+            &:hover span:after {
+                transform: scaleX(1);
+            }
+            &:hover svg {
+                animation: wobble 1.5s ease-in-out infinite;
+            }
+        }
+    }
+}
+
+@keyframes wobble {
+    0%,100% {
+        transform: translateX(0);
+        transform-origin: 50% 50%;
+    }
+
+    15% {
+        transform: translateX(-2px) rotate(-5deg)
+    }
+
+    30% {
+        transform: translateX(1px) rotate(5deg)
+    }
+
+    45% {
+        transform: translateX(-1px) rotate(-2.7777777778deg)
+    }
+
+    60% {
+        transform: translateX(.6060606061px) rotate(1.6666666667deg)
+    }
+
+    75% {
+        transform: translateX(-.3636363636px) rotate(-1deg)
+    }
+}

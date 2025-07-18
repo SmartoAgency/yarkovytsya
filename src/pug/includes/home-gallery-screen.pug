@@ -1,0 +1,41 @@
+-
+  var slides = [
+    {title: "ІГРОВА ЗОНА"},
+    {title: "ВБИРАЛЬНЯ"},
+    {title: "СПАЛЬНЯ"},
+    {title: "ЗОВНІШНІЙ ДВІР"},
+    {title: "БАСЕЙН"},
+    {title: "ДИТЯЧИЙ МАЙДАНЧИК"},
+    {title: "ВНУТРІШНІЙ ДВІР"},
+    {title: "СПОРТИВНИЙ МАЙДАНЧИК"},
+  ]
+
+div(class="home-gallery-screen "+galleryBlockCustomClass)#gallery
+  .home-gallery-screen__decor
+    img(src="./assets/images/single-project/yarko-logo.svg", alt="", srcset="")
+  .home-gallery-screen__title.text-style-1920-h-1.text-style-768-h-1.text-style-375-h-1.color-red ГАЛЕРЕЯ
+  .frame__nav.hide-on-tablet.hide-on-mobile
+    each slide in slides
+      button.frame__nav-button.unbutton.text-style-1920-button #{slide.title}
+  <div class="slides">
+    each slide in slides
+      div.slide
+        div.slide__inner
+          div.slide__img
+            div.slide__img-inner(style="background-image:url(./assets/images/single-project/gallery-img1.jpg)")
+            div.slide__img-inner2(style="background-image:url(./assets/images/single-project/gallery-img1.jpg)")
+  </div>
+  .home-gallery-screen__nav
+    .slider-nav-button.text-style-1920-button(data-gallery="prev")
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M11.3846 20L4 12M4 12L11.3846 4M4 12L20 12" stroke="#DBE2EA" stroke-width="2"/>
+      </svg>
+    .home-gallery-screen__nav-digits
+      span.color-white(data-gallery-current) 01
+      span.color-white /
+      span.color-white(data-gallery-all) #{slides.length < 10 ? "0" + slides.length : slides.length}
+    .slider-nav-button(data-gallery="next")
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M12.6154 20L20 12M20 12L12.6154 4M20 12L4 12" stroke="#DBE2EA" stroke-width="2"/>
+      </svg>
+

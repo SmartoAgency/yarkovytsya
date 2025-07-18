@@ -1,0 +1,1 @@
+import '../fullscreenscroll/js/index';

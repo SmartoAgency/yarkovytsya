@@ -1,0 +1,23 @@
+.home-video(data-home-videoblock)
+  .home-video__decor(data-video-block-decor)
+    <svg width="455" height="456" viewBox="0 0 455 456" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M241.225 379.484L203.456 417.253L105.198 318.995C54.8918 268.69 54.7986 186.999 104.93 136.868L202.798 39.0003L240.698 76.9013L142.831 174.769C113.514 204.086 113.597 251.857 143.016 281.275L241.274 379.533L241.225 379.484Z" fill="#E4032C"/>
+      <path d="M392.253 228.456L316.617 304.092L315.587 303.063C274.254 261.729 274.137 194.772 315.327 153.582L316.353 152.556L392.204 228.407L392.253 228.456Z" fill="#E4032C"/>
+    </svg>
+  .home-video__content
+    .home-video__video
+      video(data-homepage-video, autoplay, muted, loop, playsinline, poster="./assets/images/home/home-video-poster.jpg")
+        source(src="./static/homepage-video.mp4" type="video/mp4" loading="lazy")
+    .home-video__title-part.hide-on-mobile
+      .text-style-1920-h-1.text-style-768-h-1.text-style-375-h-1.color-white(data-split-lines-new-animation) ШУКАЄМО 
+      .text-style-1920-h-1.text-style-768-h-1.text-style-375-h-1.color-gray(data-split-lines-new-animation) ДІЛЯНКИ
+    .home-video__title-part.home-video__title-part--right.hide-on-mobile
+      .text-style-1920-h-1.text-style-768-h-1.text-style-375-h-1.color-gray(data-split-lines-new-animation) ДЛЯ НОВИХ 
+      .text-style-1920-h-1.text-style-768-h-1.text-style-375-h-1.color-white(data-split-lines-new-animation) ПРОЕКТІВ
+    .home-video__title-mobile.hide-on-tablet.hide-on-desktop.text-style-375-h-1
+      span.color-white ШУКАЄМО 
+      span.color-gray ДІЛЯНКИ ДЛЯ 
+      span.color-white НОВИХ ПРОЕКТІВ
+    .home-video__description
+      .home-video__description__slogan.color-body-description ЗАЛИШАЙТЕ ВАШІ ЗАЯВКИ ЗА ПОШТОЮ
+      a(href="mailto:zlagoda.bud@gmail.com").home-video__link.text-style-1920-h-2.text-style-768-h-2.text-style-375-h-3.color-red ZLAGODA.BUD@GMAIL.COM

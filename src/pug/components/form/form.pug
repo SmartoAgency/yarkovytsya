@@ -1,0 +1,27 @@
+mixin form(attr)
+	.form-wrapper(data-form-wrapper)
+		.form-close(data-close-form)
+			<svg width="26" height="26" viewBox="0 0 26 26" fill="none" xmlns="http://www.w3.org/2000/svg">
+			<path d="M25 25L1 1M1 25L25 1L1 25Z" stroke-width="2"/>
+			</svg>
+		form(data-form=attr autocomplete="off").form
+			.form-description.text-style-body Спеціальні умови отримають всі хто зробить запит за формою нижче. Здійсни свою мрію в один клік!
+			.form-field.form-field-input(data-field-input data-field-name data-status="field--inactive").first-offset
+				.input-title.text-style-h-4.text-gray Ваше ім’я:
+				input(type='text' name="name" placeholder="Ваше ім’я:").form-field__input
+				.input-message(data-input-message)
+			.form-field.disabled.form-field-input(data-field-input data-field-phone data-status="field--inactive")
+				.input-title.text-style-h-4.text-gray Телефон:
+				input(type='text' name="phone" placeholder="Телефон:").form-field__input
+				.input-message(data-input-message)
+			button( type="submit" data-btn-submit data-ttt).button-30.button-30--blue
+				<svg width="79" height="65" viewBox="0 0 79 65" fill="none" xmlns="http://www.w3.org/2000/svg" data-form-svg>
+					<path d="M60.7504 14.5338C67.4811 17.9065 64.1157 28.0246 59.6286 31.3973C56.4169 33.8114 51.4811 36.8014 47.2892 41.1919C55.1417 39.7442 55.1417 47.1365 51.7763 50.5092C48.411 53.8819 45.0456 59.5031 38.315 59.5031C32.9306 59.5031 27.0972 58.0041 24.8536 57.2546C24.8536 57.2546 26.3428 60.2589 23.7319 62.8758C22.6103 64 18.1229 65.1242 15.8795 61.7515C13.6361 58.3788 7.14371 51.9022 5.05636 50.5092C1.29635 48 -0.187136 46.3727 2.05641 43C5.05635 38.4902 10.2705 43.7638 10.2705 43.7638C11.3923 32.5215 14.3192 26.5362 18.1229 22.4035C23.5564 16.5 26.0729 19.4055 28.3652 20.155C30.0148 18.9193 31.9617 17.9065 33.8278 17.9065C36.0188 17.9065 38.315 18.5 38.315 21.8696C40.6227 20.3452 42.4201 19.6212 44.3057 19.6212C46.5492 19.6212 48.1636 21.8696 47.3564 25.2423C50.5004 19.1749 55.6254 11.9657 60.7504 14.5338Z" fill="#F0F1F8"/>
+					<path d="M42.802 47.1365C44.0774 44.8997 45.6246 42.9354 47.2892 41.1919M45.0456 30.2731C45.5808 28.9321 46.3714 27.1432 47.3564 25.2423M28.3652 20.155C30.0148 18.9193 31.9617 17.9065 33.8278 17.9065C36.0188 17.9065 38.315 18.5 38.315 21.8696M28.3652 20.155C26.0729 19.4055 23.5564 16.5 18.1229 22.4035C14.3192 26.5362 11.3923 32.5215 10.2705 43.7638C10.2705 43.7638 5.05635 38.4902 2.05641 43C-0.187136 46.3727 1.29635 48 5.05636 50.5092C7.14371 51.9022 13.6361 58.3788 15.8795 61.7515C18.1229 65.1242 22.6103 64 23.7319 62.8758C26.3428 60.2589 24.8536 57.2546 24.8536 57.2546C27.0972 58.0041 32.9306 59.5031 38.315 59.5031C45.0456 59.5031 48.411 53.8819 51.7763 50.5092C55.1417 47.1365 55.1417 39.7442 47.2892 41.1919M28.3652 20.155C26.5564 21.5 24.0564 25 23.5564 26.5M47.2892 41.1919C51.4811 36.8014 56.4169 33.8114 59.6286 31.3973C64.1158 28.0246 67.4811 17.9065 60.7504 14.5338C55.6254 11.9657 50.5004 19.1749 47.3564 25.2423M38.315 21.8696C40.6227 20.3452 42.4201 19.6212 44.3057 19.6212C46.5492 19.6212 48.1636 21.8696 47.3564 25.2423M38.315 21.8696C36.5081 23.1739 34.5707 26.5 33.8278 28" stroke="#111112" stroke-width="2"/>
+					<g data-splashes style="opacity:0">
+						<path d="M55.0565 9.5C55.0565 6 54.0565 3 52.5565 1" stroke="#F0F1F8" stroke-width="2" stroke-linecap="round" stroke-linejoin="bevel"/>
+						<path d="M70.569 19.7884C73.1174 18.949 76.0865 19.6083 77.531 20.6868" stroke="#F0F1F8" stroke-width="2" stroke-linecap="round" stroke-linejoin="bevel"/>
+						<path d="M66.5565 11C67.0565 9 69.0565 7.5 71.0565 7" stroke="#F0F1F8" stroke-width="2" stroke-linecap="round" stroke-linejoin="bevel"/>
+					</g>
+				</svg>
+				span(data-btn-submit-text) НАДІСЛАТИ ПОВІДОМЛЕННЯ

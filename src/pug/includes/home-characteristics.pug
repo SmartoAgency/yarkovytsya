@@ -1,0 +1,65 @@
+-
+  var list = [
+    {number: "01.",
+    title: "Клас:",
+    description: "комфорт",
+    icon: "./assets/images/single-project/characteristics/Rooms.svg"},
+    {number: "02.",
+    title: "Будівництво:",
+    description: "монолітно - каркасне",
+    icon: "./assets/images/single-project/characteristics/Construction.svg"},
+    {number: "03.",
+    title: "Паркінг:",
+    description: "підземний",
+    icon: "./assets/images/single-project/characteristics/Parking 2.svg"},
+    {number: "04.",
+    title: "Утеплення фасаду:",
+    description: "150 мм",
+    icon: "./assets/images/single-project/characteristics/Insulation material.svg"},
+    {number: "05.",
+    title: "Котел:",
+    description: "газовий, двохфункційний, 24 кВт",
+    icon: "./assets/images/single-project/characteristics/Gas boiler.svg"},
+    {number: "06.",
+    title: "Стяжка:",
+    description: "цементно-піщана з армуванням",
+    icon: "./assets/images/single-project/characteristics/Screed.svg"},
+    {number: "07.",
+    title: "Штукатурка:",
+    description: "цементно-вапняна",
+    icon: "./assets/images/single-project/characteristics/Stucco.svg"},
+    {number: "08.",
+    title: "Стіни та перегородки:",
+    description: "з керамічної цегли",
+    icon: "./assets/images/single-project/characteristics/Wall 2.svg"},
+    {number: "09.",
+    title: "Вікна:",
+    description: "панорамні, енергозберігаючі (5 камерний профіль, 2 камерний склопакет)",
+    icon: "./assets/images/single-project/characteristics/Windows 1.svg"},
+    {number: "10.",
+    title: "Опалення:",
+    description: "розведені труби опалення, встановлені радіатори",
+    icon: "./assets/images/single-project/characteristics/Heating.svg"},
+    {number: "11.",
+    title: "Двері:",
+    description: "металеві з МДФ накладками",
+    icon: "./assets/images/single-project/characteristics/Door.svg"},
+    {number: "12.",
+    title: "Лічильники:",
+    description: "газ, вода та світло",
+    icon: "./assets/images/single-project/characteristics/Counters.svg"}, 
+  ]
+.home-characteristics
+  div#characteristics
+    .home-characteristics__decor
+      img(src="./assets/images/inner-front-screen-decor.svg", alt="", srcset="")
+    .home-characteristics__title.text-style-375-h-1.text-style-768-h-1.text-style-1920-h-1.color-red ПРО ПРОЄКТ
+    .home-characteristics__content
+      each val in list
+        .home-characteristics__item
+          .home-characteristics__item-icon-wrap
+            img(src=val.icon, alt="")
+          .home-characteristics__item-text
+            .home-characteristics__item-number.text-color-body-description= val.number
+            .home-characteristics__item-title.text-style-1920-h-4.text-style-768-h-4.color-white= val.title
+            .home-characteristics__item-description.text-color-body-description= val.description

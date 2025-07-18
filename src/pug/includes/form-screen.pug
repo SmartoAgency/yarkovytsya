@@ -1,0 +1,39 @@
+.form-screen
+  .form-screen__content
+    .form-screen__description
+      .form-screen__title.text-style-1920-h-1.text-style-768-h-1.text-style-375-h-1.color-white(data-split-lines-new-animation) ЗАМОВИТИ ДЗВІНОК
+      p(data-split-lines-new-animation) Якщо у вас виникли питання або потрібна консультація, наші менеджери з радістю допоможуть вам!
+    .form-screen__form
+      form(data-footer-form).form
+        .form__input-group(data-field-input data-field-name data-status="field--inactive")
+          .form__input-group-info-label Ім’я
+          <svg class="form__input-group-required-label" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+            <path d="M10.7435 16.6822L10.9052 13.1352L7.92432 15.0647L7 13.4702L10.1658 11.8527L7 10.2351L7.92432 8.61756L10.9052 10.5471L10.7435 7H12.569L12.4073 10.5471L15.3882 8.61756L16.3125 10.2351L13.1467 11.8527L16.3125 13.4702L15.3882 15.0647L12.4073 13.1352L12.569 16.6822H10.7435Z" fill="#999FA4"/>
+          </svg>
+          input.form__input(type="text" placeholder="Ім’я" name="name")
+          .form__input-message(data-input-message)
+        .form__input-group(data-field-input data-field-phone data-status="field--inactive")
+          .form__input-group-info-label Телефон
+          <svg class="form__input-group-required-label" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+            <path d="M10.7435 16.6822L10.9052 13.1352L7.92432 15.0647L7 13.4702L10.1658 11.8527L7 10.2351L7.92432 8.61756L10.9052 10.5471L10.7435 7H12.569L12.4073 10.5471L15.3882 8.61756L16.3125 10.2351L13.1467 11.8527L16.3125 13.4702L15.3882 15.0647L12.4073 13.1352L12.569 16.6822H10.7435Z" fill="#999FA4"/>
+          </svg>
+          input.form__input(type="text" placeholder="Телефон" name="phone")
+          .form__input-message(data-input-message)
+        .form__input-group(data-field-input data-field-phone data-status="field--inactive")
+          .form__input-group-info-label.form__input-group-info-label--static Житловий комплекс
+          select(name="project")
+            option(value="Каскад-Ярко") ЖК Каскад-Ярко
+            option(value="Ярко Центр") ЖК Ярко Центр
+            option(value="Ярко Парк") ЖК Ярко Парк
+        .form__input-group(data-field-input data-field-phone data-status="field--inactive")
+          .form__input-group-info-label Коментар
+          textarea(name="comment" placeholder="Коментар" value="")
+        button(type="submit" data-btn-submit class="button-primary")
+          span(data-title="НАДІСЛАТИ ПОВІДОМЛЕННЯ") НАДІСЛАТИ ПОВІДОМЛЕННЯ
+          span(data-btn-submit-text)
+          .button-primary__circle
+  .form-screen__arrow(data-up-arrow)
+    <svg width="46" height="46" viewBox="0 0 46 46" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <rect opacity="0.5" width="46" height="46" rx="23" fill="#4D5858"/>
+      <path d="M31 22.3846L23 15M23 15L15 22.3846M23 15L23 31" stroke="#DBE2EA" stroke-width="2"/>
+    </svg>

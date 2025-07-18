@@ -1,0 +1,75 @@
+
+extends ../layout/main
+block variable
+  -
+    var title_page = 'Новини'
+    var id_page = 'id-page-plannings'
+    var class_page = 'class-page-plannings'
+    var breadcrumbsSubitem = [
+    ]
+  
+block meta
+  title= title_page
+  meta(name='description', content='')
+block head
+    link(rel='stylesheet', href="./assets/styles/main.min.css")
+block scripts
+  script(defer src='./assets/scripts/vendors.bundle.js')
+  script(defer src='./assets/scripts/index.bundle.js')
+  script(defer src='./assets/scripts/news.bundle.js')
+block content
+  .inner-front-screen
+    .inner-front-screen__bg
+      img(src="./assets/images/inner-front-screen-bg.svg", alt="", srcset="")
+    .inner-front-screen__decor
+      .inner-front-screen__decor-wrapper
+        img(src="./assets/images/inner-front-screen-decor.svg", alt="", srcset="")
+    .inner-front-screen__content 
+      include ../includes/breadcrumbs.pug
+      .inner-front-screen__top 
+        .inner-front-screen__title.color-red.text-style-1920-h-1.text-style-768-h-1.text-style-375-h-1 НОВИНИ
+        .inner-front-screen__right
+          each val in ['НОВИНИ', 'АКЦІЇ', 'ВАКАНСІЇ']
+            button(type="button" data-news-button=val).button-small2
+              span #{val}
+  .news-list
+    .news-list__content
+      each val in [1,2,3,4,5,6,7]
+        a(href="/single-news").news-card
+          .news-card__img
+            .news-card__date date
+            .news-card__label label
+            .news-card__img-wrapper
+              img(src='./assets/images/home/news/1.jpg' alt='news-1')
+          .news-card__text 
+            .text-style-1920-h-4.text-style-768-h-4 Гармонія природи та архітектури: ефективний ландшафтний дизайн на прикладі проєктів компанії «Ярковиця»
+            +diagonal-arrow
+  .project-pagination
+    .pagination
+      button(type="button" disabled).pagination__button
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M11.5385 6L6 12M6 12L11.5385 18M6 12H18" stroke="#101820" stroke-width="2"/>
+        </svg>
+      .pagination__middle
+        input(type="text", name="pagination-current").pagination__input
+        .pagination__span.text-style-1920-tiny.color-white 
+          | з 
+          span 02 
+          | сторінок
+      button(type="button").pagination__button
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M12.4615 6L18 12M18 12L12.4615 18M18 12L6 12" stroke="#101820" stroke-width="2"/>
+        </svg>
+    button(type="button").incredible-button
+      .incredible-button__title(data-title="ЗАВАНТАЖИТИ ЩЕ") ЗАВАНТАЖИТИ ЩЕ
+      .incredible-button__circle
+      .incredible-button__line
+      .incredible-button__line2
+  include ../includes/incredible-block.pug
+  include ../includes/contact-screen.pug
+  include ../includes/form-screen.pug
+block footer
+  include ../includes/footer.pug
+
+block header
+  include ../includes/header.pug

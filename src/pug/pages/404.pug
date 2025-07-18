@@ -1,0 +1,31 @@
+extends ../layout/main
+    
+block meta
+  title= '404'
+  meta(name='description', content='')
+block head
+    link(rel='stylesheet', href="./assets/styles/main.min.css")
+block scripts
+  script(src='./assets/scripts/vendors.bundle.js')
+  script(src='./assets/scripts/index.bundle.js')
+
+block content
+  .page404
+    .page404__img
+      img(src="./assets/images/404.jpg", alt="", srcset="")
+      .page404__title 404
+    .page404__text
+      .page404__text-title.text-style-1920-h-1.text-style-768-h-1.text-style-375-h-2.color-white СТОРІНКА НЕ ПРАЦЮЄ
+      .page404__text-description Ми поки що не розуміємо що трапилось, але скоро це пофіксимо
+      .page404__buttons
+        a(href="/").button-404
+          span НА ГОЛОВНУ 
+        +button-primary-link('ОБРАТИ КВАРТИРУ', '/plannings', false)
+  include ../includes/incredible-block.pug
+  include ../includes/contact-screen.pug
+  include ../includes/form-screen.pug
+block footer
+  include ../includes/footer.pug
+block header
+  include ../includes/header.pug
+

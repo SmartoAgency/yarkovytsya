@@ -1,0 +1,10 @@
+ul.breadcrumbs(class=breadcrumbsClass)
+  li.breadcrumbs-item
+    a(href="#").breadcrumbs-item__link Головна
+    .breadcrumbs-item__icon
+  if breadcrumbsSubitem
+    each v in breadcrumbsSubitem
+      li.breadcrumbs-item
+        a(href="#").breadcrumbs-item__link= v.label
+        .breadcrumbs-item__icon
+  li.breadcrumbs-item__current--color.breadcrumbs-item= title_page

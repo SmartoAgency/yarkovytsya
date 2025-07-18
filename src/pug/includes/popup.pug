@@ -1,0 +1,123 @@
+.callback-popup(data-callback-popup data-lenis-prevent)
+  .callback-popup__content
+    .callback-popup__left
+      <svg class="callback-popup__left-decor" width="326" height="189" viewBox="0 0 326 189" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <g clip-path="url(#clip0_4076_12149)">
+        <path d="M174.225 340.484L136.456 378.253L38.1976 279.995C-12.1082 229.689 -12.2014 147.999 37.9297 97.8677L135.798 -0.000140273L173.698 37.9008L75.8306 135.769C46.5142 165.085 46.5973 212.856 76.0159 242.275L174.274 340.533L174.225 340.484Z" fill="#091016"/>
+        <path d="M325.253 189.456L249.617 265.092L248.587 264.062C207.254 222.729 207.137 155.771 248.327 114.582L249.353 113.556L325.204 189.407L325.253 189.456Z" fill="#091016"/>
+        </g>
+        <defs>
+        <clipPath id="clip0_4076_12149">
+        <rect width="326" height="189" fill="white"/>
+        </clipPath>
+        </defs>
+      </svg>
+      .text-style-1920-h-1.text-style-768-h-1.text-style-375-h-2.color-white(data-success-title="ДЯКУЄМО ЗА ЗВЕРНЕННЯ") ЗАМОВИТИ ДЗВІНОК
+      p Якщо у вас виникли питання або потрібна консультація, наші менеджери з радістю допоможуть вам!
+    div(data-callback-popup-close class="callback-popup__close")
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M6 18L18 6M6 6L18 18" stroke="#101820" stroke-width="2"/>
+      </svg>
+    .callback-popup__right
+      form(data-popup-form).form
+        .form__input-group(data-field-input data-field-name data-status="field--inactive")
+          .form__input-group-info-label Ім’я
+          <svg class="form__input-group-required-label" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+            <path d="M10.7435 16.6822L10.9052 13.1352L7.92432 15.0647L7 13.4702L10.1658 11.8527L7 10.2351L7.92432 8.61756L10.9052 10.5471L10.7435 7H12.569L12.4073 10.5471L15.3882 8.61756L16.3125 10.2351L13.1467 11.8527L16.3125 13.4702L15.3882 15.0647L12.4073 13.1352L12.569 16.6822H10.7435Z" fill="#999FA4"/>
+          </svg>
+          input.form__input(type="text" placeholder="Ім’я" name="name")
+          .form__input-message(data-input-message)
+        .form__input-group(data-field-input data-field-phone data-status="field--inactive")
+          .form__input-group-info-label Телефон
+          <svg class="form__input-group-required-label" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+            <path d="M10.7435 16.6822L10.9052 13.1352L7.92432 15.0647L7 13.4702L10.1658 11.8527L7 10.2351L7.92432 8.61756L10.9052 10.5471L10.7435 7H12.569L12.4073 10.5471L15.3882 8.61756L16.3125 10.2351L13.1467 11.8527L16.3125 13.4702L15.3882 15.0647L12.4073 13.1352L12.569 16.6822H10.7435Z" fill="#999FA4"/>
+          </svg>
+          input.form__input(type="text" placeholder="Телефон" name="phone")
+          .form__input-message(data-input-message)
+        .form__input-group(data-field-input data-field-phone data-status="field--inactive")
+          .form__input-group-info-label.form__input-group-info-label--static Житловий комплекс
+          select(name="project")
+            option(value="Каскад-Ярко") ЖК Каскад-Ярко
+            option(value="Ярко Центр") ЖК Ярко Центр
+            option(value="Ярко Парк") ЖК Ярко Парк
+        .form__input-group(data-field-input data-field-phone data-status="field--inactive")
+          .form__input-group-info-label Коментар
+          textarea(name="comment" placeholder="Коментар" value="")
+        button(type="submit" data-btn-submit class="button-primary")
+          span(data-title="НАДІСЛАТИ ПОВІДОМЛЕННЯ") НАДІСЛАТИ ПОВІДОМЛЕННЯ
+          span(data-btn-submit-text)
+          .button-primary__circle
+  .callback-popup__bg(data-callback-popup-close)
+
+-
+  var projects = [
+        {
+            "name": "PARK AVENUE",
+            "phones": ["068 720 0777"]
+        },
+        {
+            "name": "ЯРКО-ЦЕНТР",
+            "phones": ["050 744 15 30"]
+        },
+        {
+            "name": "ОПРИШІВСЬКА СЛОБОДА",
+            "phones": ["050 476 8 481"]
+        },
+        {
+            "name": "КАСКАД ЯРКО",
+            "phones": ["050 744 15 30"]
+        },
+        {
+            "name": "ЗЛАГОДА-БУД",
+            "phones": [
+                "0342 711 712",
+                "067 21 00 800",
+                "095 1 69 69 16",
+                "050 378 40 70"
+            ]
+        }
+    ]
+
+.callback-popup(data-project-contacts-popup data-lenis-prevent)
+  .callback-popup__bg(data-project-contacts-popup-close)
+  .callback-popup__content
+    .callback-popup__left.callback-popup__left--deep-black
+      <svg class="callback-popup__left-decor"  width="326" height="189" viewBox="0 0 326 189" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <g clip-path="url(#clip0_3269_4831)">
+        <path d="M174.225 340.484L136.456 378.253L38.1976 279.995C-12.1082 229.689 -12.2014 147.999 37.9297 97.8678L135.798 -2.19941e-05L173.698 37.9009L75.8306 135.769C46.5142 165.085 46.5973 212.856 76.0159 242.275L174.274 340.533L174.225 340.484Z" fill="#101820"/>
+        <path d="M325.253 189.456L249.617 265.092L248.587 264.062C207.254 222.729 207.137 155.771 248.327 114.582L249.353 113.556L325.204 189.407L325.253 189.456Z" fill="#101820"/>
+        </g>
+        <defs>
+        <clipPath id="clip0_3269_4831">
+        <rect width="326" height="189" fill="white"/>
+        </clipPath>
+        </defs>
+      </svg>
+      .text-style-1920-h-1.text-style-768-h-1.text-style-375-h-1.color-white ЗВ'ЯЗОК З НАМИ
+      +button-primary('ЗАМОВИТИ ДЗВІНОК')('data-callback-popup-call', 'data-project-contacts-popup-close')
+    div(data-project-contacts-popup-close class="callback-popup__close")
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M6 18L18 6M6 6L18 18" stroke="#101820" stroke-width="2"/>
+      </svg>
+
+    .callback-popup__right.callback-popup__right--no-padding
+      .callback-popup__row
+        .callback-popup__row-left
+          .color-white PARK AVENUE
+        .callback-popup__row-right
+          a(href="tel:+38068 720 0777").button-small
+            <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M4.00458 3.00029C3.86512 3.00049 3.72688 3.02902 3.59931 3.08525C3.47166 3.14155 3.35746 3.22457 3.26337 3.32744C3.16944 3.43017 3.09796 3.55114 3.05341 3.68291C3.00885 3.81495 2.99202 3.95528 3.00458 4.09404C3.16962 5.6451 3.69879 7.13554 4.54853 8.44463C5.32048 9.65698 6.35035 10.685 7.56513 11.4554C8.87085 12.3004 10.3569 12.8286 11.904 12.9964C12.0434 13.009 12.1845 12.9923 12.3171 12.9476C12.4496 12.9028 12.5714 12.8301 12.6745 12.7356C12.7775 12.6413 12.8597 12.5266 12.9157 12.3987C12.9718 12.2707 13.0003 12.1322 12.9997 11.9925V10.4866C13.0057 10.2408 12.9215 10.0014 12.7624 9.81377C12.603 9.62599 12.3796 9.50248 12.1354 9.46807C11.6528 9.40453 11.1785 9.28734 10.7224 9.11748C10.5424 9.04998 10.3469 9.03453 10.1589 9.07451C9.97088 9.11453 9.7985 9.20819 9.66181 9.34307L9.02314 9.97979C7.76437 9.26544 6.72229 8.22532 6.00653 6.96904L6.64423 6.33232C6.77941 6.19589 6.87268 6.02291 6.91278 5.83525C6.95276 5.64783 6.93828 5.45312 6.87079 5.27373C6.70061 4.81858 6.58291 4.3452 6.51923 3.86357C6.48508 3.62247 6.36435 3.40127 6.17939 3.24248C5.99437 3.08368 5.75738 2.9979 5.51337 3.00029H4.00458Z" fill="#4D5858"/>
+            </svg>
+            span 068 720 0777
+      each val in projects
+        .callback-popup__row
+          .callback-popup__row-left
+            .color-white #{val.name}
+          .callback-popup__row-right
+            each phone in val.phones
+              a(href="tel:+380"+phone).button-small
+                <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M4.00458 3.00029C3.86512 3.00049 3.72688 3.02902 3.59931 3.08525C3.47166 3.14155 3.35746 3.22457 3.26337 3.32744C3.16944 3.43017 3.09796 3.55114 3.05341 3.68291C3.00885 3.81495 2.99202 3.95528 3.00458 4.09404C3.16962 5.6451 3.69879 7.13554 4.54853 8.44463C5.32048 9.65698 6.35035 10.685 7.56513 11.4554C8.87085 12.3004 10.3569 12.8286 11.904 12.9964C12.0434 13.009 12.1845 12.9923 12.3171 12.9476C12.4496 12.9028 12.5714 12.8301 12.6745 12.7356C12.7775 12.6413 12.8597 12.5266 12.9157 12.3987C12.9718 12.2707 13.0003 12.1322 12.9997 11.9925V10.4866C13.0057 10.2408 12.9215 10.0014 12.7624 9.81377C12.603 9.62599 12.3796 9.50248 12.1354 9.46807C11.6528 9.40453 11.1785 9.28734 10.7224 9.11748C10.5424 9.04998 10.3469 9.03453 10.1589 9.07451C9.97088 9.11453 9.7985 9.20819 9.66181 9.34307L9.02314 9.97979C7.76437 9.26544 6.72229 8.22532 6.00653 6.96904L6.64423 6.33232C6.77941 6.19589 6.87268 6.02291 6.91278 5.83525C6.95276 5.64783 6.93828 5.45312 6.87079 5.27373C6.70061 4.81858 6.58291 4.3452 6.51923 3.86357C6.48508 3.62247 6.36435 3.40127 6.17939 3.24248C5.99437 3.08368 5.75738 2.9979 5.51337 3.00029H4.00458Z" fill="#4D5858"/>
+                </svg>
+                span #{phone}

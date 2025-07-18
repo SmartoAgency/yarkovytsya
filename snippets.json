@@ -1,0 +1,9 @@
+{
+    "pug": {
+        "snippets": {
+            "title": ".text-style-1920-h-1 ${1}",
+            "bsd": "border: 1px solid ${1:red}",
+            "ls": "list-style: ${1}"
+        }
+    }
+}

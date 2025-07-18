@@ -1,0 +1,22 @@
+-
+    var links = [
+        {title: "ГОЛОВНА", url: '/'},
+        {title: "ДЕВЕЛОПЕР", url: '/developer'},
+        {title: "ПРОЄКТИ", url: '/projects'},
+        {title: "ПЛАНУВАННЯ", url: '/plannings'},
+        {title: "НОВИНИ", url: '/news'},
+        {title: "КОНТАКТИ ", url: '/contacts'},
+    ]
+nav.menu(data-lenis-prevent data-menu)
+    button(type="button" data-menu-close).menu__close
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M7.89648 8.10352L11.543 11.75L7.89648 15.3965L8.60352 16.1035L12.25 12.457L15.8965 16.1035L16.6035 15.3965L12.957 11.75L16.6035 8.10352L15.8965 7.39648L12.25 11.043L8.60352 7.39648L7.89648 8.10352Z" fill="#0A0F13"/>
+        </svg>
+
+
+    .menu__bg
+    .menu__content
+        each val, index in links
+            -
+                var isActive = index == 0 ? 'active' : ''
+            a(href=val.url class=isActive+' menu__link' data-title=val.title) #{val.title}

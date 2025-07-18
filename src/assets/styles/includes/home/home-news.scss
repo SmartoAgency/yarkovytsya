@@ -1,0 +1,39 @@
+.home-news {
+    padding-left: var(--page-side-fields);
+    padding-right: var(--page-side-fields);
+    margin-bottom: var(--section-v-offset);
+    @include to(1024px){
+        margin-bottom: calc(var(--section-v-offset) / 2);
+    }
+    &__title {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        margin-bottom: 20px;
+        width: 100%;
+        @include to(600px){
+            margin-bottom: -20px;
+        }
+    }
+    &__content {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 20px;
+        @include to(600px){
+            gap: 60px;
+        }
+        &>.button-primary {
+            width: 100%;
+            justify-content: center;
+        }
+    }
+    .news-card {
+        width: calc(33.33333% - 20px / 1);
+        @include to(1024px){
+            width: calc(50% - 20px / 1);
+        }
+        @include to(600px){
+            width: 100%;
+        }
+    }
+}

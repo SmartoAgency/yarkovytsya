@@ -1,0 +1,723 @@
+// Global class
+.wow:not(#some){
+	opacity: 0;
+}
+
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  padding: 0;
+  border: 0;
+  clip: rect(0 0 0 0);
+  overflow: hidden;
+}
+.js-input-focus:not(#some) {
+  .main-form__text{
+    transform: translateY(-110%);
+  }
+}
+.js-no-valid:not(#some)+.main-form-content {
+    svg{
+      fill: red;
+    }
+}
+.js-no-valid:not(#some){
+  border-bottom: 1px solid red;
+}
+
+.overflow--hidden:not(#some){
+	overflow: hidden;
+	margin-right: 10px;
+}
+
+.color--wc{
+  color: $wc;
+}
+.color--bc{
+  color: $bc;
+}
+.color--mc{
+  color: $mc;
+}
+
+.fill--mc svg {
+	fill: $mc;
+}
+
+.template-content {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: flex-start;
+  width: min-content;
+  z-index: 5;
+  &__title {
+    font-family: $default-font;
+    
+    font-size: 68px;
+    line-height: 1.2em;
+    color: $mc;
+    span {
+      font-weight: 400;
+      margin: 0 12px 0 0;
+      @include from(1600px) {
+        margin: 0 6px 0 0;
+      }
+    }
+    @include to(1440px) {
+      font-size: 48px;
+    }
+    @include to(573px) {
+      font-size: 30px;
+    }
+    @include to(360px) {
+      font-size: 24px;
+    }
+  }
+  &__text {
+    position: relative;
+    max-width: 460px;
+    padding: 0 0 0 78px;
+    margin-top: 50px;
+    font-family: $default-font;
+    font-weight: 400;
+    font-size: 24px;
+    line-height: 1.4em;
+    color: $mc;
+    &:before {
+      position: absolute;
+      top: 0;
+      left: 0;
+      content: '';
+      width: 0;
+      height: 50px;
+      border-left: 1px solid rgba(26, 41, 65, 0.3);
+    }
+    @include to(1440px) {
+      padding: 0 0 0 40px;
+      max-width: 300px;
+      margin-top: 40px;
+      font-size: 16px;
+    }
+    @include to(992px) {
+      max-width: 360px;
+      font-size: 20px;
+    }
+    @include to(576px) {
+      padding: 0 0 0 20px;
+      max-width: 240px;
+      margin-top: 20px;
+      font-size: 14px;
+    }
+    @include to(380px) {
+      font-size: 13px;
+    }
+  }
+  &__link {
+    padding: 0 0 0 78px;
+    margin-top: 50px;
+    font-size: 28px;
+    @include to(1440px) {
+      padding: 0 0 0 40px;
+      margin-top: 40px;
+      font-size: 20px;
+    }
+    @include to(576px) {
+      padding: 0 0 0 20px;
+      margin-top: 20px;
+    }
+  }
+  &--white * {
+    color: $light;
+    fill: $light;
+  }
+  &--dark * {
+    color: $dark;
+    fill: $dark;
+  }
+}
+
+
+.all__dark, .all__dark * {
+  color: $dark;
+  fill: $dark;
+}
+.all__white, .all__white * {
+  color: $light;
+  fill: $light;
+}
+
+.section-bg {
+  position: absolute;
+  left: 0;
+  width: 100%;
+  height: 240px;
+  z-index: 1;
+  img {
+    object-fit: cover;
+    height: 100%;
+    width: 100%;
+  }
+  &__dark-top {
+    top: 0;
+    background-position-y: top;
+    background-image: url("../images/bg-dark-top.png");
+    background-repeat: repeat-x;
+  }
+  &__dark-bottom {
+    bottom: 0;
+    background-position-y: bottom;
+    background-image: url("../images/bg-dark-bottom.png");
+    background-repeat: repeat-x;
+  }
+  &__white-top {
+    top: 0;
+    background-position-y: top;
+    background-image: url("../images/bg-white-top.png");
+    background-repeat: repeat-x;
+  }
+  &__white-bottom {
+    bottom: 0;
+    background-position-y: bottom;
+    background-image: url("../images/bg-white-bottom.png");
+    background-repeat: repeat-x;
+  }
+  &__gold-top {
+    top: 0;
+    background-position-y: top;
+    background-image: url("../images/bg-gold-top.png");
+    background-repeat: repeat-x;
+  }
+  &__gold-bottom {
+    bottom: 0;
+    background-position-y: bottom;
+    background-image: url("../images/bg-gold-bottom.png");
+    background-repeat: repeat-x;
+  }
+
+  @include to(1440px) {
+    height: 170px;
+  }
+  @include to(992px) {
+    display: none;
+  }
+}
+
+.social {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  align-content: center;
+  height: 40px;
+  width: 40px;
+  border-radius: 50%;
+  background: #CFA46E;
+  transition: background-color 0.3s ease-in-out;
+  svg {
+    height: 55%;
+    width: 55%;
+    stroke: $wc;
+    fill: $wc;
+    transition: stroke 0.3s ease-in-out;
+  }
+  @include from(1023px) {
+    &:hover {
+      background: $wc;
+      svg {
+        stroke: #CFA46E;
+        fill: #CFA46E;
+      }
+    }
+  }
+  @include to(1440px) {
+    height: 35px;
+    width: 35px;
+  }
+  @include to(992px) {
+    height: 40px;
+    width: 40px;
+  }
+  @include to(576px) {
+    height: 25px;
+    width: 25px;
+  }
+}
+
+.title {
+  padding: 0 0 30px;
+  position: relative;
+  font-weight: normal;
+  font-size: 36px;
+  line-height: 100%;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: #E2E3E4;
+  &:after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    display: inline-block;
+    width: 50px;
+    transform: translateX(-50%);
+    border-bottom: 1px solid rgba(226, 227, 228, 0.3);
+    @include to(576px) {
+      display: none;
+    }
+  }
+  @include to(1440px) {
+    padding: 0 0 20px;
+    margin: 15px 0 0;
+    font-size: 30px;
+  }
+  @include to(992px) {
+    padding: 0 0 20px;
+    margin: 36px 0 0;
+    font-size: 36px;
+  }
+  @include to(576px) {
+    padding: 0 40px;
+    margin: 20px 0 0;
+    text-align: left;
+    font-size: 20px;
+  }
+}
+
+.sliceFigure-big {
+  display: inline-block;
+  height: 100%;
+  min-height: 100vh;
+  grid-row: 1 / -1;
+  grid-column: 3;
+  z-index: 10;
+  @include to(992px) {
+    display: none;
+  }
+  svg {
+    display: inline-block;
+    margin: 0 0 0 -2px;
+    width: var(--sliceFigure-big);
+    height: 100%
+  }
+}
+
+.sliceFigure {
+  display: none;
+  height: var(--sliceFigure);
+  grid-row: 2;
+  grid-column: 1 / span 3;
+  z-index: 10;
+  @include to(992px) {
+    display: inline-block;
+  }
+  svg {
+    display: inline-block;
+    margin: -2px 0 0;
+    width: 100%;
+    height: var(--sliceFigure);
+
+  }
+}
+
+picture img {
+  height: 100%;
+  width: 100%;
+  object-fit: cover;
+}
+
+
+.section-sliceFigure {
+  position: relative;
+  display: grid;
+  grid-template-rows: calc(var(--header-h) + 80px) 1fr 80px;
+  grid-template-columns: 13% 1fr var(--sliceFigure-big) 1fr 13%;
+  @include to(992px) {
+    height: initial;
+    grid-template-columns: 140px 1fr 140px;
+    grid-template-rows: auto var(--sliceFigure) 1fr;
+  }
+  &__img {
+    display: inline-block;
+    height: 100%;
+    width: 100%;
+    flex: 1 1 100%;
+    grid-column: 3 / span 3;
+    grid-row: 1 / span 3;
+    z-index: 3;
+    picture {
+      height: 100%;
+      width: 100%;
+    }
+    img {
+      height: 100%;
+      width: 100%;
+      object-fit: cover;
+      object-position: 20%;
+    }
+    @include to(992px) {
+      grid-column: 1 / span 3;
+      grid-row: 2 /span 2;
+    }
+  }
+  &__template {
+    position: relative;
+    width: vw(450, 1920);
+    grid-column: 2 / span 3;
+    grid-row: 2;
+    z-index: 20;
+    @include to(1440px) {
+      width: vw(320, 1360);
+    }
+    @include to(992px) {
+      width: 400px;
+      grid-row: 1 / span 2;
+      grid-column: 1 / span 2;
+      clip-path: none;
+    }
+    @include to(576px) {
+      width: min(vw(240, 320), 400px);
+    }
+    &_offset {
+      margin: auto 0;
+      @include to(992px) {
+        margin: calc(var(--header-h) + 80px) 0 120px vw(90, 768);
+      }
+      @include to(576px) {
+        margin: calc(var(--header-h) + 50px) 0 60px vw(40, 768);
+      }
+    }
+  }
+
+  &__title {
+    font-weight: 400;
+    font-size: min(vw(58, 1920), 58px);
+    line-height: 110%;
+    letter-spacing: 0.03em;
+    color: $dark;
+    @include to(1440px) {
+      font-size: 48px;
+    }
+    @include to(576px) {
+      font-size: max(vw(20, 320), 20px);
+    }
+  }
+  &__text {
+    font-weight: 400;
+    font-size: min(vw(20, 1920), 20px);
+    line-height: 140%;
+    color: $dark;
+    @include to(1440px) {
+      font-size: 16px;
+    }
+    @include to(992px) {
+      font-size: 20px;
+    }
+    @include to(576px) {
+      font-size: max(vw(13, 320), 13px);
+    }
+    &_offset {
+      margin-top: 50px;
+      margin-left: 80px;
+      @include to(1440px) {
+        margin-top: 30px;
+        margin-left: 50px;
+      }
+      @include to(576px) {
+        margin-top: 15px;
+        margin-left: 10px;
+      }
+    }
+  }
+  &__link {
+    font-weight: 500;
+    font-size: min(vw(18, 1920), 18px);
+    line-height: 100%;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: #CFA46E;
+    @include to(1440px) {
+      font-size: 14px;
+    }
+    @include to(992px) {
+      font-size: 18px;
+    }
+    @include to(576px) {
+      font-size: max(vw(11, 320), 11px);
+    }
+    &_offset {
+      margin-top: 50px;
+      margin-left: 80px;
+      @include to(1440px) {
+        margin-top: 40px;
+        margin-left: 50px;
+      }
+      @include to(576px) {
+        margin-top: 20px;
+        margin-left: 10px;
+      }
+    }
+  }
+  &__decorate {
+    position: absolute;
+    left: 0;
+    top: calc(1.1em + 50px);
+    fill: none;
+    stroke: #F2F2F2;
+    width: 80%;
+    height: 80%;
+    transform: translate(-25%, 0);
+    z-index: -1;
+
+    font-size: min(vw(58, 1920), 58px);
+    @include to(1440px) {
+      top: 30px;
+      font-size: 48px;
+    }
+    @include to(576px) {
+      top: 30px;
+      font-size: max(vw(20, 320), 20px);
+    }
+  }
+}
+
+
+.template-simple {
+  display: flex;
+  align-items: center;
+  align-content: center;
+  padding: 230px 0 200px;
+  @include to(1440px) {
+    padding: 170px 0 120px;
+  }
+  @include to(992px) {
+    flex-direction: column;
+    padding: 0 0 160px;
+  }
+  @include to(576px) {
+    padding: 0 0 50px;
+  }
+  &__img {
+    position: relative;
+    width: calc(50% + var(--logo-w) / 2);
+    height: initial;
+    @include to(992px) {
+      width: vw(628, 768);
+    }
+    @include to(576px) {
+      width: 100%;
+    }
+  }
+  &__text {
+    width: min(vw(370, 1920), 370px);
+    margin: 0 auto;
+    font-size: min(vw(20, 1920), 20px);
+    line-height: 150%;
+    @include to(1440px) {
+      width: min(vw(300, 1360), 300px);
+      font-size:  min(vw(16, 1360), 16px);
+    }
+    @include to(992px) {
+      display: flex;
+      margin: 80px 40px;
+      width: auto;
+      font-size: 20px;
+    }
+    @include to(576px) {
+      flex-direction: column;
+      margin: 40px vw(40, 320) 30px;
+      width: auto;
+      font-size: max(vw(13, 320), 13px);
+    }
+    p {
+      margin-top: 70px;
+      @include to(1440px) {
+        margin-top: 60px;
+      }
+      @include to(992px) {
+        margin-top: 0;
+        margin-left: vw(60, 768);
+        flex: 1 1 auto;
+      }
+      @include to(576px) {
+        margin-top: 30px;
+        margin-left: 0;
+      }
+      &:first-child {
+        margin: 0;
+        @include to(992px) {
+          margin-left: 0;
+        }
+      }
+    }
+  }
+  &__content {
+    width: min(vw(490, 1920), 490px);
+    margin: 0 auto;
+    @include to(1440px) {
+      width: min(vw(370, 1360), 370px);
+    }
+    @include to(992px) {
+      width: auto;
+      margin: 80px auto;
+    }
+    @include to(576px) {
+      width: auto;
+      margin: 50px vw(40, 320) 30px;
+    }
+  }
+  &__title {
+    font-weight: 500;
+    font-size: min(vw(24, 1920), 24px);
+    line-height: 140%;
+    color: $dark;
+    @include to(1440px) {
+      font-size: min(vw(20, 1360), 20px);
+    }
+    @include to(992px) {
+      font-size: 24px;
+    }
+    @include to(576px) {
+      font-size: max(vw(16, 320), 16px);
+    }
+  }
+  &__items {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-auto-rows: auto;
+    grid-gap: 60px;
+    margin-top: 60px;
+    @include to(1440px) {
+      grid-gap: 50px;
+      margin-top: 50px;
+    }
+    @include to(992px) {
+      margin-top: 40px;
+    }
+    @include to(576px) {
+      grid-template-columns: 1fr;
+      margin-top: 25px;
+      grid-gap: 23px;
+    }
+  }
+  &__item {
+    font-weight: 400;
+    font-size: min(vw(20, 1920), 20px);
+    line-height: 140%;
+    color: $dark;
+    @include to(1440px) {
+      font-size: min(vw(16, 1360), 16px);
+    }
+    @include to(992px) {
+      font-size: 20px;
+    }
+    @include to(576px) {
+      font-size: max(vw(13, 320), 13px);
+    }
+    &:before {
+      content: "";
+      width: 50px;
+      display: block;
+      border-bottom: 1px solid #CFA46E;
+      margin-bottom: 30px;
+      @include to(1440px) {
+        width: 30px;
+        margin-bottom: 20px;
+      }
+      @include to(576px) {
+        width: 20px;
+        margin-bottom: 15px;
+      }
+    }
+  }
+  &__decorate {
+    position: absolute;
+    bottom: 0;
+    display: inline-block;
+    width: vw(316, 1920);
+    height: vw(282, 1920);
+    transform: translate(-50%, 45%);
+    fill: transparent;
+    stroke: $gold;
+    @include to(1440px) {
+      width: vw(220, 1360);
+      height: vw(196, 1360);
+    }
+    @include to(992px) {
+      width: vw(284, 768);
+      height: vw(187, 768);
+    }
+    @include to(576px) {
+      display: none;
+    }
+  }
+  &_img-left {
+    .template-simple {
+      &__decorate {
+        left: 100%;
+      }
+      &__img {
+        order: -1;
+        @include to(992px) {
+          order: 1;
+          margin: 0 auto 0 0;
+        }
+      }
+      &__content {
+        @include to(768px) {
+          margin-left: vw(80, 768);
+          margin-right: vw(140, 768);
+        }
+      }
+    }
+  }
+  &_img-right {
+    .template-simple {
+      &__decorate {
+        left: 0;
+      }
+      &__img {
+        order: 1;
+        @include to(992px) {
+          order: 1;
+          margin: 0 0 0 auto;
+        }
+      }
+      &__content {
+        @include to(768px) {
+          margin-left: vw(140, 768);
+          margin-right: vw(80, 768);
+        }
+      }
+    }
+  }
+}
+
+.icon-mouse {
+  width: 34px;
+  height: 52px;
+  @include to(1440px) {
+    width: 24px;
+    height: 36px;
+  }
+  @include to(992px) {
+    display: none;
+  }
+  &_position {
+    position: absolute;
+    bottom: 50px;
+    left: 50%;
+    transform: translate(-50%, 0);
+    z-index: 30;
+  }
+  &_animation svg {
+    animation: scroll 1s alternate ease-in-out infinite;
+  }
+  svg {
+    height: 100%;
+    width: 100%;
+    fill: transparent;
+    stroke: #FCFCFC;
+  }
+}

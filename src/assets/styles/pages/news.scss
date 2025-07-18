@@ -1,0 +1,19 @@
+.news-list {
+    padding-left: var(--page-side-fields);
+    padding-right: var(--page-side-fields);
+    &__content {
+        @include row-flex;
+        row-gap: calc(var(--section-v-offset));
+        @include to(1024px){
+            row-gap: 60px;
+        }
+        &>* {
+            @include size(4);
+            @include shift(0);
+            @include size-md(6);
+            @include shift-md(0);
+            @include size-xs(12);
+            @include shift-xs(0);
+        }
+    }
+}

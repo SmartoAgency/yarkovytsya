@@ -1,0 +1,97 @@
+.news-card {
+    --inset: 8px;
+    cursor: pointer;
+    text-decoration: none;
+    color: var(--color-white);
+    @include to(600px){
+        --inset: 4px;
+    }
+    &__img {
+        position: relative;
+        &-wrapper {
+            position: relative;
+            width: 100%;
+            height: 0;
+            padding-bottom: 56.25%; // 16:9 aspect ratio
+            overflow: hidden;
+            img {
+                position: absolute;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                object-fit: cover;
+                transition: transform 0.3s ease-in-out;
+            }
+        }
+    }
+    &__label {
+        position: absolute;
+        right: var(--inset);
+        top: var(--inset);
+        z-index: 2;
+        display: inline-flex;
+        padding: 3px 8px;
+        justify-content: center;
+        align-items: center;
+        gap: 4px;
+        color: var(--color-white);
+        border-radius: 100px;
+        background-color: var(--color-black);
+        @include text-style-1920-tiny;
+        &:after {
+            content: '';
+            display: block;
+            width: 8px;
+            height: 8px;
+            border-radius: 100px;
+            border: 1px solid var(--color-white);
+            margin-left: 4px;
+        }
+    }
+    &__date {
+        position: absolute;
+        left: var(--inset);
+        bottom: var(--inset);
+        z-index: 2;
+        display: inline-flex;
+        padding: 3px 8px;
+        justify-content: center;
+        align-items: center;
+        gap: 4px;
+        border-radius: 100px;
+        background: var(--color-gray);
+        color: var(--color-white);
+        @include text-style-1920-tiny;
+    }
+    &__text {
+        display: flex;
+        justify-content: space-between;
+        padding-top: 20px;
+        gap: pxWidthInVw(112);
+        color: var(--color-white);
+        @include to(600px){
+            padding-top: 8px;
+            .text-style-768-h-4 {
+                font-size: 16px !important;
+            }
+        }
+        .diagonal-arrow {
+            flex-shrink: 0;
+            @include to(1024px){
+                display: none;
+            }
+        }
+    }
+    &:hover .diagonal-arrow g {
+        animation: diagonalArrow 1s ease-out infinite;
+    }
+    @media (hover: hover) and (min-width: 1025px) {
+        &__img-wrapper img {
+            transition: .5s ease-in-out;
+        }
+        &:hover &__img-wrapper img {
+            transform: scale(1.05);
+        }
+    }
+}

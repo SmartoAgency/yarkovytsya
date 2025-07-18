@@ -1,0 +1,67 @@
+
+extends ../layout/main
+block variable
+  -
+    var title_page = 'project'
+    var id_page = 'home'
+    var class_page = 'home '
+    var firstScreenSlides = [
+      'ЖК КАСКАД-ЯРКО',
+      'ЖК ЯРКО ЦЕНТР',
+    ]
+
+block meta
+  title= 'Ярковиця'
+  meta(name='description', content='')
+block head
+    link(rel='stylesheet', href="./assets/styles/main.min.css")
+block scripts
+  script(defer src='./assets/scripts/vendors.bundle.js')
+  script(defer src='./assets/scripts/index.bundle.js')
+  script(defer src='./assets/scripts/home.bundle.js')
+block content
+  #content.home-front-screen
+    .home-front-screen__overlay
+    #slider.home-front-screen__bg(data-images=['./assets/images/home/front-screen/1.jpg','./assets/images/home/front-screen/2.jpg'])
+    .home-front-screen__content
+      .home-front-screen__bottom-wrap.text-style-1920-h-2.text-style-375-h-2.color-white
+        .home-front-screen__lines
+          each val, index in firstScreenSlides
+            .home-front-screen__slider-line(data-front-screen-line-index=index)
+              .home-front-screen__slider-line-inner
+        .swiper-container.home-front-screen__text-slider(data-home-screen-text-slider)
+          .swiper-wrapper
+            each val in firstScreenSlides
+              a(href="/single-project").swiper-slide
+                span= val
+                <svg width="46" height="46" viewBox="0 0 46 46" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M38.4839 39.0001V10.3444L6.93064 41.8976L4.10222 39.0692L35.6555 7.51592L7.00039 7.51661L6.9997 3.51635H42.4835V39.0001H38.4839Z" fill="#DBE2EA"/>
+                </svg>
+      .home-front-screen__description 
+        button(type="button").down-arrow.text-style-1920-small-buttons
+          <svg width="68" height="68" viewBox="0 0 68 68" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <g class="down-arrow__anim" >
+              <path d="M33.6836 40.8372L34.0254 41.1575L34.3672 40.8372L42.3672 33.3372L41.6836 32.6067L34.5254 39.3176L34.5254 25.4719L33.5254 25.4719L33.5254 39.3176L26.3672 32.6067L25.6836 33.3372L33.6836 40.8372Z" fill="#EFF0F7"/>
+              <path transform="translate(0,-60)" d="M33.6836 40.8372L34.0254 41.1575L34.3672 40.8372L42.3672 33.3372L41.6836 32.6067L34.5254 39.3176L34.5254 25.4719L33.5254 25.4719L33.5254 39.3176L26.3672 32.6067L25.6836 33.3372L33.6836 40.8372Z" fill="#EFF0F7"/>
+            </g>
+            <rect x="0.5" y="0.5" width="67" height="67" rx="33.5" stroke="#EFF0F7" stroke-opacity="0.2"/>
+            <defs>
+              <clipPath id="clip0_5625_845">
+                <rect width="68" height="68" rx="34" fill="white"/>
+              </clipPath>
+            </defs>
+          </svg>
+        .text-style-1920-h-2.text-style-375-h-2.color-white SINCE 2002
+  include ../includes/home/home-developer.pug
+  include ../includes/home/home-projects.pug
+  include ../includes/home/home-apps.pug
+  include ../includes/home/home-news.pug
+  include ../includes/home/home-video.pug
+  include ../includes/incredible-block.pug
+  include ../includes/contact-screen.pug
+  include ../includes/form-screen.pug
+block footer
+  include ../includes/footer.pug
+
+block header
+  include ../includes/header.pug

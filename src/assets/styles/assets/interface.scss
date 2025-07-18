@@ -1,0 +1,126 @@
+.row {
+	@include row-flex();
+}
+.page__inner {
+  position: relative;
+	z-index: 2;
+  min-height: 100vh;
+	.page__content {
+		flex-grow: 1;
+	}
+	.page__footer-wrapper {
+		flex-shrink: 0;
+	}
+}
+.section-pading--top {
+	padding-top: 60px;
+}
+.btn--res{
+  border: none;
+  background-color: transparent;
+}
+
+.brd{
+  border: 1px solid red;
+}
+
+.underline{
+  position: relative;
+  display: flex;
+  color: #000;
+  &::after{
+    position: absolute;
+    bottom: -2px;
+    left: 0;
+    display: flex;
+    width: 100%;
+    height: 1px;
+    background-color: #000;
+    content: "";
+  }
+}
+
+
+.up-arrow {
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  text-transform: uppercase;
+  @include to(600px){
+    flex-direction: column-reverse;
+    justify-content: center;align-items: center;
+  }
+  &__icon {
+    border-radius: 50%;
+    background: rgba(139, 139, 139, 0.50);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 48px;
+    height: 48px;
+    @include from(601px){
+      margin-left: 8px;
+    }
+  }
+  @media (hover: hover) {
+    &__icon path {
+      transform-origin: center;
+      transform-box: fill-box;
+    }
+    &:hover &__icon path {
+      animation: up-arrow 0.75s ease-in-out infinite;
+    }
+  }
+}
+@keyframes up-arrow {
+  0% {
+    transform: translateY(120%);
+  }
+  100% {
+    transform: translateY(-120%);
+  }
+}
+div:where(.swal2-container).swal2-backdrop-show.installment-popup-container, div:where(.swal2-container).swal2-noanimation.installment-popup-container {
+  background: rgba(30, 30, 34, 0.70);
+  .swal2-html-container {
+    padding: 40px;
+  }
+  .popup-close {
+    transition: .25s ease-in-out;
+  }
+  
+  .swal2-close:hover {
+    // transform: scale(1.2);
+    transform: rotate(180deg);
+  }
+}
+.installment-popup {
+  background-color: var(--color-white);
+  color: var(--color-black);
+  .text-style-1920-h-2 {
+    font-size: min(2.5vw, 48px);
+    font-style: normal;
+    font-weight: 300;
+    line-height: 120%;
+    letter-spacing: -0.96px;
+    text-transform: uppercase;
+    margin-bottom: 20px;
+    @include to(1024px){
+      font-size: 36px;
+    }
+    @include to(600px){
+      font-size: 32px;
+    }
+
+  }
+  p {
+    margin-top: 20px;
+  }
+  button.popup-close:where(.swal2-close):hover {
+    color: var(--color-black);
+  }
+  .button-main {
+    margin: auto;
+    margin-top: 40px;
+  }
+}

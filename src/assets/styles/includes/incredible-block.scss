@@ -1,0 +1,60 @@
+.incredible-block {
+    height: pxWidthInVw(350);
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    align-items: flex-end;
+    @include to(600px){
+        height: 106px;
+        overflow: visible;
+    }
+
+    &__logo {
+        position: absolute;
+        left: 50%;
+        top: 0;
+        width: pxWidthInVw(650);
+        transform: translateX(-50%);
+        height: auto;
+        @include to(1024px){
+            width: 300px;
+        }
+        @include to(600px){
+            width: 138px;
+            transform: translateX(-50%) translateY(50px);
+            height: auto;
+            bottom: 0;
+        }
+    }
+    &__title {
+        position: absolute;
+        left: 0;
+        bottom: 0;
+        width: 100%;
+        height: auto;
+    }
+    &__slogan {
+        display: flex;
+        align-items: center;
+        position: relative;
+        z-index: 2;
+        justify-content: center;
+        margin-left: auto;
+        margin-right: auto;
+        margin-bottom: 40px;
+        @include to(1024px){
+            margin-bottom: 20px;
+        }
+        @include to(600px){
+            margin-bottom: 0;
+            padding-bottom: 20px;
+            transform: translateY(50px);
+        }
+        &>* {
+            transform: rotate(-15.702deg);
+        }
+        &>:nth-child(2) {
+            margin-left: -0.5ch;
+        }
+    }
+}

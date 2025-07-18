@@ -1,0 +1,44 @@
+.footer {
+  display: flex;
+  align-items: center;
+  /* identical to box height, or 17px */
+
+  letter-spacing: -0.03em;
+  // position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  z-index: 2;
+  max-width: 100vw;
+  overflow: hidden;
+  justify-content: space-between;
+  padding-left: var(--page-side-fields);
+  @include to(600px){
+    &>div {
+      padding-bottom: 20px;
+    }
+  }
+  .delimiter {
+    margin-bottom: 40px;
+  }
+  .dev-logo {
+
+    width: 52px;
+    height: 57px;
+    @include to(600px){
+      width: 41px;
+      height: 45px;
+      align-self: flex-end;
+      margin-left: 22vw;
+      flex-shrink: 0;
+      svg {
+        width: 41px;
+        height: 45px;
+      }
+    }
+    svg {
+      width: 100%;
+      height: 100%;
+    }
+  }
+}
