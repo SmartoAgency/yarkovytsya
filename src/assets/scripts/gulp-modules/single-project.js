@@ -416,9 +416,9 @@ function bigBlocksBgParalax() {
         }
     })
     .fromTo(block1Bg, {
-        y: window.innerWidth > 1024 ? window.innerHeight * -0.5 : -35,
+        y: window.innerWidth > 1024 ? window.innerHeight * -0.2 : -35,
     }, {
-        y: window.innerWidth > 1024 ? window.innerHeight * 0.5 : 35,
+        y: window.innerWidth > 1024 ? window.innerHeight * 0.2 : 35,
         ease: 'none',
     })
     const block2 = document.querySelector('.single-project-big-block2');
@@ -448,9 +448,9 @@ function bigBlocksBgParalax() {
         }
     })
     .fromTo(block3Bg, {
-        y: window.innerWidth > 1024 ? -300 : -50,
+        y: window.innerWidth > 1024 ? -100 : -50,
     }, {
-        y: window.innerWidth > 1024 ? 300 : 50,
+        y: window.innerWidth > 1024 ? 100 : 50,
         ease: 'none',
     })
 
@@ -458,122 +458,5 @@ function bigBlocksBgParalax() {
 window.addEventListener('load', bigBlocksBgParalax);
 
 
-function incredibleAnimation() {
 
-    if (window.screen.width <= 1024) return;
-
-    const decor1 = document.querySelector('.single-project-big-block__decor');
-    const decor1Img = document.querySelector('.single-project-big-block__decor img');
-    const decorHeight = decor1.getBoundingClientRect().height;
-    const decorWidth = decor1.getBoundingClientRect().width;
-    const block1 = document.querySelector('.single-project-big-block');
-    const decor2 = document.querySelector('.home-gallery-screen__decor');
-    const decor2Img = document.querySelector('.home-gallery-screen__decor img');
-    const block2 = document.querySelector('.home-gallery-screen');
-    const decor3 = document.querySelector('.home-characteristics__decor');
-    const decor3Img = document.querySelector('.home-characteristics__decor img');
-    const block3 = document.querySelector('.home-characteristics');
-
-    const block2AndBlock3XDifference = Math.abs(window.innerWidth * 0.1 - window.innerWidth * 0.5 + (decorWidth * 0.5));
-   
-
-    const lastBlock = document.querySelector('.incredible-block__logo');
-
-    const lastBlockWidth = lastBlock.getBoundingClientRect().width;
-    const lastBlockAndDecorScaleDifference = lastBlock.getBoundingClientRect().width / decor3.getBoundingClientRect().width;
-
-    gsap.set(lastBlock, {
-        opacity: 0,
-    })
-
-    const tl1 = gsap.timeline({
-        scrollTrigger: {
-            trigger: block1,
-            endTrigger: block2,
-            start: `0% ${decorHeight}px`,
-            end: `${decorHeight / 2}px ${decorHeight}px`,
-            pin: decor1,
-            invalidateOnRefresh: true,
-            scrub: true,
-            // markers: {
-            //     startColor: 'brown',
-            //     endColor: 'brown',
-            // }
-        }
-    })
-        .to(decor1Img, {
-            opacity: 0.15,
-            duration:0.1
-        })
-        .to(decor1Img, {
-            opacity: 0.15,
-            duration:0.1
-        })
-        .to(decor1Img, {
-            opacity: 0.15,
-            duration:0.1
-        })
-        .to(decor1Img, {
-            opacity: 1,
-            duration: 0.1
-        })
-
-    ;
-    const tl2 =  gsap.timeline({
-        scrollTrigger: {
-            trigger: block2,
-            endTrigger: block3,
-            start: `${decorHeight/2}px ${decorHeight}px`,
-            end: `${decorHeight/2*0.69}px ${decorHeight}px`,
-            pin: decor2,
-            invalidateOnRefresh: true,
-            scrub: true,
-            // markers: {
-            //     startColor: 'yellow',
-            //     endColor: 'yellow',
-            // }
-        }
-    })
-        
-        .to(decor2Img, {
-            opacity: 0.15,
-        })
-        .to(decor2Img, {
-            x: block2AndBlock3XDifference * -1,
-        })
-        .to(decor2Img, {
-            opacity: 1,
-            duration: 0.1
-        });
-    ;
-    const tl3 = gsap.timeline({
-        scrollTrigger: {
-            trigger: block3,
-            endTrigger: lastBlock,
-            start: `${decorHeight/ 2}px ${decorHeight}px`,
-            end: `${decorHeight * 1.3 / 2 }px ${decorHeight}px`,
-            pin: decor3,
-            invalidateOnRefresh: true,
-            scrub: true,
-            // markers: {
-            //     startColor: 'green',
-            //     endColor: 'green',
-            // }
-        }
-    })
-        .to(decor3Img, {
-            rotate: 90,
-            x: window.innerWidth * 0.4 - lastBlockWidth * 0.35,
-            scale: lastBlockAndDecorScaleDifference
-        })
-    ;
-
-    return [tl1, tl2, tl3];
-}
-
-if (window.screen.width > 1024) {
-    createResponsiveTimeline({
-        createTimelineFn: incredibleAnimation
-    });
-}
 // window.addEventListener('load', incredibleAnimation);

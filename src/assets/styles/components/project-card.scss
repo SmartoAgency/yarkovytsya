@@ -113,7 +113,7 @@
         }
     }
 
-    @media (hover: hover) {
+    @media (hover: hover) and (min-width: 1025px) {
         &__img-wrap {
             overflow: hidden;
         }
@@ -122,6 +122,9 @@
         }
         &:hover &__img-wrap img {
             transform: scale(1.05);
+        }
+        &:hover .diagonal-arrow g {
+            animation: diagonalArrow 1s ease-out infinite;
         }
     }
 }

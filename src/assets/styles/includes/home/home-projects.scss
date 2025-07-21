@@ -188,4 +188,15 @@
             pointer-events: none;
         }
     }
+
+    @media (hover: hover) and (min-width: 1025px) { 
+
+        &__map-item svg {
+            transition: transform 0.3s ease-in-out;
+        }
+        &__map-item:hover svg {
+            transform: rotate(45deg);
+        }
+    }
+
 }
