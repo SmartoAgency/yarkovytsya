@@ -23,9 +23,6 @@
         width: 100%;
         height: 100%;
         z-index: -1;
-        @include to(600px){
-            height: 95%;
-        }
         img {
             width: 100%;
             height: 100%;
@@ -74,7 +71,8 @@
         @include to(600px){
             width: 140px;
             height: 140px;
-            bottom: calc(var(--bottom-padding) * 0.25);
+            transform: translateY(138%) translateX(-50%);
+            // bottom: calc(var(--bottom-padding) * 0.25);
         }
         svg {
             width: 100%;

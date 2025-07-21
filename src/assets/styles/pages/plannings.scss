@@ -81,6 +81,11 @@
             column-gap: 4px;
             &>:first-child:not(img) {
                 width: 100%;
+                padding-left: 12px;
+                padding-right: 12px;
+                @include from(1025px){
+                    margin-bottom: 20px;
+                }
                 @include to(1024px){
                     margin-bottom: 16px;
                 }
@@ -105,6 +110,10 @@
         .planning-reset-button {
             margin-top: 16px;
             margin-left: auto;
+        }
+        .Range__item {
+            margin-left: -12px;
+            margin-right: -12px;
         }
 
     }
@@ -217,7 +226,7 @@
     }
 
     .irs--flat .irs-bar {
-        height: 2px;
+        height: 1px;
     }
 
     --input-width: 30%;

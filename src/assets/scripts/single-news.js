@@ -8,7 +8,7 @@ document.querySelector('[data-gallery="all"]').textContent = padNumber(document.
 const slider = new Swiper('[data-single-construction-slider]', {
     modules: [Navigation],
     loop: true,
-    slidesPerView: "auto",
+    slidesPerView: 1,
     spaceBetween: 30,
     navigation: {
         nextEl: '[data-gallery="next"]',

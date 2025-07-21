@@ -51,6 +51,10 @@ async function planningsGallery() {
             return renderTemplate('flat-card-template', flat);
         }).join(''));
         window.dispatchEvent(new CustomEvent('plannings:rendered', {}));
+        window.dispatchEvent(new Event('resize'));
+        document.querySelectorAll('[name="pagination-current"]').forEach((el) => {
+            el.value = padNumber(currentPage$.value);
+        })
     })
 
     currentFilteredFlatIds$.subscribe((ids) => {
@@ -61,6 +65,9 @@ async function planningsGallery() {
         })
         paginationData = preparePgination(idsSortedByArea).portionedFlats;
         totalPages = preparePgination(idsSortedByArea).totalPages;
+        document.querySelectorAll('[data-planning-pages-count]').forEach((el) => {
+            el.textContent = totalPages < 10 ? `0${totalPages}` : totalPages;
+        })
         const $container = document.querySelector('[data-planning-list]');
         window.scrollTo({
             top: 0,
@@ -177,4 +184,8 @@ function renderTemplate(templateId, data) {
     const temp = document.createElement('div');
     temp.innerHTML = html;
     return temp.firstElementChild.outerHTML;
+}
+
+function padNumber(num) {
+    return num < 10 ? `0${num}` : num;
 }

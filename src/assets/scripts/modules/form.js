@@ -35,6 +35,14 @@ const forms = [
                 el.textContent = el.dataset.defaultTitle;
               }, 10000);
             });
+
+            document.querySelectorAll('[data-success-description]').forEach(el => {
+              el.dataset.defaultDescription = el.textContent;
+              el.textContent = el.dataset.successDescription;
+              setTimeout(() => {
+                el.textContent = el.dataset.defaultDescription;
+              }, 10000);
+            })
             setTimeout(() => {
               $form.classList.remove('success');
               $form.querySelector('[data-success]').remove();

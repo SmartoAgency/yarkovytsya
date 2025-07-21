@@ -60,7 +60,10 @@ block content
       .swiper-container(data-single-construction-slider)
         .swiper-wrapper
           each val in slides
-            img(src=val, alt="", srcset="" loading="lazy").swiper-slide
+            .swiper-slide
+              .single-construction-slider__image
+                .single-construction-slider__image-wrap
+                  img(src=val, alt="", srcset="" loading="lazy")
     .single-construction__content
       h1 2-кімнатна квартира 65,1 м² у ЖК бізнес-класу Sofiivka
       h2 2-кімнатна квартира 65,1 м² у ЖК бізнес-класу Sofiivka
@@ -90,7 +93,7 @@ block content
       <p><span style="font-weight: 400;"> </span><b>Кількість квартир за акційною ціною обмежена!</b><b><br>
           </b><span style="font-weight: 400;">Не втрачайте можливість заселитися вже цього літа – залишайте заявку прямо зараз! </span><span style="font-weight: 400;"><br>
           </span></p>
-    .single-construction-slider
+    .single-construction-slider.single-construction-slider--no-b-padding
       .single-construction__video
         .single-construction__video-wrap
           video(controls poster="./assets/images/home/home-projects/park-avenue.jpg" playsinline)

@@ -154,13 +154,21 @@ const [callbackPopupOpen, setCallbackPopupOpen, useSetCallbackPopupEffect] = use
 
 useSetCallbackPopupEffect(val => {
     const popup = document.querySelector('[data-callback-popup]');
-    popup.classList.toggle('active', val);
     document.body.classList.toggle('popup-open', val);
     if (!val && popup.querySelector('[data-success]')) {
         popup.querySelector('[data-success]').remove();
     }
     if (val) {
+        popup.classList.add('active', val);
         window.dispatchEvent(new Event('popup-opened'));
+    } else {
+        popup.addEventListener('animationend', function (evt) {
+            popup.classList.remove('active');
+            popup.classList.remove('closing');
+        }, {
+            once: true
+        });
+        popup.classList.add('closing');
     }
 });
 
@@ -209,8 +217,20 @@ function projectContactsPopupHandler() {
     const [callbackPopupOpen, setCallbackPopupOpen, useSetCallbackPopupEffect] = useState(false);
 
     useSetCallbackPopupEffect(val => {
-        document.querySelector('[data-project-contacts-popup]').classList.toggle('active', val);
-        document.body.classList.toggle('popup-open', val);
+        const popup = document.querySelector('[data-project-contacts-popup]');
+        if (val) {
+            window.dispatchEvent(new Event('popup-opened'));
+            popup.classList.add('active');
+        } else {
+            popup.addEventListener('animationend', function (evt) {
+                popup.classList.remove('active');
+                popup.classList.remove('closing');
+            }, {
+                once: true
+            });
+            popup.classList.add('closing');
+            document.body.classList.remove('popup-open', val);
+        }
     })
 
     document.body.addEventListener('click', (evt) => {
@@ -554,3 +574,49 @@ document.body.addEventListener('click', (evt) => {
         block: 'start'
     });
 })
+
+
+function incredibleBlockParalax() {
+    const block = document.querySelector('.incredible-block')
+    if (!block) return;
+    const logo = block.querySelector('.incredible-block__logo');
+    const svg = block.querySelector('.incredible-block__title');
+    const slogan = block.querySelector('.incredible-block__slogan');
+
+    const tl = gsap.timeline({
+        defaults: {
+            ease: 'none',
+        },
+        scrollTrigger: {
+            trigger: block,
+            start: '50% bottom',
+            end: '200% bottom',
+            scrub: true,
+        }
+    })
+    .from(logo, {
+        y: 100
+    })
+    .fromTo(svg.querySelectorAll('.ярковиця__Union path'), {
+        yPercent: 100,
+    }, {
+        yPercent: 0,
+    })
+    .fromTo(slogan.querySelectorAll('div'), {
+        autoAlpha: 0,
+    }, {
+        autoAlpha: 1,
+        stagger: {
+            amount: 0.5,
+        }
+    }, '<')
+
+    return tl;
+}
+
+
+window.addEventListener('load', () => {
+    createResponsiveTimeline({
+        createTimelineFn: incredibleBlockParalax
+    });
+});

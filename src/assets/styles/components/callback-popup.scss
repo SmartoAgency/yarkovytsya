@@ -11,7 +11,7 @@
     visibility: hidden;
     pointer-events: none;
 
-    transition: opacity 0.25s ease-out, visibility 0.25s ease-out;
+    // transition: opacity 0.25s ease-out, visibility 0.25s ease-out;
     
     @include to(600px){
         height: 100%;
@@ -26,10 +26,12 @@
     &.active &__content {
         animation: popupContentReveal 0.55s cubic-bezier(.17,.67,.24,1) forwards;
     }
+    &.closing {
+        animation: popupContentClose 0.55s cubic-bezier(.17,.67,.24,1) forwards;
+    }
     &.active .callback-popup__left,
     &.active .callback-popup__right {
         animation: fadeInFromDown 0.55s cubic-bezier(.17,.67,.24,1) forwards;
-
     }
 
     &__content {
@@ -123,7 +125,7 @@
         }
         p {
             @include from(1025px){
-                max-width: 250px;
+                max-width: pxWidthInVw(300);
             }
             @include to(1024px){
                 margin-left: auto;
@@ -162,7 +164,7 @@
             position: static;
         }
         .form__success {
-            height: 75%;
+            height: 100%;
         }
     }
     &__row {
@@ -214,5 +216,17 @@
     100% {
         transform: translateY(0);
         opacity: 1;
+    }
+}
+
+@keyframes popupContentClose {
+    0% {
+        clip-path: none;
+    }
+    1% {
+        clip-path: polygon(0 0, 100% 0, 100% 100%, 0% 100%);
+    }
+    100% {
+        clip-path: polygon(0 100%, 100% 100%, 100% 100%, 0% 100%);
     }
 }

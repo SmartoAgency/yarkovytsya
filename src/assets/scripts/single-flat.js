@@ -191,4 +191,7 @@ function sliderHandler() {
     })
 }
 
-window.addEventListener('load', sliderHandler);
+window.addEventListener('load', () => {
+    sliderHandler();
+    window.dispatchEvent(new Event('resize'));
+});

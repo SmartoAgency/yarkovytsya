@@ -160,13 +160,22 @@
             border-color: var(--color-red);
         }
     }
+
+    
     &__project-button.active &__project-button-line,
     &__project-button:hover &__project-button-line {
         opacity: 1;
     }
+
+    &__project-button:not(.active):hover  &__project-button-line {
+        opacity: 0.5;
+    }
     &__project-button.active svg,
     &__project-button:hover svg {
         opacity: 1;
+    }
+    &__project-button:not(.active):hover svg {
+        opacity: 0.5;
     }
 
     &__projects {

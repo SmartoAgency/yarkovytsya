@@ -107,9 +107,9 @@ block content
           .pagination__middle
             input(type="text", name="pagination-current").pagination__input
             .pagination__span.text-style-1920-tiny.color-gray 
-              | з 
-              span 02 
-              | сторінок
+              | з&nbsp;
+              span(data-planning-pages-count) 02 
+              | &nbsp;сторінок
           button(type="button").pagination__button.pagination__button--dark
             <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
               <path d="M12.4615 6L18 12M18 12L12.4615 18M18 12L6 12" stroke="#101820" stroke-width="2"/>
@@ -143,9 +143,9 @@ block content
         .text-style-1920-h-4.color-gray {{area}} м²
       .planning-card__bottom
         .planning-card__bottom-group
-          | Будинок:&nbsp; {{build}}
-        .planning-card__bottom-group
           | Секція:&nbsp; {{section}}
+        .planning-card__bottom-group
+          | Будинок:&nbsp; {{build}}
         .planning-card__bottom-group
           | Поверх:&nbsp; {{floor}}
   

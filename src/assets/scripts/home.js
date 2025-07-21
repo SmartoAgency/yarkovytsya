@@ -61,7 +61,7 @@ document.querySelectorAll('.down-arrow').forEach((el) => {
 
 function homeDeveloperAnimations() {
     const container = document.querySelector('[data-home-developer]');
-    if (!container) return;
+    if (!container || window.screen.width < 600) return;
     const topDecor = container.querySelector('[data-home-developer-top-decor]');
     const bottomDecor = container.querySelector('[data-home-developer-bottom-decor]');
     const bg = container.querySelector('[data-home-developer-bg]');
@@ -197,42 +197,7 @@ function frontScreenParalax() {
 window.addEventListener('load', frontScreenParalax);
 
 
-function incredibleBlockParalax() {
-    const block = document.querySelector('.incredible-block')
-    if (!block) return;
-    const logo = block.querySelector('.incredible-block__logo');
-    const svg = block.querySelector('.incredible-block__title');
-    const slogan = block.querySelector('.incredible-block__slogan');
 
-    gsap.timeline({
-        defaults: {
-            ease: 'none',
-        },
-        scrollTrigger: {
-            trigger: block,
-            start: '50% bottom',
-            end: '200% bottom',
-            scrub: true,
-        }
-    })
-    .from(logo, {
-        y: 100
-    })
-    .fromTo(svg.querySelectorAll('.ярковиця__Union path'), {
-        yPercent: 100,
-    }, {
-        yPercent: 0,
-    })
-    .fromTo(slogan.querySelectorAll('div'), {
-        autoAlpha: 0,
-    }, {
-        autoAlpha: 1,
-        stagger: {
-            amount: 0.5,
-        }
-    }, '<')
-}
-window.addEventListener('load', incredibleBlockParalax);
 
 
 function homeDeveloperCirclesDesktop() {

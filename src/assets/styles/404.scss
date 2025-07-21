@@ -4,6 +4,10 @@
     display: flex;
     flex-wrap: wrap;
     flex-direction: row-reverse;
+    margin-bottom: 300px;
+    @include to(1024px){
+        margin-bottom: var(--section-v-offset);
+    }
     @include to(1024px){
         flex-direction: column-reverse;
         height: auto;

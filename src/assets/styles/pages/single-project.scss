@@ -747,6 +747,7 @@
 	transition: color 0.3s;
 	pointer-events: auto;
 	color: var(--color-white);
+    @include text-style-1920-body;
 }
 
 .frame__nav-button:not(.frame__nav-button--current):hover {
@@ -1066,7 +1067,7 @@
         @include size-xs(12);
         @include shift-xs(0);
         display: flex;
-        flex-wrap: wrap
+        flex-wrap: wrap;
     }
     &__right {
         @include size(6);
@@ -1104,9 +1105,9 @@
         }
     }
     &__subtitle {
-        width: 50%;
+        width: calc(50% - 178px / 2);
         @include from(1025px){
-            padding-right: 10%;
+            // padding-right: 10%;
         }
         @include to(600px){
             width: 100%;
@@ -1115,7 +1116,7 @@
     }
     &__text {
         margin-bottom: 120px;
-        width: 50%;
+        width: calc(50% - 178px / 2);
         margin-left: auto;
         @include to(1024px){
             margin-bottom: 40px;
@@ -1133,7 +1134,7 @@
     &__items {
         display: flex;
         flex-wrap: wrap;
-        gap: 40px min(pxWidthInVw(120), 120px);
+        gap: 40px 178px;
         width: 100%;
         @include to(1024px){
             gap: 40px 74px;
@@ -1143,7 +1144,7 @@
             gap: 10px;
         }
         .location__item {
-            width: calc(50% - 74px);
+            width: calc(50% - 178px / 2);
             @include to(600px){
                 width: calc(50% - 10px);
             }
@@ -1392,8 +1393,10 @@
         margin-left: auto;
         margin-right: auto;
         border-collapse: separate;
-        padding-left: 15.625%;
-        padding-right: 15.625%;
+        @include from(601px){
+            padding-left: 15.625%;
+            padding-right: 15.625%;
+        }
         &-dot {
             a {
                 color: var(--color-white);
@@ -1494,6 +1497,9 @@
         text-align: left;
         @include to(1024px){
             text-align: left;
+        }
+        @include to(1024px){
+            margin-bottom: 40px;
         }
     }
     &__title2 {

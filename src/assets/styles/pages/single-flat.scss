@@ -12,11 +12,15 @@
 
     &__content {
         display: grid;
-        grid-template-columns: 1fr 3fr 1fr;
+        grid-template-columns: 1fr 4fr 1fr;
         gap: 20px;
         grid-template-areas: "top top top"
-            "info2 img info1"
+        "info2 img info1"
         ;
+        @include to(1360px){
+            grid-template-columns: 1fr 3fr 1fr;
+
+        }
 
         @include to(1024px) {
             grid-template-areas: "top top"
@@ -60,7 +64,7 @@
         flex-wrap: wrap;
         row-gap: 40px;
         @include from(1025px){
-            margin-bottom: 60px;
+            margin-bottom: 40px;
         }
         .single-flat-back-button,
         .single-flat__favourite {
@@ -117,6 +121,7 @@
 
     &__image-block {
         width: 100%;
+        padding: 20px 40px 40px 40px;
         @include from-to(601px, 1024px){
             
             padding: 0 20px 20px 20px;
@@ -128,7 +133,7 @@
 
         &-wrap {
             position: relative;
-            padding-bottom: Min(70.53%, 80vh);
+            padding-bottom: Min(62.53%, 80vh);
 
             @include to(600px) {
                 padding-bottom: 100%;
@@ -151,14 +156,16 @@
         align-items: center;
         gap: 28px;
         grid-area: info1;
-        @include to(600px){
-            padding-left: 20px;
-            padding-right: 20px;
-        }
+        padding-left: 20px;
+        padding-right: 20px;
         .button-primary {
             width: 100%;
             justify-content: center;
         }
+        .hide-on-mobile {
+            width: 100%;
+        }
+
 
         @include to(1024px) {
         }
@@ -192,6 +199,10 @@
 
         @include from-to(601px, 1024px) {
             padding-right: 74px;
+        }
+        @include from(1025px){
+            padding-left: 20px;
+            padding-right: 20px;
         }
         @include to(600px){
             padding-left: 20px;
@@ -241,8 +252,8 @@
     gap: 10px;
     border-radius: 100px;
     border: 1px solid var(--color-white);
+    @include text-style-1920-tiny;
     @include to(600px){
-        @include text-style-1920-tiny;
     }
     
     &:not(.active) {

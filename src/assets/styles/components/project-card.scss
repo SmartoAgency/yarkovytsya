@@ -81,6 +81,15 @@
         @include text-style-1920-tiny;
         color: var(--color-black);
         background-color: var(--color-white);
+        @include to(600px){
+            background-color: transparent;
+            color: var(--color-white);
+            border: 1px solid rgba(219, 226, 234, 0.10);
+            padding-top: 2px;
+            padding-bottom: 2px;
+            padding-left: 8px;
+            padding-right: 8px;
+        }
         img,
         svg {
             height: 18px;

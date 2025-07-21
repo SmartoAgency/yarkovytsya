@@ -25,8 +25,9 @@
         padding: 8px 12px;
         text-transform: uppercase;
         color: var(--color-gray);
+        @include text-style-1920-tiny;
+        text-transform: uppercase;
         @include to(600px){
-            @include text-style-1920-tiny;
             margin-left: auto;
             margin-right: auto;
         }
@@ -70,6 +71,11 @@
         justify-content: center;
         gap: 16px;
         margin-bottom: 12px;
+        @include to(600px){
+            &>* {
+                @include text-style-768-h-4;
+            }
+        }
     }
 
     &__bottom {
@@ -78,6 +84,7 @@
         justify-content: center;
         flex-wrap: wrap;
         gap: 16px;
+        @include text-style-1920-tiny;
         @include to(1024px){
             row-gap: 3px;
             column-gap: 8px;
@@ -85,7 +92,8 @@
         @include to(600px){
             padding: 12px;
             padding-top: 0;
-            @include text-style-1920-tiny;
+            padding-left: 0;
+            padding-right: 0;
         }
         &-group {
             display: flex;
@@ -101,8 +109,8 @@
         margin-top: 28px;
         margin-bottom: 28px;
         row-gap: 15px;
+        @include text-style-1920-tiny;
         @include to(600px){
-            @include text-style-1920-tiny;
             row-gap: 4px;
             margin-top: 20px;
             margin-bottom: 20px;
@@ -203,7 +211,7 @@
     @media (hover: hover) {
         transition: .25s ease-in-out;
         &:hover {
-            box-shadow: 0 131px 52px rgba(50, 45, 24, .01), 0 74px 44px rgba(50, 45, 24, .04), 0 33px 33px rgba(50, 45, 24, .07), 0 8px 18px rgba(50, 45, 24, .08), 0 0 0 rgba(50, 45, 24, .08);
+            box-shadow: 0px 40px 40px 0px #EDF0F4;
         }
 
         &__image-wrap,

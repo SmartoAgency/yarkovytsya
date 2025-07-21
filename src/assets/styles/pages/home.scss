@@ -11,6 +11,9 @@
         @include to(600px){
             position: relative;
         }
+        @include to(600px){
+            width: 100%;
+        }
     }
     &__overlay {
         position: absolute;
