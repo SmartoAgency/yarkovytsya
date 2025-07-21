@@ -274,6 +274,7 @@ function fullPageDecorParalax() {
     })
         .to(decoreImg, {
             xPercent: 0,
+            opacity: 0.15
         })
         .to(decoreImg, {
             xPercent: 0,
@@ -285,6 +286,7 @@ function fullPageDecorParalax() {
             scale: decoreImageToScaleValue,
             rotate: 90,
             y: decorTopValue,
+            opacity: 1,
             transformOrigin: 'center',
         })
         .to(decorWrapper, {

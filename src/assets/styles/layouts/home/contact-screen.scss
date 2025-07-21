@@ -46,6 +46,9 @@
     }
     &__title {
         width: 100%;
+        @include from(1025px){
+            margin-bottom: 40px;
+        }
         @include to(1024px){
             margin-bottom: 60px;
         }

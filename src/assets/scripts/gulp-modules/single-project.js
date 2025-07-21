@@ -500,7 +500,25 @@ function incredibleAnimation() {
             //     endColor: 'brown',
             // }
         }
-    });
+    })
+        .to(decor1Img, {
+            opacity: 0.15,
+            duration:0.1
+        })
+        .to(decor1Img, {
+            opacity: 0.15,
+            duration:0.1
+        })
+        .to(decor1Img, {
+            opacity: 0.15,
+            duration:0.1
+        })
+        .to(decor1Img, {
+            opacity: 1,
+            duration: 0.1
+        })
+
+    ;
     const tl2 =  gsap.timeline({
         scrollTrigger: {
             trigger: block2,
@@ -516,9 +534,17 @@ function incredibleAnimation() {
             // }
         }
     })
+        
+        .to(decor2Img, {
+            opacity: 0.15,
+        })
         .to(decor2Img, {
             x: block2AndBlock3XDifference * -1,
         })
+        .to(decor2Img, {
+            opacity: 1,
+            duration: 0.1
+        });
     ;
     const tl3 = gsap.timeline({
         scrollTrigger: {

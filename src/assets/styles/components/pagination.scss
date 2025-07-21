@@ -22,6 +22,7 @@
         background: rgba(77, 88, 88, 0.50);
         @include text-style-1920-tiny;
         width: 86px;
+        pointer-events: none;
     }
     &--plannings &__input {
         background-color: var(--color-white);

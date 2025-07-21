@@ -71,6 +71,68 @@
         right: 29px;
         bottom: 34px;
         cursor: pointer;
+        width: 46px;
+        height: 46px;
+        border-radius: 1000px;
+        border-radius: 1000px;
+        background-color: rgba(77,88,88,0.5);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        @media (hover: hover) {
+            transition: .2s ease-in-out;
+            background-color: transparent;
+            overflow: hidden;
+            &.active {
+                background-color: transparent;
+                border-color: transparent;
+            }
+            span,svg {
+                position: relative;
+                z-index: 2;
+            }
+            &:after {
+                content: '';
+                position: absolute;
+                left: 0;
+                top: 0;
+                width: 100%;
+                height: 100%;
+                background-color: var(--color-red);
+                transform: translateY(-110%);
+                transition: .2s ease-in;
+                // z-index: -1;
+                    border-radius: 100px;
+            }
+            &:before {
+                content: '';
+                position: absolute;
+                left: 0;
+                top: 0;
+                width: 100%;
+                height: 100%;
+                transition: .2s ease-out;
+                background-color: rgba(77,88,88,0.5);
+                // z-index: -1;
+                border-radius: 100px;
+            }
+            &.active:before {
+                background-color: var(--color-red);
+            }
+            &:hover {
+                color: var(--color-black);
+                border-color: transparent;
+            }
+            &.active:hover {
+                border-color: transparent !important;
+            }
+            &:hover:after {
+                transform: translateY(0);
+            }
+            &:hover:before {
+                transform: translateY(100%);
+            }
+        }
         @include to(600px){
             right: 12px;
             bottom: 34px;
