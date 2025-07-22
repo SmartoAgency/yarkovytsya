@@ -69,6 +69,18 @@ const forms = [
               valid: false,
               error: [],
             },
+            project: {
+              inputWrapper: new SexyInput({ animation: 'none', $field: $form.querySelector('[data-field-project]') }),
+              rule: yup
+                .string()
+                .required(i18next.t('required')),
+  
+              defaultMessage: i18next.t('phone'),
+              type: 'select',
+              valid: false,
+              error: [],
+            },
+
           },
   
         },

@@ -163,6 +163,9 @@ $color-deep-black: rgba(9,16,22,1);
 }
 @mixin text-style-1920-decorative() {
 	font-size: 100px;
+	@media screen and (min-width:1025px){
+		font-size: Min(100px, pxWidthInVw(100));
+	}
 	font-family: Comforter;
 	font-weight: 400;
 	font-style: normal;

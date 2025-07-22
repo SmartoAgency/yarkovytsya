@@ -1,3 +1,11 @@
+body[class*="plannings"] {
+    .page__inner {
+        @include to(600px){
+            overflow: initial;
+        }
+    }
+}
+
 .plannings {
     margin-bottom: 150px;
     @include to(600px){
@@ -40,6 +48,12 @@
         padding: var(--page-side-fields);
         width: calc(20% - var(--gap));
         --row-gap: 32px;
+        &.collapsed {
+            height: 47px;
+            overflow: hidden;
+        }
+
+        
         @include from(1025px){
             position: sticky;
             top: var(--header-h);
@@ -61,10 +75,39 @@
             width: calc(100% - var(--page-side-fields) * 2);
             margin-left: auto;
             margin-right: auto;
+            position: sticky;
+            top: calc(var(--header-h) + 8px);
+            z-index: 2;
+            background-color: #fff;
+
+            max-height: calc(var(--vh, 1vh) * 100 - var(--header-h) - 16px);
+            overflow-y: auto;
+            padding-top: 0;
         }
         &-title {
             margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            width: 100%;
+            position: sticky;
+            top: 0;
+            background-color: #fff;
+            padding-top: 12px;
+            padding-bottom: 4px;
+            svg:nth-last-child(1) {
+                display: none;
+            }
         }
+        &.collapsed &-title {
+            svg:nth-last-child(1) {
+                display: block;
+            }
+            svg:nth-last-child(2) {
+                display: none;
+            }
+        }
+
         &-image-label {
             height: 35px;
             width: auto;
@@ -84,7 +127,7 @@
                 padding-left: 12px;
                 padding-right: 12px;
                 @include from(1025px){
-                    margin-bottom: 20px;
+                    margin-bottom: 12px;
                 }
                 @include to(1024px){
                     margin-bottom: 16px;

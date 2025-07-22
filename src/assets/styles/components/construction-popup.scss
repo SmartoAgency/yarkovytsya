@@ -21,6 +21,10 @@
         animation: popupContentReveal 0.95s cubic-bezier(.17,.67,.24,1) forwards;
     }
 
+    &.closing {
+        animation: popupContentClose 0.95s cubic-bezier(.17,.67,.24,1) forwards;
+    }
+
     &__content {
         display: flex;
         flex-wrap: wrap;

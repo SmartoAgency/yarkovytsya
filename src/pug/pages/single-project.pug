@@ -112,9 +112,9 @@ block content
         each val, index in [1,2,3,4,5]
           .single-project-front-screen__slider-line(data-front-screen-line-index=index)
             .single-project-front-screen__slider-line-inner
-      .single-project-front-screen__subtitle.color-white.hide-on-mobile.hide-on-tablet ПАРК ШЕВЧЕНКА, ВУЛ. ДОРОШЕНКА
-      .single-project-front-screen__subtitle.color-white.hide-on-mobile.hide-on-tablet ЦІНА ВІД 169 031 грн/м²
-      .single-project-front-screen__subtitle-large.text-style-375-h-3.text-style-768-h-3.text-style-1920-h-3.color-white.hide-on-mobile.hide-on-tablet КОЛИ ТВІЙ ДВІР ЦІЛИЙ ПАРК. ОБИРАЙ КВАРТИРИ ПРЕМІУМ КЛАСУ 
+      .single-project-front-screen__subtitle.color-white.hide-on-mobile.hide-on-tablet(data-split-lines-new-animation) ПАРК ШЕВЧЕНКА, ВУЛ. ДОРОШЕНКА
+      .single-project-front-screen__subtitle.color-white.hide-on-mobile.hide-on-tablet(data-split-lines-new-animation) ЦІНА ВІД 169 031 грн/м²
+      .single-project-front-screen__subtitle-large.text-style-375-h-3.text-style-768-h-3.text-style-1920-h-3.color-white.hide-on-mobile.hide-on-tablet(data-split-lines-new-animation) КОЛИ ТВІЙ ДВІР ЦІЛИЙ ПАРК. ОБИРАЙ КВАРТИРИ ПРЕМІУМ КЛАСУ 
       .single-project-front-screen__title.text-style-375-h-1.text-style-768-h-1.text-style-1920-h-1.color-white PARK AVENUE
       button(type="button").down-arrow.text-style-1920-small-buttons
         <svg width="68" height="68" viewBox="0 0 68 68" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -183,24 +183,24 @@ block content
     .project-status
       .project-status__content
         .project-status__not-desktop-block.hide-on-desktop
-          .text-style-768-h-3.text-style-375-h-3.color-white КОЛИ ТВІЙ ДВІР ЦІЛИЙ ПАРК. ОБИРАЙ КВАРТИРИ ПРЕМІУМ КЛАСУ 
+          .text-style-768-h-3.text-style-375-h-3.color-white(data-split-lines-new-animation) КОЛИ ТВІЙ ДВІР ЦІЛИЙ ПАРК. ОБИРАЙ КВАРТИРИ ПРЕМІУМ КЛАСУ 
           div
-            .project-status__not-desktop-block-subtitle ПАРК ШЕВЧЕНКА, ВУЛ. ДОРОШЕНКА
-            .text-style-768-h-3.text-style-375-h-3.color-white ЦІНА ВІД 169 031 грн/м²
+            .project-status__not-desktop-block-subtitle(data-split-lines-new-animation) ПАРК ШЕВЧЕНКА, ВУЛ. ДОРОШЕНКА
+            .text-style-768-h-3.text-style-375-h-3.color-white(data-split-lines-new-animation) ЦІНА ВІД 169 031 грн/м²
         .project-status__list
           each item in projectStatusList
             .project-status__item
               .project-status__item-icon-wrapper 
                 .project-status__item-icon !{item.icon}
               .project-status__item-right
-                .project-status__item-title.text-style-375-h-3.text-style-768-h-3.text-style-1920-h-3.color-white
+                .project-status__item-title.text-style-375-h-3.text-style-768-h-3.text-style-1920-h-3.color-white(data-split-lines-new-animation)
                   div #{item.title}
                 div #{item.description}
         .project-status__text
-          .project-status__text-title.text-style-1920-h-3.text-style-768-h-3.text-style-375-h-3.color-white 
+          .project-status__text-title.text-style-1920-h-3.text-style-768-h-3.text-style-375-h-3.color-white(data-split-lines-new-animation) 
             span.color-red PARK AVENUE premium 
             span — це не просто житловий комплекс. Це місце, де місто зустрічається з природою, а дім починається з парку.
-          p.text-style-1920-h-4.project-status__text-text Частина території комплексу плавно переходить у зелену зону парку імені Шевченка, даруючи щоденний контакт із тишею, свіжим повітрям і краєвидами на Карпати. Жити тут — означає мати простір, у якому хочеться дихати глибше, відпочивати, працювати й залишатися в гармонії. Це вибір тих, хто цінує естетику, атмосферу і внутрішній спокій.
+          p.text-style-1920-h-4.project-status__text-text(data-split-lines-new-animation) Частина території комплексу плавно переходить у зелену зону парку імені Шевченка, даруючи щоденний контакт із тишею, свіжим повітрям і краєвидами на Карпати. Жити тут — означає мати простір, у якому хочеться дихати глибше, відпочивати, працювати й залишатися в гармонії. Це вибір тих, хто цінує естетику, атмосферу і внутрішній спокій.
           +button-primary-link('САЙТ ПРОЕКТУ', '#', true)(class="button-primary--light")
     .advantages-slider
       .advantages-slider__content
@@ -248,11 +248,11 @@ block content
     .location
       .location__content
         .location__left
-          .location__title.text-style-375-h-1.text-style-768-h-1.text-style-1920-h-1.color-red ЛОКАЦІЯ
-          .location__subtitle.text-style-768-h-4.text-style-1920-h-4.color-white РОЗТАШУВАННЯ PARK AVENUE PREMIUM — ОДНА З ЙОГО НАЙСИЛЬНІШИХ ПЕРЕВАГ.
+          .location__title.text-style-375-h-1.text-style-768-h-1.text-style-1920-h-1.color-red(data-split-lines-new-animation) ЛОКАЦІЯ
+          .location__subtitle.text-style-768-h-4.text-style-1920-h-4.color-white(data-split-lines-new-animation) РОЗТАШУВАННЯ PARK AVENUE PREMIUM — ОДНА З ЙОГО НАЙСИЛЬНІШИХ ПЕРЕВАГ.
           .location__text
-            p Комплекс знаходиться в одній з найзеленіших частин Івано-Франківська — просто біля входу до парку імені Тараса Шевченка та за кілька хвилин пішки від міського озера.
-            p Тут усе поруч: тиша природи, пішохідні маршрути, спортивні зони, кав’ярні, дитячі майданчики й улюблені точки міської інфраструктури. Це місце, де справді хочеться жити.
+            p(data-split-lines-new-animation) Комплекс знаходиться в одній з найзеленіших частин Івано-Франківська — просто біля входу до парку імені Тараса Шевченка та за кілька хвилин пішки від міського озера.
+            p(data-split-lines-new-animation) Тут усе поруч: тиша природи, пішохідні маршрути, спортивні зони, кав’ярні, дитячі майданчики й улюблені точки міської інфраструктури. Це місце, де справді хочеться жити.
           .location__items
             .location__item
               .location__item-title.text-style-768-h-4.text-style-1920-h-4.color-red 1 ХВИЛИНА
@@ -320,7 +320,7 @@ block content
     .construction
       .construction__content
         .construction__top
-          .construction__title.text-style-1920-h-1.text-style-768-h-1.text-style-375-h-1.color-red ХІД РОБІТ
+          .construction__title.text-style-1920-h-1.text-style-768-h-1.text-style-375-h-1.color-red(data-split-lines-new-animation) ХІД РОБІТ
           .slider-navigation
             button(type="button" data-single-project-construction-slide-prev).navigation-button.navigation-button--black
               <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">

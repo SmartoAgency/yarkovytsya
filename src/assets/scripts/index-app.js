@@ -1,6 +1,6 @@
 import Headroom from 'headroom.js';
 import { gsap } from 'gsap';
-import { ScrollTrigger } from 'gsap/all';
+import { ScrollTrigger, SplitText } from 'gsap/all';
 import './modules/form';
 import { lenis } from './modules/scroll/leniscroll';
 import Swiper, { Navigation } from 'swiper';
@@ -11,7 +11,9 @@ import { createResponsiveTimeline } from './modules/helpers/helpers';
 
 
 gsap.registerPlugin(ScrollTrigger);
+gsap.registerPlugin(SplitText);
 gsap.core.globals('ScrollTrigger', ScrollTrigger);
+gsap.core.globals('SplitText', SplitText);
 
 
 
@@ -589,9 +591,10 @@ function incredibleBlockParalax() {
         },
         scrollTrigger: {
             trigger: block,
-            start: '50% bottom',
-            end: '200% bottom',
+            start: window.innerWidth < 1024 ? '180% bottom' : '50% bottom',
+            end: window.innerWidth < 1024 ?  '450% bottom' : '200% bottom',
             scrub: true,
+            // markers: true,
         }
     })
     .from(logo, {
@@ -619,4 +622,89 @@ window.addEventListener('load', () => {
     createResponsiveTimeline({
         createTimelineFn: incredibleBlockParalax
     });
+});
+
+
+function aboutScreenSwipeImageHandler() {
+    const swipeBlock = document.querySelector('[data-mobile-image-swipe]');
+    if (!swipeBlock) return;
+
+    const [scrollValue, setScrollValue, subscribeScrollValue] = useState(0);
+
+    const input = swipeBlock.querySelector('[data-mobile-image-swipe-input]');
+    const icon = swipeBlock.querySelector('[data-mobile-image-swipe-icon]');
+    const image = document.querySelector('[data-mobile-image-swipe-image]');
+    const svg = swipeBlock.querySelector('[data-mobile-image-swipe-svg]');
+    const svgWidth = svg.getAttribute('viewBox').split(' ')[2];
+    const slideSvgButtonRadius = +icon.querySelector('circle').getAttribute('r');
+
+    input.setAttribute('max', image.scrollWidth - window.innerWidth);
+
+    subscribeScrollValue((value) => {
+        const scrollWidth = image.scrollWidth - image.clientWidth;
+        // image.scrollLeft = value * scrollWidth / 100;
+        // icon.style.transform = `translateX(${value * scrollWidth / 100}px)`;
+        input.value = value;
+
+        const swipeXoffset = gsap.utils.mapRange(
+            0,
+            input.getAttribute('max'),
+            0, svgWidth - slideSvgButtonRadius * 2,
+            value
+        );
+
+        // icon.style.transform = `translateX(${value}px)`;
+        // icon.setAttribute('transform', `tr
+        // anslate(${swipeXoffset - (slideSvgButtonRadius * 2)} ,0)`)
+        icon.setAttribute('transform', `translate(${swipeXoffset} ,0)`)
+    });
+
+    image.addEventListener('scroll', () => {
+        setScrollValue(image.scrollLeft);
+    })
+
+    input.addEventListener('input', (e) => {
+        const value = e.target.value;
+        image.scrollLeft = value;
+        setScrollValue(value);
+
+    })
+    //data-mobile-image-swipe-icon
+    setScrollValue((image.scrollWidth - window.innerWidth) / 2);
+    image.scrollLeft = (image.scrollWidth - window.innerWidth) / 2;
+}
+
+aboutScreenSwipeImageHandler();
+
+
+window.addEventListener('load',function(evt){
+    document.querySelectorAll('[data-split-lines-new-animation]').forEach((el) => {
+        let split = SplitText.create(el, { 
+            type: "lines", 
+            mask: 'lines', 
+            linesClass: "line", 
+            position: "absolute",
+            reduceWhiteSpace: false,
+        });
+        gsap.timeline({
+            scrollTrigger: {
+                trigger: el,
+                once: true,
+                start: '50% bottom',
+            }
+        })
+            .fromTo(split.lines, {
+                y: 100,
+            }, {
+                y: 0,
+                duration: 1.25,
+                ease: "power4.out",
+                stagger: {
+                    amount: 0.25,
+                }
+            })
+            .add(() => {
+                split.revert();
+            })
+    })
 });

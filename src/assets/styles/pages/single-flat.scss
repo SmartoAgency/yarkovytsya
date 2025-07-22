@@ -17,8 +17,11 @@
         grid-template-areas: "top top top"
         "info2 img info1"
         ;
-        @include to(1360px){
+        @include to(1441px){
             grid-template-columns: 1fr 3fr 1fr;
+        }
+        @include to(1240px){
+            grid-template-columns: 1fr 2.5fr 1fr;
 
         }
 

@@ -36,7 +36,7 @@
             
             @include text-style-1920-body;
             @include to(600px){
-                @include text-style-768-h-4
+                // @include text-style-768-h-4
             }
             &::placeholder {
                 color: var(--color-body-description);
@@ -63,7 +63,7 @@
             width: 100%;
             @include text-style-1920-body;
             @include to(600px){
-                @include text-style-768-h-4;
+                // @include text-style-768-h-4;
                 height: 50px;
             }
         }

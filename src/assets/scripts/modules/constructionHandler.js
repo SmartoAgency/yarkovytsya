@@ -11,8 +11,17 @@ export default function constructionHandler() {
 
     subscribePopupOpen((value) => {
         document.querySelectorAll('[data-construction-popup]').forEach((el) => {
-            el.classList.toggle('active', value);
-            document.body.classList.toggle('popup-open', value);
+            if (value) {
+                el.classList.add('active');
+                document.body.classList.add('popup-open', value);
+            } else {
+                el.addEventListener('animationend', function(evt) {
+                    el.classList.remove('active', 'closing');
+                }, { once: true });
+                el.classList.add('closing');
+
+                document.body.classList.remove('popup-open');
+            }
         });
     });
 

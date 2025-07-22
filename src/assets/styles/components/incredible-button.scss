@@ -7,6 +7,9 @@
     width: max-content;
     color: var(--color-white);
     padding-bottom: 5px;
+    &.hidden {
+        display: none;
+    }
     &__title {
         @include text-style-1920-body;
         position: relative;

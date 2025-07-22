@@ -35,8 +35,23 @@ block content
             span А НЕ ПРОСТО МЕТРИ НА ПЛАНІ
   .plannings
     .plannings__content
-      .plannings__filter.js-s3d-filter.js-s3d-filter__checkboxes
-        .plannings__filter-title.hide-on-desktop.hide-on-tablet.color-black ФІЛЬТР
+      .plannings__filter.js-s3d-filter.js-s3d-filter__checkboxes(data-filter)
+        .plannings__filter-title.hide-on-desktop.hide-on-tablet.color-black(data-filter-collapse) 
+          div ФІЛЬТР
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M4.35331 3.64645C4.15805 3.45118 3.84154 3.45118 3.64628 3.64645C3.45101 3.84171 3.45101 4.15822 3.64628 4.35348L7.29276 7.99996L3.64628 11.6464C3.45101 11.8417 3.45101 12.1582 3.64628 12.3535C3.84154 12.5487 4.15805 12.5487 4.35331 12.3535L7.99979 8.70699L11.6463 12.3535L11.7244 12.4179C11.9185 12.5461 12.1824 12.5243 12.3533 12.3535C12.5242 12.1826 12.5459 11.9187 12.4178 11.7246L12.3533 11.6464L8.70682 7.99996L12.3533 4.35348C12.5486 4.15822 12.5486 3.84171 12.3533 3.64645C12.158 3.45118 11.8415 3.45118 11.6463 3.64645L7.99979 7.29293L4.35331 3.64645Z" fill="#101820"/>
+          </svg>
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M1.93942 6L7.99997 12.0605L14.0605 6L13 4.93945L7.99997 9.93945L2.99997 4.93945L1.93942 6Z" fill="#101820"/>
+          </svg>
+        .plannings__filter-group
+          div.text-style-1920-tiny ЖИТЛОВИЙ КОМПЛЕКС:
+          label.planning-checkbox(for="project1")
+            input#project1(type="checkbox" name="" value="park avenue" data-type="project" data-project="park avenue")
+            span.text-uppercase park avenue
+          label.planning-checkbox(for="project2")
+            input#project2(type="checkbox" name="" value="ярко центр" data-type="project" data-project="ярко центр")
+            span.text-uppercase ярко центр
         .plannings__filter-group
           div.text-style-1920-tiny КІМНАТНІСТЬ:
           label.planning-checkbox(for="rooms1")
@@ -90,7 +105,7 @@ block content
           </svg>
 
       .plannings__list(data-planning-list data-not-found-title="Планування не знайдено")
-        for val in [1,2]
+        for val in []
           a(href="#").planning-card
             .planning-card__top 2-к / 247.4 м²
             .planning-card__image
@@ -99,8 +114,8 @@ block content
                 img(src="./assets/images/test-plan.png", alt="", srcset="")
             .planning-card__bottom Будинок: 3 Секція: 2 Поверх: 15
       .plannings__load-more
-        .pagination.pagination--plannings
-          button(type="button" disabled).pagination__button.pagination__button--dark
+        .pagination.pagination--plannings(data-pagination)
+          button(type="button" data-pagination="prev").pagination__button.pagination__button--dark
             <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
               <path d="M11.5385 6L6 12M6 12L11.5385 18M6 12H18" stroke="#101820" stroke-width="2"/>
             </svg>
@@ -110,7 +125,7 @@ block content
               | з&nbsp;
               span(data-planning-pages-count) 02 
               | &nbsp;сторінок
-          button(type="button").pagination__button.pagination__button--dark
+          button(type="button" data-pagination="next").pagination__button.pagination__button--dark
             <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
               <path d="M12.4615 6L18 12M18 12L12.4615 18M18 12L6 12" stroke="#101820" stroke-width="2"/>
             </svg>
@@ -129,7 +144,7 @@ block content
   template#flat-card-template
     a.planning-card(href='/single-flat?id={{id}}' data-id='{{id}}')
       .planning-card__top 
-        .planning-card__label {{project}} 
+        .planning-card__label {{project}} {{id}} 
         button(type="button" data-favourite-single-button='{{id}}').plannings-favourite-button
           <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
             <path d="M16.9 13.3333C17.943 12.36 19 11.1933 19 9.66667C19 8.69421 18.5944 7.76158 17.8724 7.07394C17.1503 6.38631 16.1711 6 15.15 6C13.918 6 13.05 6.33333 12 7.33333C10.95 6.33333 10.082 6 8.85 6C7.82892 6 6.84965 6.38631 6.12764 7.07394C5.40562 7.76158 5 8.69421 5 9.66667C5 11.2 6.05 12.3667 7.1 13.3333L12 18L16.9 13.3333Z" stroke="#4D5858" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>

@@ -260,6 +260,10 @@ export default class FormMonster {
   listers() {
     this.elements.$form.addEventListener('submit', this.submitForm(this.watchedState));
     this.fieldsKey.map((key) => {
+      if (this.elements.fields[key].type === 'select') {
+        this.elements.fields[key].inputWrapper.$field.querySelector('select').addEventListener('change', this.changeInput(this.watchedState));
+        return null;
+      }
       const { input } = this.elements.fields[key].inputWrapper;
       input.addEventListener('input', this.changeInput(this.watchedState));
       return null;

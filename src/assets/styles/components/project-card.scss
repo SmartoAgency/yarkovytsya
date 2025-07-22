@@ -57,6 +57,12 @@
         @include to(600px){
             bottom: auto;
             top: calc(62.5% - var(--inner-offset));
+           
+            img {
+                width: 85px;
+                height: 34px;
+                object-fit: contain;
+            }
         }
     }
     &__eoselya {
@@ -82,13 +88,13 @@
         color: var(--color-black);
         background-color: var(--color-white);
         @include to(600px){
-            background-color: transparent;
-            color: var(--color-white);
-            border: 1px solid rgba(219, 226, 234, 0.10);
-            padding-top: 2px;
-            padding-bottom: 2px;
-            padding-left: 8px;
-            padding-right: 8px;
+            // background-color: transparent;
+            // color: var(--color-white);
+            // border: 1px solid rgba(219, 226, 234, 0.10);
+            // padding-top: 2px;
+            // padding-bottom: 2px;
+            // padding-left: 8px;
+            // padding-right: 8px;
         }
         img,
         svg {

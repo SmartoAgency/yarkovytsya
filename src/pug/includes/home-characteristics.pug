@@ -53,13 +53,13 @@
   div#characteristics
     .home-characteristics__decor
       img(src="./assets/images/inner-front-screen-decor.svg", alt="", srcset="")
-    .home-characteristics__title.text-style-375-h-1.text-style-768-h-1.text-style-1920-h-1.color-red ПРО ПРОЄКТ
+    .home-characteristics__title.text-style-375-h-1.text-style-768-h-1.text-style-1920-h-1.color-red(data-split-lines-new-animation) ПРО ПРОЄКТ
     .home-characteristics__content
       each val in list
         .home-characteristics__item
           .home-characteristics__item-icon-wrap
             img(src=val.icon, alt="")
           .home-characteristics__item-text
-            .home-characteristics__item-number.text-color-body-description= val.number
-            .home-characteristics__item-title.text-style-1920-h-4.text-style-768-h-4.color-white= val.title
-            .home-characteristics__item-description.text-color-body-description= val.description
+            .home-characteristics__item-number.text-color-body-description(data-split-lines-new-animation)= val.number
+            .home-characteristics__item-title.text-style-1920-h-4.text-style-768-h-4.color-white(data-split-lines-new-animation)= val.title
+            .home-characteristics__item-description.text-color-body-description(data-split-lines-new-animation)= val.description

@@ -1,0 +1,167 @@
+<style>
+    .loader {
+        background-color: #000;
+        position: fixed;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        z-index: 1000;
+    }
+    .loader-svg {
+        width: 100%;
+        height: 100%;
+    }
+    .loader.closing {
+        animation: loader-exit 0.75s cubic-bezier(.44,.9,.43,1) forwards;
+    }
+    .loader__circle {
+        transform-origin: center;
+        transform-box: fill-box;
+    }
+    .loader__circle.loader__circle--anim {
+        animation: loader-circle-anim 0.65s ease-in 1;
+    }
+    .loader__circle.after-anim {
+        clip-path: polygon(0 0, 50% 0, 50% 50%, 0 50%);
+        transform: translate(6px, 4px) scale(0.017);
+    }
+    .loader__svg-logo {
+        opacity: 0;
+        transition: opacity 0.44s ease-in;
+    }
+    .loader__svg-text {
+        transition: opacity 0.44s ease-in;
+        opacity: 0;
+    }
+    .loader-percents {
+        color: #fff;
+        position: absolute;
+        bottom: 20px;
+        left: 50%;
+        transform: translateX(-50%);
+        z-index: 10;
+
+        font-size: 24px;
+        font-family: Inter Tight;
+        font-weight: 400;
+        font-style: normal;
+        line-height: 140%;
+        text-decoration: none;
+        text-transform: none;
+        display: flex;
+        align-items: center;
+    }
+    .loader-percents span:first-child {
+        width: 3ch;
+        text-align: right;
+    }
+    @keyframes loader-circle-anim {
+        0% {
+            transform: scale(1);
+        }
+        100% {
+            transform: translate(6px, 4px) scale(0.017);
+        }
+    }
+    @keyframes loader-exit {
+        0% {
+            clip-path: polygon(0 0, 100% 0, 100% 100%, 0% 100%);
+        }
+        100% {
+            clip-path: polygon(0 50%, 100% 50%, 100% 50%, 0 50%);
+        }
+    }
+</style>
+<div class="loader">
+    <svg class="loader-svg" viewBox="0 0 2092 1829" fill="none" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice">
+        <rect x="0" y="0" width="2092" height="1829" fill="#091016"/>
+        <g class="loader__svg-logo-group" transform="translate(-88, 0)">
+            <g class="loader__svg-logo">
+                <path d="M923.996 915.485H916V894.397C916 883.6 924.638 874.824 935.251 874.824H955.972V882.958H935.251C929.045 882.958 923.996 888.093 923.996 894.407V915.496V915.485Z" fill="#E4032C"/>
+                <path d="M955.972 915.485H939.958V915.264C939.958 906.393 947.034 899.195 955.755 899.195H955.972V915.475V915.485Z" fill="#E4032C"/>
+            </g>
+            <g class="loader__svg-text">
+                <path d="M984.748 886.166C984.748 883.303 986.155 881.872 988.969 881.872H1010.11V894.773H988.969C986.155 894.773 984.748 893.341 984.748 890.479V886.166ZM976.287 886.166V890.479C976.287 899.085 980.509 903.379 988.969 903.379L976.287 916.28H988.274L1000.96 903.379H1010.11V916.28H1018.57V873.266H988.969C980.509 873.266 976.287 877.56 976.287 886.166Z" fill="#DBE2EA"/>
+                <path d="M1056.64 886.166C1056.64 883.303 1055.23 881.872 1052.41 881.872H1031.27V894.773H1052.41C1055.23 894.773 1056.64 893.341 1056.64 890.479V886.166ZM1065.1 886.166V890.479C1065.1 899.085 1060.87 903.379 1052.41 903.379H1031.27V916.28H1022.81V873.266H1052.41C1060.87 873.266 1065.1 877.56 1065.1 886.166Z" fill="#DBE2EA"/>
+                <path d="M1111.62 916.28H1100.83L1087.3 899.067H1077.78V916.28H1069.32V873.266H1077.78V890.461H1087.3L1100.83 873.266H1111.62L1094.7 894.773L1111.62 916.28Z" fill="#DBE2EA"/>
+                <path d="M1147.56 904.086V885.442C1147.56 882.579 1146.16 881.148 1143.34 881.148H1126.42C1123.61 881.148 1122.2 882.579 1122.2 885.442V904.086C1122.2 906.949 1123.61 908.398 1126.42 908.398H1143.34C1146.16 908.398 1147.56 906.967 1147.56 904.086ZM1156.02 904.086C1156.02 912.693 1151.79 916.987 1143.34 916.987H1126.42C1117.96 916.987 1113.74 912.693 1113.74 904.086V885.442C1113.74 876.835 1117.98 872.541 1126.42 872.541H1143.34C1151.8 872.541 1156.02 876.835 1156.02 885.442V904.086Z" fill="#DBE2EA"/>
+                <path d="M1189.87 907.674H1168.72V899.067H1189.87C1192.68 899.067 1194.09 900.499 1194.09 903.362C1194.09 906.224 1192.68 907.656 1189.87 907.656M1189.87 890.461H1168.72V881.854H1189.87C1192.68 881.854 1194.09 883.286 1194.09 886.149C1194.09 889.012 1192.68 890.443 1189.87 890.443M1199.87 894.702C1201.66 892.935 1202.55 890.072 1202.55 886.096C1202.5 877.542 1198.28 873.266 1189.87 873.266H1160.26V916.298H1189.87C1198.33 916.298 1202.55 912.003 1202.55 903.397C1202.55 899.474 1201.66 896.593 1199.87 894.72" fill="#DBE2EA"/>
+                <path d="M1249.07 873.266H1240.61L1215.23 903.096V873.266H1206.77V916.28H1215.23L1240.61 886.449V916.28H1249.07V873.266Z" fill="#DBE2EA"/>
+                <path d="M1295.6 873.266H1287.14V907.674H1261.75V873.266H1253.29V916.28H1291.36V924.886H1299.82V907.674H1295.6V873.266Z" fill="#DBE2EA"/>
+                <path d="M1312.52 886.166C1312.52 883.303 1313.92 881.872 1316.74 881.872H1337.88V894.773H1316.74C1313.92 894.773 1312.52 893.341 1312.52 890.479V886.166ZM1304.06 886.166V890.479C1304.06 899.085 1308.28 903.379 1316.74 903.379L1304.06 916.28H1316.04L1328.73 903.379H1337.9V916.28H1346.36V873.266H1316.76C1308.3 873.266 1304.07 877.56 1304.07 886.166" fill="#DBE2EA"/>
+            </g>
+
+        </g>
+        <ellipse class="loader__circle" cx="863" cy="910" rx="951" ry="914.5" fill="#E4032C"></ellipse>
+    </svg>
+    <div class="loader-percents">
+        <span data-loader-percent>0</span>
+        <span>%</span>
+    </div>
+</div>
+
+<script>
+    const loader = document.querySelector('.loader');
+
+    if (sessionStorage.getItem('loaderClosed')) {
+        loader.remove();
+    }
+    function digitLoader(callback) {
+        const el = document.querySelector('[data-loader-percent]');
+        let value = 0;
+
+        function render(value) {
+            if (value >= 101) {
+                callback();
+                return;
+            };
+            let newValue = value + 1;
+            el.textContent = value;
+            requestAnimationFrame(() => {
+                render(newValue);
+            })
+        }
+        render(value);
+    }
+    document.addEventListener('DOMContentLoaded', function() {
+        if (sessionStorage.getItem('loaderClosed')) {
+            return;
+        }
+        const loader = document.querySelector('.loader');
+
+        const circle = document.querySelector('.loader__circle');
+        const text = document.querySelector('.loader__svg-text');
+        const svgLogo = document.querySelector('.loader__svg-logo');
+        let isPercentFinished = false;
+        let closeInterval = null;
+        
+        
+        digitLoader(() => {
+            isPercentFinished = true;
+        });
+        circle.classList.add('loader__circle--anim');
+
+        circle.addEventListener('animationend', function() {
+            // circle.style.display = 'none';
+            circle.classList.add('after-anim');
+            svgLogo.style.opacity = '1';
+            text.style.opacity = '1';
+
+            closeInterval = setInterval(() => {
+                if (isPercentFinished) {
+                    clearInterval(closeInterval);
+                    loader.addEventListener('animationend', function() {
+                        loader.remove();
+                        sessionStorage.setItem('loaderClosed', 'true');
+                    }, { once: true });
+                    loader.classList.add('closing');
+                }
+            }, 1000);
+        }, { once: true });
+    });
+</script>
+

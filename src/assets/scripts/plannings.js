@@ -3,7 +3,8 @@ import isEmpty from 'lodash/isEmpty.js';
 import FilterModel from './modules/filter/filterModel.js';
 import FilterController from './modules/filter/filterController.js';
 import FilterView from './modules/filter/filterView.js';
-import { pushParams, removeParamsByRegExp } from './modules/history/history.js';
+import { pushParams, removeParamsByRegExp, getUrlParam } from './modules/history/history.js';
+import { debounceResize } from './modules/helpers/helpers.js';
 
 planningsGallery();
 
@@ -11,6 +12,9 @@ async function planningsGallery() {
 
     const SEARCH_PARAMS_FILTER_PREFIX = 'filter_';
     const currentFilteredFlatIds$ = new BehaviorSubject([]);
+
+    const $moreButton = document.querySelector('[data-more]');
+    const $paginationArrows = document.querySelector('[data-pagination]');
 
     const fetchedFlats = await getFlats();
 
@@ -21,72 +25,85 @@ async function planningsGallery() {
 
 
     let paginationData = [];
-    let currentPage$ = new BehaviorSubject(1);
+    let currentPage$ = new BehaviorSubject(getUrlParam('filterPage') ? +getUrlParam('filterPage') : 1);
     let totalPages = 0;
     const portion = 12;
 
-    function preparePgination(flats = []) {
-        const portionedFlats = [];
-        const length = flats.length;
-        const totalPages = Math.ceil(length / portion);
-
-        flats.forEach((flat, index) => {
-            const page = Math.floor(index / portion) + 1;
-            if (!portionedFlats[page]) {
-                portionedFlats[page] = [];
-            }
-            portionedFlats[page].push(flat);
-        });        
-
-        return { portionedFlats, totalPages };
-    }
 
     currentPage$.subscribe((page) => {
         const $container = document.querySelector('[data-planning-list]');
-        document.querySelector('[data-more]').classList.toggle('hidden', currentPage$.value >= totalPages);
+
+        $moreButton.classList.toggle('hidden', page >= totalPages);
+        $paginationArrows.classList.toggle('hidden', totalPages == 0);
+
         if (!paginationData[page]) return;
+
         $container.insertAdjacentHTML('beforeend', paginationData[page].map(id => {
             const flat = flats[id];
-            // return $card(flat);
             return renderTemplate('flat-card-template', flat);
         }).join(''));
-        window.dispatchEvent(new CustomEvent('plannings:rendered', {}));
-        window.dispatchEvent(new Event('resize'));
-        document.querySelectorAll('[name="pagination-current"]').forEach((el) => {
-            el.value = padNumber(currentPage$.value);
-        })
+
+        
+        renderCurrentPageAndSwitchArrows(currentPage$);
+        pushParams({
+            filterPage: currentPage$.value,
+        });
+
+        onAfterChangePageEvents();
     })
 
     currentFilteredFlatIds$.subscribe((ids) => {
-        const idsSortedByArea = ids.sort((a, b) => {
-            const areaA = flats[a].area || 0;
-            const areaB = flats[b].area || 0;
-            return areaA - areaB > 0 ? 1 : -1;
-        })
-        paginationData = preparePgination(idsSortedByArea).portionedFlats;
-        totalPages = preparePgination(idsSortedByArea).totalPages;
-        document.querySelectorAll('[data-planning-pages-count]').forEach((el) => {
-            el.textContent = totalPages < 10 ? `0${totalPages}` : totalPages;
-        })
-        const $container = document.querySelector('[data-planning-list]');
-        window.scrollTo({
-            top: 0,
-            // behavior: 'smooth',
+        
+        const idsSortedByIds = ids.sort((a, b) => {
+            return +a - +b > 0 ? 1 : -1;
         });
+        paginationData = preparePgination(idsSortedByIds).portionedFlats;
+        totalPages = preparePgination(idsSortedByIds).totalPages;
+
+        renderCountPages(totalPages);
+        const $container = document.querySelector('[data-planning-list]');
+        
         $container.innerHTML = '';
         if (ids.length === 0) {
             const template = document.getElementById('empty-planning-list');
             $container.innerHTML = template.innerHTML;
             return;
         }
-        
-        currentPage$.next(1);
 
-
+        currentPage$.next(totalPages < currentPage$.value ? totalPages : currentPage$.value);
+        window.scrollTo({
+            top: 0,
+            behavior: 'smooth',
+        });
     });
 
-    document.querySelector('[data-more]').addEventListener('click', (e) => {
-        currentPage$.next(currentPage$.value + 1);
+    document.querySelectorAll('[data-pagination="prev"]').forEach((el) => {
+        el.addEventListener('click', (e) => {
+            if (currentPage$.value > 1) {
+                currentPage$.next(currentPage$.value - 1);
+                currentFilteredFlatIds$.next(currentFilteredFlatIds$.value);
+            }
+        });
+    });
+    document.querySelectorAll('[data-pagination="next"]').forEach((el) => {
+        el.addEventListener('click', (e) => {
+            if (currentPage$.value < totalPages) {
+                currentPage$.next(currentPage$.value + 1);
+                currentFilteredFlatIds$.next(currentFilteredFlatIds$.value);
+            }
+        });
+    });
+
+    document.querySelectorAll('[id="resetFilter"]').forEach((el) => {
+        el.addEventListener('click', (e) => {
+            currentPage$.next(1);
+        })
+    })
+
+    $moreButton.addEventListener('click', (e) => {
+        console.log('more button clicked');
+        
+        currentPage$.next(+currentPage$.value + 1);
     })
 
     // mark checked checkboxes from default URL search params
@@ -99,6 +116,7 @@ async function planningsGallery() {
             })
         }
     });
+
 
     const filterModel = new FilterModel(
         {
@@ -148,6 +166,45 @@ async function planningsGallery() {
     const filterController = new FilterController(filterModel, filterView);
 
     filterModel.init();
+
+    function renderCountPages(totalPages) {
+        document.querySelectorAll('[data-planning-pages-count]').forEach((el) => {
+            el.textContent = totalPages < 10 ? `0${totalPages}` : totalPages;
+        });
+    }
+
+    function renderCurrentPageAndSwitchArrows(currentPage$) {
+        document.querySelectorAll('[name="pagination-current"]').forEach((el) => {
+            el.value = padNumber(currentPage$.value);
+        });
+        document.querySelectorAll('[data-pagination="prev"]').forEach((el) => {
+            el.disabled = currentPage$.value <= 1;
+        });
+        document.querySelectorAll('[data-pagination="next"]').forEach((el) => {
+            el.disabled = currentPage$.value >= totalPages;
+        });
+    }
+
+    function preparePgination(flats = []) {
+        const portionedFlats = [];
+        const length = flats.length;
+        const totalPages = Math.ceil(length / portion);
+
+        flats.forEach((flat, index) => {
+            const page = Math.floor(index / portion) + 1;
+            if (!portionedFlats[page]) {
+                portionedFlats[page] = [];
+            }
+            portionedFlats[page].push(flat);
+        });        
+
+        return { portionedFlats, totalPages };
+    }
+
+    function onAfterChangePageEvents() {
+        window.dispatchEvent(new CustomEvent('plannings:rendered', {}));
+        window.dispatchEvent(new Event('resize'));
+    }
 }
 
 async function getFlats() {
@@ -189,3 +246,30 @@ function renderTemplate(templateId, data) {
 function padNumber(num) {
     return num < 10 ? `0${num}` : num;
 }
+
+
+
+
+window.addEventListener('load', () => {
+    document.body.addEventListener('click', (e) => {
+        const target = e.target.closest('[data-filter-collapse]');
+        if (!target) return;
+        const filter = target.closest('[data-filter]');
+        if (!filter) return;
+        filter.classList.toggle('collapsed');
+    });
+    if (window.innerWidth <= 600) {
+        document.querySelector('[data-filter]').classList.add('collapsed');
+    }
+})
+
+
+const debFilterDisable = debounceResize(() => {
+    if (window.innerWidth > 600) {
+        document.querySelectorAll('[data-filter]').forEach((el) => {
+            el.classList.remove('collapsed');
+        });
+    }
+}, 1000);
+
+    window.addEventListener('resize', debFilterDisable);

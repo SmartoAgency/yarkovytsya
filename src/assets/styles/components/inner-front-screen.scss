@@ -35,10 +35,14 @@
         bottom: 0;
         position: absolute;
         right: pxWidthInVw(450);
-        width: pxWidthInVw(325);
-        height: pxWidthInVw(378);
+        // width: pxWidthInVw(325);
+        // height: pxWidthInVw(378);
         transform: translateY(50%);
         z-index: -1;
+        @include from-to(1025px, 1440px){
+            width: 268px;
+            height: 268px;
+        }
         @include to(1024px){
             display: none;
         }

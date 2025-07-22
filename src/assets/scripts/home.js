@@ -14,37 +14,7 @@ gsap.registerPlugin(SplitText);
 gsap.core.globals('ScrollTrigger', ScrollTrigger);
 gsap.core.globals('SplitText', SplitText);
 
-window.addEventListener('load',function(evt){
-    document.querySelectorAll('[data-split-lines-new-animation]').forEach((el) => {
-        let split = SplitText.create(el, { 
-            type: "lines", 
-            mask: 'lines', 
-            linesClass: "line", 
-            position: "absolute",
-            reduceWhiteSpace: false,
-        });
-        gsap.timeline({
-            scrollTrigger: {
-                trigger: el,
-                once: true,
-                start: '50% bottom',
-            }
-        })
-            .fromTo(split.lines, {
-                y: 100,
-            }, {
-                y: 0,
-                duration: 1.25,
-                ease: "power4.out",
-                stagger: {
-                    amount: 0.25,
-                }
-            })
-            .add(() => {
-                split.revert();
-            })
-    })
-});
+
 
 Swiper.use([Mousewheel, Navigation]);
 
@@ -93,15 +63,16 @@ function homeDeveloperAnimations() {
     gsap.timeline({
         scrollTrigger: {
             trigger: container,
-            start: '80% bottom',
+            start: '90% bottom',
             end: '100% top',
             scrub: 1,
+            // markers: true
         }
     })
     .fromTo(bottomDecor, {
         y: 0
     }, {
-        y: window.screen.width > 600 ? window.innerHeight * 0.4 : 70
+        y: window.screen.width > 600 ? window.innerHeight * 0.1 : 30
     })
 }
 

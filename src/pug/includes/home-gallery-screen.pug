@@ -13,7 +13,7 @@
 div(class="home-gallery-screen "+galleryBlockCustomClass)#gallery
   .home-gallery-screen__decor
     img(src="./assets/images/single-project/yarko-logo.svg", alt="", srcset="")
-  .home-gallery-screen__title.text-style-1920-h-1.text-style-768-h-1.text-style-375-h-1.color-red ГАЛЕРЕЯ
+  .home-gallery-screen__title.text-style-1920-h-1.text-style-768-h-1.text-style-375-h-1.color-red(data-split-lines-new-animation) ГАЛЕРЕЯ
   .frame__nav.hide-on-tablet.hide-on-mobile
     each slide in slides
       button.frame__nav-button.unbutton.text-style-1920-button #{slide.title}

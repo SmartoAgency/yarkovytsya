@@ -6,8 +6,11 @@
     --bottom-padding: 670px;
     padding-top: 300px;
     padding-bottom: var(--bottom-padding);
-        z-index: 2;
+    z-index: 2;
     background: var(--color-black);
+    @include from-to(1025px, 1440px){
+        --bottom-padding: 300px;
+    }
     @include to(1024px){
         padding-top: 450px;
         --bottom-padding: 570px;
@@ -37,6 +40,9 @@
         width: pxWidthInVw(250);
         height: pxWidthInVw(250);
         transform: translateY(-50%);
+        @include from-to(1025px, 1440px){
+
+        }
         @include to(1024px){
             right: 50%;
             width: 250px;
@@ -62,6 +68,13 @@
         height: pxWidthInVw(250);
         transform: translateY(100%);
         z-index: -2;
+        @include from-to(1025px, 1440px){
+            bottom: calc(var(--bottom-padding));
+            transform: translateY(25%);
+        }
+        @include from(1025px){
+            bottom: calc(var(--bottom-padding) * 0.5);
+        }
         @include to(1024px){
             left: 50%;
             width: 250px;
@@ -251,6 +264,12 @@
     &__text-block {
         @include size(4);
         @include shift(1);
+        @include from-to(1025px, 1440px){
+            @include size(5);
+            @include shift-left(0);
+            @include shift-right(0);
+
+        }
         @include size-md(12);
         @include shift-md(0);
         @include size-xs(12);

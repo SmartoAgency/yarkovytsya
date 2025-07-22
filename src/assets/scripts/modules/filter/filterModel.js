@@ -31,6 +31,7 @@ class FilterModel extends EventEmitter {
       objecttype: 'checkbox',
       queue: 'checkbox',
       parking: 'checkbox',
+      project: 'checkbox',
     };
     this.configProject = {};
     this.currentFilteredFlatIds$ = config.currentFilteredFlatIds$;
