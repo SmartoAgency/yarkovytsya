@@ -22,7 +22,7 @@ class FilterModel extends EventEmitter {
   constructor(config) {
     super();
 
-    this.types = {
+    this.types = config.types || {
       area: 'range',
       floor: 'range',
       roomsforfilter: 'checkbox',

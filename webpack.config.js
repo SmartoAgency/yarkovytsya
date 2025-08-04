@@ -14,6 +14,7 @@ const config = {
     'single-news': './src/assets/scripts/single-news.js',
     compare: './src/assets/scripts/gulp-modules/compare.js',
     news: './src/assets/scripts/news.js',
+    projects: './src/assets/scripts/projects.js',
   },
   output: {
     filename: '[name].bundle.js',

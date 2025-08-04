@@ -54,6 +54,10 @@
         position: absolute;
         right: var(--inner-offset);
         bottom: var(--inner-offset);
+        img {
+            width: 85px;
+            height: 34px;
+        }
         @include to(600px){
             bottom: auto;
             top: calc(62.5% - var(--inner-offset));

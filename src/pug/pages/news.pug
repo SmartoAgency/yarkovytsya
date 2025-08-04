@@ -30,7 +30,8 @@ block content
         .inner-front-screen__title.color-red.text-style-1920-h-1.text-style-768-h-1.text-style-375-h-1 НОВИНИ
         .inner-front-screen__right
           each val in ['НОВИНИ', 'АКЦІЇ', 'ВАКАНСІЇ']
-            button(type="button" data-news-button=val).button-small2
+            label(for=val type="button" data-news-button=val).button-small2
+              input(type="checkbox", name=val, id=val, data-posttype=val  data-type="posttype" data-news-filter-button)
               span #{val}
   .news-list
     .news-list__content

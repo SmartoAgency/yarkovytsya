@@ -8,7 +8,6 @@ import { debounceResize } from './modules/helpers/helpers.js';
 import { get } from 'lodash';
 
 
-
 if (document.documentElement.dataset.status != 'local') {
     planningsGallery();
 }
@@ -24,9 +23,9 @@ async function planningsGallery() {
 
     const fetchedFlats = await getFlats();
 
-    console.log('fetchedFlats', fetchedFlats);
     fetchedFlats.forEach((flat) => {
-        flat.posttype = 'vacancies';
+        flat.deadline = '2025';
+        flat.buildclass = 'comfort'
     })
     // return;
     
@@ -175,7 +174,8 @@ async function planningsGallery() {
             },
 
             types: {
-                posttype: 'checkbox',
+                deadline: 'checkbox',
+                buildclass: 'checkbox',
             }
         },
     );
@@ -226,7 +226,7 @@ async function planningsGallery() {
 
 async function getFlats() {
     const isDev =  window.location.href.match(/localhost|verstka|192/);
-    const url = isDev ? './static/flats.json' : '/wp-json/wp/v2/posts?categories=2&_embed=1&per_page=100';
+    const url = isDev ? './static/flats.json' : '/wp-json/wp/v2/posts?categories=4&_embed=1&per_page=100';
 
     const response = await fetch(url, {
         method: 'GET',
@@ -238,26 +238,49 @@ async function getFlats() {
 
 function getProjectCard(data) {
 
+    const eoselya = data.acf.block.card.ehata;
+    const deadline = data.acf.block.card.state;
+    const labels = get(data, 'acf.block.card.fast_info', []);
     const title = data.title.rendered;
-    const date = get(data, 'acf.block.card.d', false);
-    const label = get(data, 'acf.block.card.row_1', false);
+    const adress = get(data, 'acf.block.screen_1.row_1', false);
     const link = data.link;
+    const logo = get(data, 'acf.block.screen_1.logo', false);
+
     const img = get(data, '_embedded["wp:featuredmedia"][0].source_url', false);
 
     return `
-        <a class="news-card" href="${link}">
-            <div class="news-card__img">
-                <div class="news-card__date">${date}</div>
-                <div class="news-card__label">${label}</div>
-                <div class="news-card__img-wrapper">
-                    <img src="${img}" alt="news-1">
+        <a class="project-card" href="${link}">
+            <div class="project-card__img">
+                <div class="project-card__img-wrap">
+                    <img src="${img}" alt="" srcset="">
                 </div>
+                <div class="project-card__labels">
+                    ${labels.map(((label, index) => {
+                        return `<div class="project-card__label ${index == 0 ? 'project-card__label--alert' : ''}">${label.row}</div>`;
+                    })).join('')}
+                </div>
+                <div class="project-card__deadline">
+                    <div class="project-card__label project-card__label--dark">${deadline}</div>
+                </div>
+                ${logo ? `
+                    <div class="project-card__logo">
+                        <img src="${logo}" alt="" srcset="">
+                    </div>
+                ` : ''}
+                ${eoselya ? `
+                    <div class="project-card__eoselya project-card__label">
+                        <img src="https://yarkovytsya-wp.smarto.com.ua/wp-content/themes/3d/assets/images/eoselya.svg" alt="" srcset="">
+                    </div>
+                ` : ``}
             </div>
-            <div class="news-card__text">
-                <div class="text-style-1920-h-4 text-style-768-h-4">
+            <div class="project-card__text">
+                ${adress ? `<div class="project-card__adress color-body-description">
+                    ${adress}
+                </div>` : ''}
+                <div class="project-card__title text-style-1920-h-2 text-style-768-h-2 text-style-375-h-2 text-white">
                     ${title}
                 </div>
-                <div class="diagonal-arrow undefined"><svg width="46" height="46" viewBox="0 0 46 46" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <div class="diagonal-arrow project-card__arrow"><svg width="46" height="46" viewBox="0 0 46 46" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <g>
                             <path d="M29.092 28.2217L28.6569 17.3431M28.6569 17.3431L17.7783 16.908M28.6569 17.3431L17.3432 28.6569" stroke="#DBE2EA" stroke-width="2" />
                             <path transform="translate(-46, 46)" d="M29.092 28.2217L28.6569 17.3431M28.6569 17.3431L17.7783 16.908M28.6569 17.3431L17.3432 28.6569" stroke="#DBE2EA" stroke-width="2" />
@@ -268,6 +291,7 @@ function getProjectCard(data) {
         </a>
     `
 }
+
 
 function padNumber(num) {
     return num < 10 ? `0${num}` : num;
@@ -302,7 +326,7 @@ const debFilterDisable = debounceResize(() => {
 
 
 document.body.addEventListener('change', function handleUIOfFilterButtons(e) {
-    const target = e.target.closest('[data-news-filter-button]');
+    const target = e.target.closest('[data-project-filter-button]');
     if (!target) return;
     const label = target.closest('label');
     label.classList.toggle('active', target.checked);

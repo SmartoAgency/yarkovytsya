@@ -54,6 +54,7 @@ block head
 block scripts
   script(defer src='./assets/scripts/vendors.bundle.js')
   script(defer src='./assets/scripts/index.bundle.js')
+  script(defer src='./assets/scripts/projects.bundle.js')
 block content
   .inner-front-screen
     .inner-front-screen__bg
@@ -66,14 +67,18 @@ block content
       .inner-front-screen__top 
         .inner-front-screen__title.color-red.text-style-1920-h-1.text-style-768-h-1.text-style-375-h-1 ПРОЕКТИ
         .inner-front-screen__right
-          button(type="button").button-small2
+          label(type="button" for="business" data-project-filter-button).button-small2
+            input#business(type="checkbox", name="")
             span BUSINESS
-          button(type="button").button-small2
+          label(type="button" for="comfort" data-project-filter-button).button-small2
+            input#comfort(type="checkbox", name="")
             span COMFORT
           span /
-          button(type="button").button-small2
+          label(type="button", for="inprogress" data-project-filter-button).button-small2
+            input#inprogress(type="checkbox", name="")
             span БУДУЮТЬСЯ
-          button(type="button").button-small2
+          label(type="button", for="ready" data-project-filter-button).button-small2
+            input#ready(type="checkbox", name="")
             span ЗДАНІ В ЕКСПЛУАТАЦІЮ
   .projects-list.g_side_padding
     each val in projects1
