@@ -81,6 +81,7 @@ async function planningsGallery() {
         if (ids.length === 0) {
             const template = document.getElementById('empty-planning-list');
             $container.innerHTML = template.innerHTML;
+            onAfterChangePageEvents();
             return;
         }
 
@@ -125,6 +126,7 @@ async function planningsGallery() {
         if (key.startsWith(SEARCH_PARAMS_FILTER_PREFIX)) {
             const [_, name, valueName] = key.split('_');
             document.querySelectorAll(`input[data-${name}="${valueName}"]`).forEach((el) => {
+                el.closest('label').classList.add('active');
                 el.checked = true;
             })
         }

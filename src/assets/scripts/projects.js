@@ -24,8 +24,8 @@ async function planningsGallery() {
     const fetchedFlats = await getFlats();
 
     fetchedFlats.forEach((flat) => {
-        flat.deadline = '2025';
-        flat.buildclass = 'comfort'
+        flat.deadline = flat.acf.block.card.deadline;
+        flat.buildclass = flat.acf.block.card.class;
     })
     // return;
     
@@ -80,6 +80,7 @@ async function planningsGallery() {
         if (ids.length === 0) {
             const template = document.getElementById('empty-planning-list');
             $container.innerHTML = template.innerHTML;
+            onAfterChangePageEvents();
             return;
         }
 
@@ -121,9 +122,11 @@ async function planningsGallery() {
     // mark checked checkboxes from default URL search params
     const filterDefaultSearchParams = new URLSearchParams(window.location.search);
     Array.from(filterDefaultSearchParams.entries()).forEach(([key, value]) => {
+        
         if (key.startsWith(SEARCH_PARAMS_FILTER_PREFIX)) {
             const [_, name, valueName] = key.split('_');
             document.querySelectorAll(`input[data-${name}="${valueName}"]`).forEach((el) => {
+                el.closest('label').classList.add('active');
                 el.checked = true;
             })
         }

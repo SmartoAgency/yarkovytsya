@@ -315,13 +315,13 @@ function fullPageDecorParalax() {
             x: decorTranslateValue,
         }, '<')
         .to(decorWrapper, {
-            // opacity: 0,
+            opacity: 0,
             duration: 0.1,
         })
         .fromTo(pathToTransform, {
             opacity: 0
         }, {
-            opacity: 0,
+            opacity: 1,
             duration: 0.1,
         }, '<');
     return tl;
