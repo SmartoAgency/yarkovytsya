@@ -1,4 +1,4 @@
-import { isObject } from "lodash";
+import { get, isObject } from "lodash";
 import { useState } from "./helpers/helpers";
 import Swiper, { Navigation } from "swiper";
 
@@ -102,10 +102,32 @@ export default function constructionHandler() {
         e.preventDefault();
         const id = target.dataset.constructionId;
         getData(id).then((data) => {
+            if (document.documentElement.dataset.status !== 'local') {
+                return data.json()
+            }
             if (!data) return;
+            console.log(data);
+            
             setData(data);
             setPopupOpen(true);
-        }).catch((error) => {
+        })
+        .then((data) => {
+            if (!data) return;
+            console.log(data);
+            
+            setData({
+                slides: get(data, 'acf.block.gallery', []).map((item) => {
+                    return item.img
+                }),
+                imgCount: data.acf.block.gallery.length,
+                date: data.acf.block.d,
+                text: get(data, 'acf.block.list', []).map((item) => {
+                    return `<p>${item.row}</p>`
+                }).join('<br>')
+            });
+            setPopupOpen(true);
+        })
+        .catch((error) => {
             console.error('Error fetching construction data:', error);
         });
     });
@@ -125,9 +147,8 @@ function getData(id) {
     const fd = new FormData();
     fd.append('action', 'get_construction_data');
     fd.append('id', id);
-    return fetch('/wp-admin/admin-ajax.php', {
-        method: 'POST',
-        body: fd,
+    return fetch(`/wp-json/wp/v2/posts/${id}`, {
+        method: 'GET'
     })
 }
 

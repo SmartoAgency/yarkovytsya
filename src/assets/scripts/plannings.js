@@ -17,6 +17,7 @@ async function planningsGallery() {
     const $paginationArrows = document.querySelector('[data-pagination]');
 
     const fetchedFlats = await getFlats();
+    // console.log('fetchedFlats:', fetchedFlats);
 
     const flats = fetchedFlats.reduce((acc, flat) => {
         acc[flat.id] = flat;
@@ -213,6 +214,11 @@ async function getFlats() {
     const method = isDev ? 'GET' : 'POST';
     const fd = new FormData();
     fd.append('action', 'getFlats');
+
+    if (!isDev && window.yarkoFlats) {
+        return Promise.resolve(window.yarkoFlats);
+    }
+
     const response = await fetch(url, {
         method,
         body: isDev ? null : fd,
@@ -228,7 +234,7 @@ function renderTemplate(templateId, data) {
 
     // Підставляємо дані в шаблон
     for (const key in data) {
-        const value = data[key];
+        const value = data[key] === undefined ? '' : data[key];
         if (key === 'eoselya' && value) {
             //<img class="planning-card__image-label" src="./assets/images/eoselya.svg">
             html = html.replaceAll(`{{${key}}}`, `<img class="planning-card__image-label" src="/wp-content/themes/3d/assets/images/eoselya.svg">`);

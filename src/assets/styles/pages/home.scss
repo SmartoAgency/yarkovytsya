@@ -2,6 +2,7 @@
     position: relative;
     height: 100vh;
     padding-top: calc(var(--header-h) + 20px);
+    cursor: pointer;
     @include to(600px){
         height: calc(var(--vh, 1vh) * 100);
         padding-top: var(--header-h);
@@ -111,6 +112,7 @@
     &__text-slider {
         margin: 0;
         width: 100%;
+        text-transform: uppercase;
         @include from(1025px){
             width: 580px;
         }

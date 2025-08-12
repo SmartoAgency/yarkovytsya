@@ -24,9 +24,9 @@ async function planningsGallery() {
 
     const fetchedFlats = await getFlats();
 
-    console.log('fetchedFlats', fetchedFlats);
+    // console.log('fetchedFlats', fetchedFlats);
     fetchedFlats.forEach((flat) => {
-        flat.posttype = 'vacancies';
+        flat.posttype = flat.acf.block.type;
     })
     // return;
     

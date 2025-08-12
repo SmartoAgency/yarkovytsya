@@ -7,6 +7,7 @@
         --inner-offset: 4px;
     }
     &__title {
+        text-transform: uppercase;
         @include to(600px){
             padding-right: 46px;
         }
@@ -57,6 +58,8 @@
         img {
             width: 85px;
             height: 34px;
+            object-fit: contain;
+            object-position: bottom;
         }
         @include to(600px){
             bottom: auto;
@@ -91,6 +94,10 @@
         @include text-style-1920-tiny;
         color: var(--color-black);
         background-color: var(--color-white);
+        text-transform: uppercase;
+        &:empty {
+            opacity: 0;
+        }
         @include to(600px){
             // background-color: transparent;
             // color: var(--color-white);

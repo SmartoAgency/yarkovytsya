@@ -163,15 +163,21 @@ function advantagesSliderHandler() {
     const SPEED = 1000;
     const gsapSpeed = SPEED / 1000;
     let index = 0;
+    let direction = 'next';
+    document.querySelector('[data-advantages-slider-next]').addEventListener('click', () => {
+        direction = 'next';
+    });
+    document.querySelector('[data-advantages-slider-prev]').addEventListener('click', () => {
+        direction = 'prev';
+    });
     const mainSmallSlider = new Swiper('[data-advantages-slider-small]', {
         modules: [Navigation],
         slidesPerView: 3,
         spaceBetween: 20,
         speed: SPEED,
         allowTouchMove: false,
-        // preventInteractionOnTransition: true,
+        slideToClickedSlide: true,
         loop: true,
-        // loopPreventsSliding: false,
         navigation: isDesktop ?{
             nextEl: '[data-advantages-slider-next]',
             prevEl: '[data-advantages-slider-prev]',
@@ -180,11 +186,11 @@ function advantagesSliderHandler() {
     const largeSlider = new Swiper('[data-advantages-slider-large]', {
         modules: [EffectFade, Navigation],
         slidesPerView: 1,
-        loopPreventsSliding: false,
+        // loopPreventsSliding: false,
         speed: SPEED,
         
         // preventInteractionOnTransition: true,
-        loop: true,
+        // loop: true,
         effect: 'fade',
         simulateTouch: false,
         allowTouchMove: false,
@@ -219,26 +225,22 @@ function advantagesSliderHandler() {
     });
 
     if (isDesktop) {
-        document.querySelectorAll('[data-advantages-slider-all]').forEach(item => {
-            item.textContent = mainSmallSlider.slides.length - 2 < 10 ? '0' + (mainSmallSlider.slides.length - 2) : mainSmallSlider.slides.length - 2;
-        });
+        // document.querySelectorAll('[data-advantages-slider-all]').forEach(item => {
+        //     item.textContent = mainSmallSlider.slides.length - 2 < 10 ? '0' + (mainSmallSlider.slides.length - 2) : mainSmallSlider.slides.length - 2;
+        // });
         mainSmallSlider.on('slideChange', function (instance) {
-            largeSlider.slideTo(instance.realIndex);
-            textSlider.slideTo(instance.realIndex);
-            document.querySelectorAll('[data-advantages-slider-current]').forEach(item => {
-                item.textContent = instance.realIndex + 1 < 10 ? '0' + (instance.realIndex + 1) : instance.realIndex + 1;
-            });
-            
+            setTimeout(() => {
+                const nextIndex = document.querySelector('[data-advantages-slider-small] .swiper-slide-active').getAttribute('data-real-index');
+    
+                largeSlider.slideTo(nextIndex);
+                textSlider.slideTo(nextIndex);
+                document.querySelectorAll('[data-advantages-slider-current]').forEach(item => {
+                    item.textContent = +nextIndex + 1 < 10 ? '0' + (+nextIndex + 1) : +nextIndex + 1;
+                });
+                
+            }, 100);
         });
         largeSlider.on('slideChangeTransitionStart', function (instance) {
-            let direction = instance.realIndex > index ? 'next' : 'prev';
-            if (index === 0 && instance.realIndex === mainSmallSlider.slides.length - 1) {
-                direction = 'prev';
-            }
-            if (index === mainSmallSlider.slides.length - 1 && instance.realIndex === 0) {
-                direction = 'next';
-            }
-            index = instance.realIndex;
     
             if (direction === 'next') {
                 nextSlide(instance);
@@ -250,9 +252,9 @@ function advantagesSliderHandler() {
             
         });
     } else {
-        document.querySelectorAll('[data-advantages-slider-all]').forEach(item => {
-            item.textContent = mainSmallSlider.slides.length - 2 < 10 ? '0' + (mainSmallSlider.slides.length - 2) : mainSmallSlider.slides.length - 2;
-        });
+        // document.querySelectorAll('[data-advantages-slider-all]').forEach(item => {
+        //     item.textContent = mainSmallSlider.slides.length - 2 < 10 ? '0' + (mainSmallSlider.slides.length - 2) : mainSmallSlider.slides.length - 2;
+        // });
         largeSlider.on('slideChange', (instance) => {
             textSlider.slideTo(instance.realIndex);
             document.querySelectorAll('[data-advantages-slider-current]').forEach(item => {
@@ -329,6 +331,7 @@ function advantagesSliderHandler() {
         })
             .set([prevElement, currentElement], {
                 opacity: 1,
+                transition: 'none',
             })
             .to(prevElement.querySelector('img'), {
                 xPercent: 100,

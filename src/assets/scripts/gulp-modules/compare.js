@@ -75,6 +75,12 @@ function renderTemplate(templateId, data) {
 }
 
 function getFlatDataById(id) {
+    if (Array.isArray(window.yarkoFlats)) {
+        const flat = window.yarkoFlats.find(item => item.id == id);
+        if (flat) {
+            return flat;
+        }
+    }
     return {
         project_name: 'PARK AVENUE',
         id: id,
@@ -87,3 +93,16 @@ function getFlatDataById(id) {
         fron_window_view: 'ГОРИ',
     }
 }
+
+window.addEventListener('favourites:updated', (evt) => {
+    const favouritesList = evt.detail;
+    console.log('Favourites updated:', favouritesList);
+    if (Array.isArray(favouritesList) && favouritesList.length > 0) {
+        document.querySelector('[data-not-empty]').style.display = '';
+        document.querySelector('[data-empty]').style.display = 'none';
+    } else {
+        document.querySelector('[data-empty]').style.display = 'flex';
+        document.querySelector('[data-not-empty]').style.display = 'none';
+    }
+    
+})

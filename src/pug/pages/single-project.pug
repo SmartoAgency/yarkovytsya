@@ -44,56 +44,34 @@ block variable
       {
         title: "Елітне розташування",
         description: "Уявіть собі ранок, коли ви відкриваєте очі, і перше, що бачите, — це мальовничі Карпати, або зелене море із крон дерев парку ім. Т.Г. Шевченка. Ви виходите на терасу з чашкою кави, вдихаючи свіже повітря парку, що знаходиться буквально на відстані витягнутої руки від вашого дому. Це не просто житловий комплекс, це стиль життя, де природа і сучасний комфорт поєдналися в єдине ціле. Всього декілька хвилин пішої прогулянки — і ви на міському озері, або декілька хвилин авто — і ви в центрі міста.",
-        img: "./assets/images/single-project/advantage-slider-img.jpg"
+        img: "./assets/images/single-project/advantages/1.jpg"
       },
       {
         title: "Преміум клас",
         description: "Квартири преміум класу з панорамними вікнами",
-        img: "./assets/images/single-project/advantage-slider-img1.jpg"
+        img: "./assets/images/single-project/advantages/2.jpg"
       },
       {
         title: "Зелена зона",
         description: "Частина території комплексу плавно переходить у парк ім. Т.Г. Шевченка",
-        img: "./assets/images/single-project/2.jpg"
+        img: "./assets/images/single-project/advantages/3.jpg"
       },
       {
         title: "Сучасна архітектура",
         description: "Архітектурні рішення, що поєднують естетику і функціональність",
-        img: "./assets/images/single-project/3.jpg"
+        img: "./assets/images/single-project/advantages/4.jpg"
       },
       {
         title: "Сучасна архітектура",
         description: "Архітектурні рішення, що поєднують естетику і функціональність",
-        img: "./assets/images/single-project/4.jpg"
+        img: "./assets/images/single-project/advantages/5.jpg"
       },
       {
-        title: "Сучасна архітектура",
-        description: "Архітектурні рішення, що поєднують естетику і функціональність",
-        img: "./assets/images/single-project/5.jpg"
+        title: "6",
+        description: "6",
+        img: "./assets/images/single-project/advantages/6.jpg"
       },
     ];
-    var smallAdvantages = [
-      {
-        img: "./assets/images/single-project/3.jpg"
-      },
-      {
-        img: "./assets/images/single-project/4.jpg"
-      },
-      {
-        img: "./assets/images/single-project/5.jpg"
-      },
-      {
-        img: "./assets/images/single-project/advantage-slider-img.jpg"
-      },
-      {
-        img: "./assets/images/single-project/advantage-slider-img1.jpg"
-      },
-      {
-        img: "./assets/images/single-project/2.jpg"
-      },
-      
-      
-    ]
   
 block meta
   title= title_page
@@ -209,7 +187,7 @@ block content
         .advantages-slider__mini-slider-wrapper
           .advantages-slider__mini-slider.swiper-container(data-advantages-slider-small)
             .swiper-wrapper
-              each val in smallAdvantages
+              each val in advantages
                 .swiper-slide
                   .advantages-slider__small-item
                     img(src=val.img, alt="", srcset="" loading="lazy")

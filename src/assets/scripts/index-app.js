@@ -409,6 +409,9 @@ function favouritesHandler() {
         });
 
         pushSingleParam(KEY_FAVOURITES, favouritesList.join(','));
+        window.dispatchEvent(new CustomEvent('favourites:updated', {
+                detail: favouritesList
+        }));
         localStorage.setItem(KEY_FAVOURITES, favouritesList.join(','));
     }
 

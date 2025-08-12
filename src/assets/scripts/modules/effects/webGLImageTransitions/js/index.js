@@ -102,7 +102,7 @@ let sketch = new Sketch({
 
 
 trackVisibility('#slider', (status, target) => {
-    console.log('trackVisibility', status, target);
+    // console.log('trackVisibility', status, target);
     
     if (status === 'enter') {
         // sketch.init();
@@ -119,8 +119,8 @@ trackVisibility('#slider', (status, target) => {
 
 window.addEventListener('load', () => {
     if (isElementInViewport(document.querySelector('#slider')) === false) {
-        sketch.stop();
-        clearTimeout(timeout);
+        // sketch.stop();
+        // clearTimeout(timeout);
     }
 }, { once: true})
 

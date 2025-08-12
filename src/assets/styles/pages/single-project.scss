@@ -90,6 +90,7 @@
         }
     }
     &__subtitle {
+        text-transform: uppercase;
         @include from(1025px){
             @include size(6);
             @include shift(0);
@@ -141,7 +142,7 @@
         @include from(1025px){ 
             @include size(6);
             @include shift(0);
-            margin-top: pxInVh(87);
+            margin-top: pxInVh(65);
         }
     }
     .down-arrow { 
@@ -772,6 +773,7 @@
 	pointer-events: auto;
 	color: var(--color-white);
     @include text-style-1920-body;
+    text-transform: uppercase;
 }
 
 .frame__nav-button:not(.frame__nav-button--current):hover {
@@ -1127,6 +1129,7 @@
     }
     &__title {
         margin-bottom: 60px;
+        text-transform: uppercase;
         @include from(1025px){
             width: 100%;
         }

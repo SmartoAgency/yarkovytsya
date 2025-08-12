@@ -1051,7 +1051,7 @@ export class Sketch {
 
     this.paused = true;
     this.initiate(()=>{
-      console.log(this.textures);
+      // console.log(this.textures);
       this.setupResize();
       this.settings();
       this.addObjects();
@@ -1156,7 +1156,7 @@ export class Sketch {
         radius: { type: "f", value: 0 },
         texture1: { type: "f", value: this.textures[0] },
         texture2: { type: "f", value: this.textures[1] },
-        displacement: { type: "f", value: new THREE.TextureLoader().load('img/disp1.jpg') },
+        displacement: { type: "f", value: new THREE.TextureLoader().load(document.documentElement.dataset.status === 'local' ? './assets/images/disp1.jpg' : '/wp-content/themes/3d/assets/images-wp/disp1.jpg') },
         resolution: { type: "v4", value: new THREE.Vector4() },
       },
       // wireframe: true,
@@ -1200,8 +1200,8 @@ export class Sketch {
     }})
   }
   render() {
-    if (this.paused) return;
-    console.log('render');
+    if (this.paused || !this.material) return;
+    // console.log('render');
     this.time += 0.05;
     this.material.uniforms.time.value = this.time;
     // this.material.uniforms.progress.value = this.settings.progress;

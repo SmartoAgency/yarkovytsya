@@ -24,7 +24,7 @@ async function planningsGallery() {
     const fetchedFlats = await getFlats();
 
     fetchedFlats.forEach((flat) => {
-        flat.deadline = flat.acf.block.card.deadline;
+        flat.deadline = flat.acf.block.card.dd;
         flat.buildclass = flat.acf.block.card.class;
     })
     // return;
@@ -242,7 +242,7 @@ async function getFlats() {
 function getProjectCard(data) {
 
     const eoselya = data.acf.block.card.ehata;
-    const deadline = data.acf.block.card.state;
+    const deadline = data.acf.block.card.dd;
     const labels = get(data, 'acf.block.card.fast_info', []);
     const title = data.title.rendered;
     const adress = get(data, 'acf.block.screen_1.row_1', false);

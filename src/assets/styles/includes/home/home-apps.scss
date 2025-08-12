@@ -130,7 +130,7 @@
                 height: 68px;
             }
         }
-        &-text,
+        // &-text,
         svg {
             @include from(1025px){
                 width: calc(50% - 10px);

@@ -25,11 +25,11 @@ class FilterModel extends EventEmitter {
     this.types = config.types || {
       area: 'range',
       floor: 'range',
+      deadline: 'checkbox',
       roomsforfilter: 'checkbox',
       eoselya: 'checkbox',
       level: 'checkbox',
       objecttype: 'checkbox',
-      queue: 'checkbox',
       parking: 'checkbox',
       project: 'checkbox',
     };
@@ -168,6 +168,17 @@ class FilterModel extends EventEmitter {
 
   // нужно переписать #change
   createRangeParam(flat, name, acc) {
+    if (name === 'floor') { 
+      const floors = flat[name].split(',').map(Number);
+      acc[name] = {
+        type: name,
+        // min: Math.min(...floors),
+        max: acc[name] && acc[name].max > Math.max(...floors) ? acc[name].max : Math.max(...floors),
+        min: acc[name] && acc[name].min < Math.min(...floors) ? acc[name].min : Math.min(...floors)
+
+      };
+      return acc;
+    }
     if (!has(flat, name)) {
       return acc;
     }
@@ -227,6 +238,7 @@ class FilterModel extends EventEmitter {
       const $min = $(`.js-filter-range [data-type=${config.type}][data-border="min"]`);
       const $max = $(`.js-filter-range [data-type=${config.type}][data-border="max"]`);
       const rangeSlider = $(`.js-filter-range .js-s3d-filter__${config.type}--input[data-type=${config.type}]`);
+      
       
 
       const searchParams = parseSearchUrl(window.location);
@@ -479,20 +491,24 @@ class FilterModel extends EventEmitter {
   }
   
   checkFloorRangeParam(flat, key, value) {
-    const floorRange = flat['floor_range'];
+    const floorRange = flat['floor'];
 
-    if (floorRange.match(/-/)) {
-      const [min, max] = floorRange.split('-').map(Number);
+    if (floorRange.match(/,/)) {
+      const numbers = floorRange.split(',').map(Number);
       let isValid = false;
-      for (let i = min; i <= max; i++) {
-        if (this.isBetween(i, value.min, value.max)) {
+      for (let i = value.min; i <= value.max; i++) {
+        if (numbers.includes(i)) {
           isValid = true;
           break;
         }
+        // if (this.isBetween(i, value.min, value.max)) {
+        //   isValid = true;
+        //   break;
+        // }
       }
       return isValid;
     } else {
-      return has(flat, 'floor_range') && this.isBetween(+flat['floor_range'], value.min, value.max);
+      return has(flat, 'floor') && this.isBetween(+flat['floor'], value.min, value.max);
     }
 
     return has(flat, key) && flat[key] >= value.min && flat[key] <= value.max;
