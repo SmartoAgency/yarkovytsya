@@ -25,6 +25,7 @@ async function planningsGallery() {
 
     fetchedFlats.forEach((flat) => {
         flat.deadline = flat.acf.block.card.dd;
+        flat._deadline = flat.acf.block.card.deadline;
         flat.buildclass = flat.acf.block.card.class;
     })
     // return;
@@ -177,7 +178,7 @@ async function planningsGallery() {
             },
 
             types: {
-                deadline: 'checkbox',
+                _deadline: 'checkbox',
                 buildclass: 'checkbox',
             }
         },
