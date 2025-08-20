@@ -24,6 +24,10 @@ let $sliderRight = $('.slideshow')
 
 let rightItems = $('.item', $sliderRight).toArray();
 let reverseItems = rightItems.reverse();
+
+if (window.innerWidth > 1024) {
+    reverseItems = rightItems.reverse();
+}
 $('.slider', $sliderRight).html('');
 for (let i = 0; i < maxItems; i++) {
     $(reverseItems[i]).appendTo($('.slider', $sliderRight));

@@ -304,6 +304,19 @@
                 transform: translate(-50%, -50%);
                 object-fit: cover;
             }
+            
+        }
+        @include from(1025px){
+            .item {
+                img {
+                    right: 0;
+                    top: 0;
+                    width: 50%;
+                    height: 100%;
+                    min-width: initial;
+                    transform: none;
+                }
+            }
         }
     }
 
@@ -369,9 +382,22 @@
         width: 50vw;
         pointer-events: none;
 
+        
         .slider {
             left: 0;
             position: absolute;
+            @include from(1025px){
+                .item {
+                    img {
+                        left: 0;
+                        top: 0;
+                        width: 50%;
+                        height: 100%;
+                        min-width: initial;
+                        transform: none;
+                    }
+                }
+            }
         }
     }
 }
