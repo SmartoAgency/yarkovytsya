@@ -87,7 +87,7 @@ block content
     .single-project-front-screen__content
       include ../includes/breadcrumbs.pug
       .single-project-front-screen__lines
-        each val, index in [1,2,3,4,5]
+        each val, index in [1,2]
           .single-project-front-screen__slider-line(data-front-screen-line-index=index)
             .single-project-front-screen__slider-line-inner
       .single-project-front-screen__subtitle.color-white.hide-on-mobile.hide-on-tablet(data-split-lines-new-animation) ПАРК ШЕВЧЕНКА, ВУЛ. ДОРОШЕНКА
@@ -109,50 +109,14 @@ block content
         </svg>
       .single-project-front-screen__logo
         img(src="./assets/images/single-project/lgoo.svg", alt="", srcset="")
+    .incredible-slider(data-images="https://yarkovytsya-wp.smarto.com.ua/wp-content/uploads/2025/08/yarko-screen1_1.jpg,https://yarkovytsya-wp.smarto.com.ua/wp-content/uploads/2025/08/yarko-screen1_2.jpg,https://yarkovytsya-wp.smarto.com.ua/wp-content/uploads/2025/08/yarko-screen1_3.jpg,https://yarkovytsya-wp.smarto.com.ua/wp-content/uploads/2025/08/yarko-screen1_4.jpg")
+      .incredible-slider__left
+        .incredible-slider__item
+          img(src="https://yarkovytsya-wp.smarto.com.ua/wp-content/uploads/2025/08/yarko-screen1_3.jpg", alt="", srcset="")
+      .incredible-slider__right
+        .incredible-slider__item
+          img(src="https://yarkovytsya-wp.smarto.com.ua/wp-content/uploads/2025/08/yarko-screen1_2.jpg", alt="", srcset="")
 
-    .gallery 
-      .slick-arrows 
-        .slick-arrow-up
-          <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 12 12" fill="none">
-            <path d="M11 6.07692L6 1M6 1L1 6.07692M6 1C6 4.00855 6 8.44273 6 11" stroke="#0F0F0F" stroke-linecap="square"/>
-          </svg>
-        .slick-arrow-down
-          <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 12 12" fill="none">
-            <path d="M11 6.07692L6 1M6 1L1 6.07692M6 1C6 4.00855 6 8.44273 6 11" stroke="#0F0F0F" stroke-linecap="square"/>
-          </svg>
-      .split-slideshow
-        .slideshow
-          .slider
-            .item
-              picture
-                source(
-                  srcset="https://raw.githubusercontent.com/supahfunk/supah-codepen/master/canyon-2.jpg" media="(min-width: 768px)"
-                  )
-                img(src="https://raw.githubusercontent.com/supahfunk/supah-codepen/master/canyon-2.jpg" alt="Canyon 2" loading="lazy")
-            .item
-              picture
-                source(
-                  srcset="https://raw.githubusercontent.com/supahfunk/supah-codepen/master/canyon-3.jpg" media="(min-width: 768px)"
-                  )
-                img(src="https://raw.githubusercontent.com/supahfunk/supah-codepen/master/canyon-3.jpg" alt="Canyon 3" loading="lazy")
-            .item
-              picture
-                source(
-                  srcset="https://raw.githubusercontent.com/supahfunk/supah-codepen/master/canyon-4.jpg" media="(min-width: 768px)"
-                  )
-                img(src="https://raw.githubusercontent.com/supahfunk/supah-codepen/master/canyon-4.jpg" alt="Canyon 4" loading="lazy")
-            .item
-              picture
-                source(
-                  srcset="https://raw.githubusercontent.com/supahfunk/supah-codepen/master/canyon-1.jpg" media="(min-width: 768px)"
-                  )
-                img(src="https://raw.githubusercontent.com/supahfunk/supah-codepen/master/canyon-1.jpg" alt="Canyon 1" loading="lazy")
-            .item
-              picture
-                source(
-                  srcset="https://raw.githubusercontent.com/supahfunk/supah-codepen/master/canyon-1.jpg" media="(min-width: 768px)"
-                  )
-                img(src="https://raw.githubusercontent.com/supahfunk/supah-codepen/master/canyon-1.jpg" alt="Canyon 1" loading="lazy")
   .single-project-big-block
     .single-project-big-block__decor
       img(src="./assets/images/single-project/yarko-logo.svg", alt="", srcset="" loading="lazy")
