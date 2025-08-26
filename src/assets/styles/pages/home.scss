@@ -151,6 +151,10 @@
             bottom: calc(100% + 35px);
             left: 50%;
             transform: translateX(-50%);
+
+            left: auto;
+            transform: none;
+            right: 0;
         }
     }
     &__slider-line {

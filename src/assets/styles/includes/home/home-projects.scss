@@ -57,7 +57,7 @@
     &__map {
         height: 50.5vw;
         position: relative;
-        @include to(1024px){
+        @include to(1023px){
             height: 100vh;
         }
         @include to(600px){
@@ -114,7 +114,7 @@
             &--park-avenue {
                 top: 32vw;
                 left: 27vw;
-                @include from-to(601px, 1024px){
+                @include from-to(601px, 1023px){
                     top: 61vh;
                     left: 3vh;
                 }
@@ -126,7 +126,7 @@
             &--yarko-center {
                 top: 24vw;
                 left: 77vw;
-                @include from-to(601px, 1024px){
+                @include from-to(601px, 1023px){
                     top: 43vh;
                     left: 57vh;
                 }
@@ -138,7 +138,7 @@
             &--sloboda {
                 top: 26vw;
                 left: 47vw;
-                @include from-to(601px, 1024px){
+                @include from-to(601px, 1023px){
                     top: 52vh;
                     left: 26vh;
                 }
@@ -150,7 +150,7 @@
             &--cascad-yarko {
                 top: 16vw;
                 left: 40vw;
-                @include from-to(601px, 1024px){
+                @include from-to(601px, 1023px){
                     top: 32vh;
                     left: 18vw;
                 }
@@ -170,6 +170,9 @@
             background: linear-gradient(0deg, rgba(16, 24, 32, 0.00) 0%, rgba(16, 24, 32, 0.80) 60.1%, #101820 100%);
             z-index: 2;
             pointer-events: none;
+            @include from-to(601px, 1024px){
+                height: 70px;
+            }
             @include to(600px){
                 width: 149vh;
             }
@@ -183,6 +186,9 @@
             width: 100%;
             background: linear-gradient(180deg, rgba(16, 24, 32, 0.00) 0%, rgba(16, 24, 32, 0.80) 60.1%, #101820 100%);
             z-index: 2;
+            @include from-to(601px, 1024px){
+                height: 70px;
+            }
             @include to(600px){
                 width: 149vh;
             }

@@ -61,6 +61,7 @@
             margin-top: auto;
             margin-right: auto;
             margin-bottom: 32px;
+            width: 125px;
         }
         @include to(600px){
             width: 89px;
@@ -120,6 +121,14 @@
         background: rgba(219, 226, 234, 0.2);
         position: relative;
         cursor: pointer;
+        &:before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0;
+            height: 600%;
+            width: 100%;
+        }
         @include to(600px){
             width: 42px;
         }
@@ -543,6 +552,7 @@
     }
     &__mini-slider-wrapper { 
         grid-area: mini-slider; 
+        pointer-events: none;
         @include to(1024px){
             display: none;
             grid-area: none;
@@ -552,7 +562,7 @@
         grid-area: large-slider;
         @include to(1024px){
             margin-top: 40px;
-            height: 78.25vw;
+            height: 48.25vw;
         }
         @include to(600px){
             margin-top: 0;
@@ -571,6 +581,7 @@
             // height: auto;
             // max-width: calc(100vw - var(--page-side-fields) * 2);
             width: calc(100vw - var(--page-side-fields) * 2);
+            padding-bottom: 50%;
         }
         img {
             width: 100%;
@@ -1144,6 +1155,9 @@
     &__map-wrap {
         padding-bottom: 82.5%;
         position: relative;
+        @include from-to(601px, 1024px){
+            padding-bottom: 45%;
+        }
         iframe {
             position: absolute;
             top: 0;
@@ -1354,6 +1368,9 @@
         @include to(1024px){
             width: 50%;
         }
+        @include from-to(601px, 1024px){
+            flex-grow: 1;
+        }
         @include to(600px){
             width: 100%;
         }
@@ -1445,6 +1462,11 @@
             margin-left: calc(var(--page-side-fields) * -1);
             margin-right: calc(var(--page-side-fields) * -1);
             width: calc(100vw + var(--page-side-fields) * 2);
+        }
+        @include to(600px){
+            width: 100%;
+            margin-left: 0;
+            margin-right: 0;
         }
     }
 }

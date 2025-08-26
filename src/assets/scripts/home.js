@@ -90,8 +90,8 @@ function homeDeveloperSlider() {
                 spaceBetween: 20,
             },
             601: {
-                slidesPerView: 1.2,
-                spaceBetween: 60,
+                slidesPerView: 2.5,
+                spaceBetween: 20,
             },
         },
     });

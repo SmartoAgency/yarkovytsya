@@ -29,6 +29,8 @@
         }
         @include to(600px){
             text-align: left;
+            position: relative;
+            z-index: 5;
         }
         p {
             max-width: 480px;

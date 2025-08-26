@@ -75,8 +75,6 @@
             color: var(--color-white);
             border: none;
             width: 100%;
-            appearance: none;
-            -webkit-appearance: none;
             &::placeholder {
                 color: var(--color-body-description);
             }

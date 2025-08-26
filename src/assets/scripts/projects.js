@@ -23,14 +23,16 @@ async function planningsGallery() {
 
     const fetchedFlats = await getFlats();
 
-    fetchedFlats.forEach((flat) => {
+    console.log('fetchedFlats:', fetchedFlats);
+
+    fetchedFlats.forEach((flat, index) => {
         flat.deadline = flat.acf.block.card.dd;
         flat._deadline = flat.acf.block.card.deadline;
         flat.buildclass = flat.acf.block.card.class;
+        flat.id = index;
     })
     // return;
     
-
     const flats = fetchedFlats.reduce((acc, flat) => {
         acc[flat.id] = flat;
         return acc;
@@ -230,7 +232,7 @@ async function planningsGallery() {
 
 async function getFlats() {
     const isDev =  window.location.href.match(/localhost|verstka|192/);
-    const url = isDev ? './static/flats.json' : '/wp-json/wp/v2/posts?categories=4&_embed=1&per_page=100';
+    const url = isDev ? './static/flats.json' : '/wp-json/wp/v2/posts?categories=4&_embed=1&per_page=100&order=desc';
 
     const response = await fetch(url, {
         method: 'GET',

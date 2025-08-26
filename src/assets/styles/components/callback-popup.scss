@@ -150,11 +150,11 @@
         @include to(1024px){
             width: 100%;
             padding-top: 0;
+            max-height: 70vh;
+            overflow-y: auto;
         }
         @include to(600px){
             padding: 20px var(--page-side-fields);
-            max-height: 70vh;
-            overflow-y: auto;
         }
         &--no-padding {
             padding: 0;

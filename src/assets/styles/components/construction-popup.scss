@@ -56,10 +56,17 @@
             width: 100%;
             height: 50%;
         }
+        @include from-to(601px, 1024px){
+            height: 65%;
+        }
         .swiper-slide {
             display: flex;
             align-items: center;
             justify-content: center;
+            cursor: grab;
+            &:active {
+                cursor: grabbing;
+            }
         }
     }
     &__img {
@@ -70,11 +77,15 @@
         width: 37%;
         background-color: var(--color-black);
         position: relative;
+
         @include to(1024px){
             width: 100%;
             height: 50%;
             overflow-y: auto;
             padding: 20px;
+        }
+        @include from-to(601px, 1024px){
+            height: 35%;
         }
         @include to(600px){
             &:after {

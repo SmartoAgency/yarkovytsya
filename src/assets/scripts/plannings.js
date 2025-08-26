@@ -72,10 +72,13 @@ async function planningsGallery() {
         }
 
         currentPage$.next(totalPages < currentPage$.value ? totalPages : currentPage$.value);
-        window.scrollTo({
-            top: 0,
-            behavior: 'smooth',
-        });
+        setTimeout(() => {
+        
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth',
+            });
+        }, 800);
     });
 
     document.querySelectorAll('[data-pagination="prev"]').forEach((el) => {

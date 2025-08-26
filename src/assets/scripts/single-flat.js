@@ -195,3 +195,20 @@ window.addEventListener('load', () => {
     sliderHandler();
     window.dispatchEvent(new Event('resize'));
 });
+
+
+document.body.addEventListener('click', function (evt) {
+    const target = evt.target.closest('[data-flat-image-container]');
+
+    if (!target) return;
+
+    Swal.fire({
+        width: window.innerWidth,
+        height: window.innerHeight,
+        imageUrl: target.src, // Replace with your image URL
+        imageWidth: window.innerWidth, // Optional: set image width
+        imageHeight: window.innerHeight, // Optional: set image height
+        imageAlt: 'Custom image', // Optional: alt text for accessibility
+        showCloseButton: true,
+    });
+})

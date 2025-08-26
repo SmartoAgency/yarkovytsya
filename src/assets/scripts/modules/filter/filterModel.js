@@ -27,10 +27,7 @@ class FilterModel extends EventEmitter {
       floor: 'range',
       deadline: 'checkbox',
       roomsforfilter: 'checkbox',
-      eoselya: 'checkbox',
-      level: 'checkbox',
-      objecttype: 'checkbox',
-      parking: 'checkbox',
+      terrace: 'checkbox',
       project: 'checkbox',
     };
     this.configProject = {};

@@ -18,6 +18,9 @@
             padding-bottom: 62.5%;
             position: relative;
             z-index: -1;
+            @include from-to(601px, 1024px){
+                padding-bottom: 45%;
+            }
             img {
                 position: absolute;
                 top: 0;
@@ -56,8 +59,8 @@
         right: var(--inner-offset);
         bottom: var(--inner-offset);
         img {
-            width: 85px;
-            height: 34px;
+            width: 140px;
+            height: 45px;
             object-fit: contain;
             object-position: bottom;
         }
@@ -87,6 +90,9 @@
         flex-wrap: wrap;
         justify-content: space-between;
         align-items: center;
+        @include to(600px){
+            position: relative;
+        }
     }
     &__label {
         border-radius: 100px;
@@ -134,8 +140,9 @@
         justify-content: center;
         @include to(600px){
             position: absolute;
-            right: var(--inner-offset);
-            bottom: var(--inner-offset);
+            right: 4px;
+            bottom: 4px;
+            background-color: red;
         }
     }
 

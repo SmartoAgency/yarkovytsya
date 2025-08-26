@@ -408,7 +408,7 @@ function favouritesHandler() {
             counter.textContent = favouritesList.length;
         });
 
-        pushSingleParam(KEY_FAVOURITES, favouritesList.join(','));
+        // pushSingleParam(KEY_FAVOURITES, favouritesList.join(','));
         window.dispatchEvent(new CustomEvent('favourites:updated', {
                 detail: favouritesList
         }));
@@ -424,12 +424,12 @@ function favouritesHandler() {
     }
     function getInitialFavouritesList() {
         const favouriteParam = getUrlParam(KEY_FAVOURITES);
-        if (favouriteParam) {
-            return favouriteParam.split(',')
-                .filter(id => {
-                    return id.trim() !== ''
-                });
-        }
+        // if (favouriteParam) {
+        //     return favouriteParam.split(',')
+        //         .filter(id => {
+        //             return id.trim() !== ''
+        //         });
+        // }
         if (localStorage.getItem(KEY_FAVOURITES)) {
             return localStorage.getItem(KEY_FAVOURITES)
                 .split(',')
