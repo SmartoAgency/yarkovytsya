@@ -119,6 +119,17 @@ function advantagesSliderHandler() {
         })
     }
 
+    textSlider.on('transitionStart', () => {
+        document.querySelectorAll('.advantages-slider, [data-advantages-slider-prev], [data-advantages-slider-next]').forEach(item => {
+            item.style.cursor = 'wait';
+        });
+    })
+    textSlider.on('slideChangeTransitionEnd', () => {
+        document.querySelectorAll('.advantages-slider, [data-advantages-slider-prev], [data-advantages-slider-next]').forEach(item => {
+            item.removeAttribute('style');
+        });
+    })
+
     function nextSlide(instance) {
         const prevElement = instance.slidesEl.querySelector('.swiper-slide-prev') ? 
             instance.slidesEl.querySelector('.swiper-slide-prev') : 

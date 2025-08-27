@@ -55,8 +55,23 @@
         }
     }
     &__map {
-        height: 50.5vw;
+        height: 52.8vw;
         position: relative;
+        &>svg {
+            width: 100%;
+            height: 100%;
+            @include to(600px){
+                width: auto;
+            }
+            .mapa__icon {
+                transform-origin: center;
+                transform-box: fill-box;
+                transition: .25s ease-in-out;
+            }
+            a:hover .mapa__icon {
+                transform: rotate(45deg);
+            }
+        }
         @include to(1023px){
             height: 100vh;
         }
@@ -165,7 +180,7 @@
             position: absolute;
             left: 0;
             top: 0;
-            height: 260px;
+            height: 15%;
             width: 100%;
             background: linear-gradient(0deg, rgba(16, 24, 32, 0.00) 0%, rgba(16, 24, 32, 0.80) 60.1%, #101820 100%);
             z-index: 2;
@@ -174,7 +189,7 @@
                 height: 70px;
             }
             @include to(600px){
-                width: 149vh;
+                width: 185vh;
             }
         }
         &:after {
@@ -182,7 +197,7 @@
             position: absolute;
             left: 0;
             bottom: 0;
-            height: 260px;
+            height: 15%;
             width: 100%;
             background: linear-gradient(180deg, rgba(16, 24, 32, 0.00) 0%, rgba(16, 24, 32, 0.80) 60.1%, #101820 100%);
             z-index: 2;
@@ -190,7 +205,7 @@
                 height: 70px;
             }
             @include to(600px){
-                width: 149vh;
+                width: 185vh;
             }
             pointer-events: none;
         }
