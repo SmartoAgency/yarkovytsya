@@ -175,7 +175,7 @@ body[class*="plannings"] {
         @include from-to(601px, 1024px){
             width: calc(60% - var(--gap));
         }
-        @include to(1023px){
+        @include to(600px){
             width: 100%;
             padding-left: var(--page-side-fields);
             padding-right: var(--page-side-fields);
