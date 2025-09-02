@@ -519,6 +519,7 @@ function autoplay() {
 function newsSliderHandler() {
     new Swiper('[data-news-slider]', {
         slidesPerView: 1,
+        modules: [Navigation],
         spaceBetween: 60,
         breakpoints: {
             320: {
