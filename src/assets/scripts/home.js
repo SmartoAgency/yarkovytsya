@@ -193,3 +193,32 @@ function homeDeveloperCirclesDesktop() {
     });
 }
 window.addEventListener('load', homeDeveloperCirclesDesktop);
+
+
+
+function newsSliderHandler() {
+    new Swiper('[data-news-slider]', {
+        slidesPerView: 1,
+        spaceBetween: 60,
+        breakpoints: {
+            320: {
+                slidesPerView: 1,
+                spaceBetween: 20,
+            },
+            601: {
+                slidesPerView: 2,
+                spaceBetween: 20,
+            },
+            1025: {
+                slidesPerView: 3,
+                spaceBetween: 20,
+            },
+        },
+        navigation: {
+            nextEl: '[data-news-slider-next]',
+            prevEl: '[data-news-slider-prev]',
+        },
+    });
+}
+
+newsSliderHandler();

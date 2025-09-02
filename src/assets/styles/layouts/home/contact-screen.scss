@@ -117,6 +117,7 @@
             @include text-style-1920-body;
             padding: 5px 12px;
             color: var(--color-white);
+            text-transform: uppercase;
         }
         span {
             @include from(601px){

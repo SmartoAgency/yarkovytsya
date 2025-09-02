@@ -62,6 +62,7 @@
             height: 100%;
             @include to(600px){
                 width: auto;
+                height: 99%;
             }
             .mapa__icon {
                 transform-origin: center;

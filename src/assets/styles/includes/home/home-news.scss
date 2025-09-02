@@ -36,4 +36,27 @@
             width: 100%;
         }
     }
+    .swiper-container {
+        width: 100%;
+    }
+    .slider-navigation {
+        position: absolute;
+        left: 0;
+        top: 50%;
+        width: 100%;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        transform: translateY(-50%);
+        z-index: 2;
+        pointer-events: none;
+        padding-left: 10px;
+        padding-right: 10px;
+        &>* {
+            pointer-events: auto;
+        }
+        .swiper-button-lock {
+            display: none;
+        }
+    }
 }
