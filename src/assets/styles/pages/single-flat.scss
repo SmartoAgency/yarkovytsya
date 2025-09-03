@@ -136,7 +136,7 @@
 
         &-wrap {
             position: relative;
-            padding-bottom: Min(62.53%, 80vh);
+            padding-bottom: 50vh;
 
             @include to(600px) {
                 padding-bottom: 100%;

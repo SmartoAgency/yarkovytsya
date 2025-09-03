@@ -48,6 +48,23 @@ document.body.addEventListener('click', function switchFlatImage(evt) {
         el.classList.toggle('active', el === target);
     });
     setFlatImage(target.dataset.flatImage);
+
+    if (target.dataset.flatImage === 'floor_svg') {
+        document.querySelectorAll('.single-flat__image-block-wrap img').forEach((img) => {
+            img.style.opacity = 0;
+        });
+        document.querySelectorAll('.single-flat__image-block-wrap svg').forEach((img) => {
+            img.style.opacity = 1;
+        });
+    } else {
+        document.querySelectorAll('.single-flat__image-block-wrap img').forEach((img) => {
+            img.style.opacity = 1;
+        });
+        document.querySelectorAll('.single-flat__image-block-wrap svg').forEach((img) => {
+            img.style.opacity = 0;
+        });
+
+    }
 });
 
 document.querySelector('[data-flat-image]').click();
