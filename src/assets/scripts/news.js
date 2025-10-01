@@ -25,8 +25,9 @@ async function planningsGallery() {
     const fetchedFlats = await getFlats();
 
     // console.log('fetchedFlats', fetchedFlats);
-    fetchedFlats.forEach((flat) => {
+    fetchedFlats.forEach((flat, index) => {
         flat.posttype = flat.acf.block.type;
+        flat.id = index + 1;
     })
     // return;
     
@@ -228,7 +229,7 @@ async function planningsGallery() {
 
 async function getFlats() {
     const isDev =  window.location.href.match(/localhost|verstka|192/);
-    const url = isDev ? './static/flats.json' : '/wp-json/wp/v2/posts?categories=2&_embed=1&per_page=100';
+    const url = isDev ? './static/flats.json' : document.querySelector('[data-api-url]').dataset.apiUrl;
 
     const response = await fetch(url, {
         method: 'GET',
