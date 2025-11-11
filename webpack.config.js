@@ -1,6 +1,5 @@
 /* eslint-disable linebreak-style */
 const webpack = require('webpack');
-const UglifyJSPlugin = require('uglifyjs-webpack-plugin');
 
 const config = {
   mode: process.argv.includes('--production') ? 'production' : 'development',
@@ -22,18 +21,37 @@ const config = {
   module: {
     rules: [
       {
-        test: /\.(?:js|mjs|cjs)$/,
+        test: /\.js$/,
         exclude: /node_modules/,
         use: {
           loader: 'babel-loader',
           options: {
-            targets: 'defaults',
-            presets: [
-              ['@babel/preset-env']
-            ]
-          }
-        }
-      }
+            presets: ['@babel/preset-env'],
+          },
+        },
+      },
+      {
+        test: /\.mjs$/,
+        type: 'javascript/auto', // ✅ ВАЖЛИВО!
+        use: {
+          loader: 'babel-loader',
+          options: {
+            presets: ['@babel/preset-env'],
+          },
+        },
+      },
+      {
+        test: /\.svg$/,
+        use: [
+          {
+            loader: 'file-loader',
+            options: {
+              name: '[name].[ext]',
+              outputPath: 'assets/images/',
+            },
+          },
+        ],
+      },
     ],
   },
   optimization: {
@@ -43,23 +61,13 @@ const config = {
           test: /[\\/]node_modules[\\/]/,
           name: 'vendors',
           chunks(chunk) {
-            // exclude `my-excluded-chunk`
             return chunk.name !== 'immediate-loading';
           },
         },
       },
     },
   },
-  plugins: [
-    // new UglifyJSPlugin({
-    //   sourceMap: true,
-    //   uglifyOptions: {
-    //     compress: {
-    //       drop_console: process.argv.includes('--production'),
-    //     },
-    //   },
-    // }),
-  ],
+  plugins: [],
 };
 
 module.exports = config;
