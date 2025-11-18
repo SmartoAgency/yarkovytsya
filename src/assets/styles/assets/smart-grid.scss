@@ -7,6 +7,8 @@ $break_sm: 768px;
 $break_xs: 600px;
 
 $offset: 20px;
+$offset_xl: 30px;
+$offset_2xl: 40px;
 $offset_lg: $offset;
 $offset_md: $offset;
 $offset_sm: $offset;
@@ -91,6 +93,15 @@ $fields_xs: 12px;
 @mixin size($n) {
   $val: 100% / $columns * $n;
   width: #{calc(#{$val} - #{$offset})};
+}
+@mixin size_xl($n) {
+  $val: 100% / $columns * $n;
+  width: #{calc(#{$val} - #{$offset_xl})};
+}
+
+@mixin size_2xl($n) {
+  $val: 100% / $columns * $n;
+  width: #{calc(#{$val} - #{$offset_2xl})};
 }
 
 @mixin size-lg($n) {

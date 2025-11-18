@@ -47,10 +47,16 @@
     position: absolute;
     justify-content: flex-start;
     left: var(--page-side-fields);
-    top: calc(var(--header-h) + 36px);
+    top: calc(var(--header-h) + 18px);
     @include to(1024px) {
       top: calc(var(--header-h) + var(--page-side-fields));
     }
+  }
+  .lines-title-subtitle-block {
+    position: absolute;
+    bottom: 20px;
+    left: 20px;
+    width: 100%;
   }
   &__logo {
     height: auto;
@@ -73,11 +79,16 @@
       margin-left: 0;
       margin-top: auto;
       margin-right: auto;
-      margin-bottom: 32px;
+      margin-bottom: 108px;
       width: 125px;
     }
+    @include to(740px) {
+      margin-bottom: 148px;
+    }
+
     @include to(600px) {
       width: 89px;
+      margin-bottom: 108px;
     }
   }
   .gallery {
@@ -104,17 +115,22 @@
   }
   &__subtitle {
     text-transform: uppercase;
+    // margin-bottom: pxInVh(78);
+
     @include from(1025px) {
-      @include size(6);
-      @include shift(0);
+      // @include size(6);
+      // @include shift(0);
+      margin-bottom: 20px;
     }
-    margin-bottom: pxInVh(78);
   }
   &__subtitle-large {
+    text-transform: uppercase;
     @include from(1025px) {
-      @include size(3);
+      @include size_xl(3);
       @include shift-left(6);
       @include shift-right(0);
+      position: absolute;
+      bottom: 20px;
     }
   }
   &__lines {
@@ -159,22 +175,25 @@
       animation: lineAnim var(--line-time, 2s) linear;
     }
   }
+
   &__title {
     @include from(1025px) {
-      @include size(6);
+      @include size_2xl(6);
       // @include shift(0);
       // margin-top: pxInVh(60);
-      position: absolute;
-      bottom: 20px;
-      left: 20px;
     }
   }
   .down-arrow {
     color: var(--color-white-bb);
     display: flex;
     align-items: center;
-    justify-content: flex-start;
+    justify-content: flex-end;
     align-self: flex-end;
+
+    position: absolute;
+    bottom: 140px;
+    right: 20px;
+
     @include from(1025px) {
       @include size(2);
       @include shift(0);

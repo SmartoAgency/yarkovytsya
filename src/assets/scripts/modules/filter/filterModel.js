@@ -15,7 +15,6 @@ import EventEmitter from '../eventEmitter/EventEmitter';
 import debounce from 'lodash/debounce';
 import { parseSearchUrl } from '../history/history';
 
-
 const SEARCH_PARAMS_FILTER_PREFIX = 'filter_';
 
 class FilterModel extends EventEmitter {
@@ -46,7 +45,7 @@ class FilterModel extends EventEmitter {
     this.i18n = config.i18n;
     this.onChangeFilterState = config.onChangeFilterState || function() {};
     this.isFilterEmpty = new BehaviorSubject(true);
-    this.show_prices = config.show_prices;  
+    this.show_prices = config.show_prices;
   }
 
   init() {
@@ -58,10 +57,8 @@ class FilterModel extends EventEmitter {
     this.emit('updateHeightFilter');
     this.emit('initCardClickHandler', this.updateFsm);
 
-
-
-    this.isFilterEmpty.subscribe((value) => {
-      document.querySelectorAll('.js-s3d-ctr__filter').forEach((el) => {
+    this.isFilterEmpty.subscribe(value => {
+      document.querySelectorAll('.js-s3d-ctr__filter').forEach(el => {
         if (!value) {
           el.setAttribute('data-filter-not-empty', 'true');
         } else {
@@ -165,14 +162,13 @@ class FilterModel extends EventEmitter {
 
   // нужно переписать #change
   createRangeParam(flat, name, acc) {
-    if (name === 'floor') { 
+    if (name === 'floor') {
       const floors = flat[name].split(',').map(Number);
       acc[name] = {
         type: name,
         // min: Math.min(...floors),
         max: acc[name] && acc[name].max > Math.max(...floors) ? acc[name].max : Math.max(...floors),
-        min: acc[name] && acc[name].min < Math.min(...floors) ? acc[name].min : Math.min(...floors)
-
+        min: acc[name] && acc[name].min < Math.min(...floors) ? acc[name].min : Math.min(...floors),
       };
       return acc;
     }
@@ -185,7 +181,6 @@ class FilterModel extends EventEmitter {
       return setting;
     }
 
-    
     if (flat[name] < setting[name].min) {
       setting[name].min = +flat[name];
     }
@@ -234,14 +229,16 @@ class FilterModel extends EventEmitter {
       const { min, max } = config;
       const $min = $(`.js-filter-range [data-type=${config.type}][data-border="min"]`);
       const $max = $(`.js-filter-range [data-type=${config.type}][data-border="max"]`);
-      const rangeSlider = $(`.js-filter-range .js-s3d-filter__${config.type}--input[data-type=${config.type}]`);
-      
-      
+      const rangeSlider = $(
+        `.js-filter-range .js-s3d-filter__${config.type}--input[data-type=${config.type}]`,
+      );
 
       const searchParams = parseSearchUrl(window.location);
 
-      const initialMin = toNumber(searchParams[`${SEARCH_PARAMS_FILTER_PREFIX}${config.type}_min`]) || min;
-      const initialMax = toNumber(searchParams[`${SEARCH_PARAMS_FILTER_PREFIX}${config.type}_max`]) || max;
+      const initialMin =
+        toNumber(searchParams[`${SEARCH_PARAMS_FILTER_PREFIX}${config.type}_min`]) || min;
+      const initialMax =
+        toNumber(searchParams[`${SEARCH_PARAMS_FILTER_PREFIX}${config.type}_max`]) || max;
 
       rangeSlider.ionRangeSlider({
         type: 'double',
@@ -261,7 +258,7 @@ class FilterModel extends EventEmitter {
         },
         onUpdate: updateInputs,
       });
-      
+
       const instance = rangeSlider.data('ionRangeSlider');
       instance.update({
         min,
@@ -408,16 +405,12 @@ class FilterModel extends EventEmitter {
         }
         switch (value.type) {
           case 'text':
-            
             return this.checkTextParam(flat, name, value);
           case 'range':
-            
             return this.checkRangeParam(flat, name, value);
           case 'checkbox':
-            
             return this.checkСheckboxParam(flat, name, value);
           case 'option':
-            
             return this.checkOptionParam(flat, name, value);
           default:
             break;
@@ -459,9 +452,11 @@ class FilterModel extends EventEmitter {
         case 'text':
           return value.value !== '';
         case 'range':
-
-        const rangeInstance = filterConfig[name].elem;
-          return rangeInstance.result.min !== rangeInstance.result.from || rangeInstance.result.max !== rangeInstance.result.to;
+          const rangeInstance = filterConfig[name].elem;
+          return (
+            rangeInstance.result.min !== rangeInstance.result.from ||
+            rangeInstance.result.max !== rangeInstance.result.to
+          );
         case 'checkbox':
           return value.value.length !== 0;
         case 'option':
@@ -483,10 +478,10 @@ class FilterModel extends EventEmitter {
     if (key === 'floor') {
       return this.checkFloorRangeParam(flat, key, value);
     }
-    
+
     return has(flat, key) && flat[key] >= value.min && flat[key] <= value.max;
   }
-  
+
   checkFloorRangeParam(flat, key, value) {
     const floorRange = flat['floor'];
 
@@ -512,7 +507,9 @@ class FilterModel extends EventEmitter {
   }
 
   checkСheckboxParam(flat, key, value) {
-    return value.value.reduce((acc, name) => acc || flat[key] == name, false) || size(value.value) === 0;
+    return (
+      value.value.reduce((acc, name) => acc || flat[key] == name, false) || size(value.value) === 0
+    );
   }
 
   checkOptionParam(flat, key, value) {
@@ -565,8 +562,7 @@ class FilterModel extends EventEmitter {
     return settings;
   }
 
-  reduceFilter(isShow) {
-  }
+  reduceFilter(isShow) {}
 
   changeListScrollBlocked(value) {
     this.isListScrollBlocked = value;
