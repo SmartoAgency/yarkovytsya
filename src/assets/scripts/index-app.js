@@ -295,7 +295,7 @@ function slugify(text) {
 
   result = result.toLowerCase();
 
-  // 3. Заміна всього, крім літер, цифр, пробілів та тире, на тире.
+  // 3. Заміна всього, крім літер, цифр, на тире.
   result = result.replace(/[^a-z0-9\s-]/g, '');
 
   // 4. Заміна пробілів на тире
@@ -350,9 +350,8 @@ function contactScreenProjectsHandler() {
       projects.forEach(project => {
         project.classList.remove('active');
 
-        const projectAttributeRaw = project.getAttribute('data-contact-project'); // Наприклад, Каскад Ярко
-        const projectAttributeSlug = slugify(projectAttributeRaw); // Наприклад, kaskad-yarko
-        console.log(projectAttributeSlug);
+        const projectAttributeRaw = project.getAttribute('data-contact-project');
+        const projectAttributeSlug = slugify(projectAttributeRaw);
 
         if (projectAttributeSlug === whichProjectMakeActiveSlug) {
           project.classList.add('active');

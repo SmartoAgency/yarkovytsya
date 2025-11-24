@@ -63,10 +63,10 @@
     align-self: flex-end;
     margin-left: auto;
     @include from(1025px) {
-      @include size(2);
+      // @include size(2);
       @include shift(0);
       margin-left: auto;
-      width: 250px;
+      width: calc((250 / 1920) * 100vw);
       position: absolute;
       right: 20px;
       bottom: 20px;
@@ -191,7 +191,7 @@
     align-self: flex-end;
 
     position: absolute;
-    bottom: 140px;
+    bottom: 118px;
     right: 20px;
 
     @include from(1025px) {
@@ -444,6 +444,7 @@
   --bottom-padding: 300px;
   padding-top: var(--top-padding);
   margin-bottom: var(--bottom-padding);
+
   @include from-to(1025px, 1440px) {
     --top-padding: 200px;
     --bottom-padding: 200px;
@@ -494,9 +495,10 @@
       height: 140px;
     }
   }
-  .advantages-slider,
+
   .project-status {
     margin-bottom: 300px;
+
     @include from-to(1025px, 1440px) {
       margin-bottom: 200px;
     }
@@ -510,9 +512,20 @@
 }
 
 .advantages-slider {
+  min-height: calc(100vh - 100px);
+  margin-bottom: var(--section-v-offset);
+
+  @include from(1366px) {
+    margin-bottom: 200px;
+  }
+
   @include to(1024px) {
     padding-left: var(--page-side-fields);
     padding-right: var(--page-side-fields);
+    margin-bottom: 150px;
+  }
+  @include to(767px) {
+    margin-bottom: 100px;
   }
   &__content {
     position: relative;
@@ -524,7 +537,7 @@
     grid-template-areas:
       'mini-slider mini-slider large-slider'
       'title title large-slider'
-      '. . large-slider'
+      // '. . large-slider'
       'numbers text large-slider'
       'nav text large-slider';
     width: 100%;
@@ -618,6 +631,13 @@
       top: 0;
       left: 0;
       object-position: center;
+
+      @include from(1024px) {
+        max-height: 770px;
+      }
+      @include from(1920px) {
+        max-height: 870px;
+      }
     }
   }
   &__title {

@@ -17,7 +17,6 @@ async function planningsGallery() {
 
   const $moreButton = document.querySelector('[data-more]');
   const $paginationArrows = document.querySelector('[data-pagination]');
-
   const fetchedFlats = await getFlats();
 
   console.log('fetchedFlats:', fetchedFlats);
@@ -27,8 +26,29 @@ async function planningsGallery() {
     flat._deadline = flat.acf.block.card.deadline;
     flat.buildclass = flat.acf.block.card.class;
     flat.id = index;
+
+    const adress = get(flat, 'acf.block.screen_1.row_1', '');
+
+    if (adress.includes('Івано-Франківськ')) {
+      flat.city = 'ivano-frankivsk';
+    } else if (adress.includes('Чернівці')) {
+      flat.city = 'chernivtsi';
+    } else {
+      flat.city = 'other';
+    }
   });
   // return;
+
+  const allFlatIds = fetchedFlats.map(flat => flat.id);
+
+  const cityResetInput = document.querySelector('input[data-type="city-reset"]');
+  if (cityResetInput) {
+    cityResetInput.addEventListener('change', e => {
+      if (e.target.checked) {
+        currentFilteredFlatIds$.next(allFlatIds);
+      }
+    });
+  }
 
   const flats = fetchedFlats.reduce((acc, flat) => {
     acc[flat.id] = flat;
@@ -178,12 +198,51 @@ async function planningsGallery() {
     types: {
       _deadline: 'checkbox',
       buildclass: 'checkbox',
+      city: 'checkbox',
     },
   });
+
   const filterView = new FilterView(filterModel, {});
   const filterController = new FilterController(filterModel, filterView);
 
   filterModel.init();
+
+  // document.body.addEventListener('change', function(e) {
+  //   const target = e.target.closest('[data-project-filter-button]');
+  //   if (!target) return;
+
+  //   const input = target.querySelector('input');
+
+  //   if (input.dataset.type === 'city-reset') {
+  //     target.classList.add('active');
+  //     input.checked = true;
+
+  //     document.querySelectorAll('input[data-type="city"]').forEach(cityInput => {
+  //       cityInput.checked = false;
+  //       cityInput.closest('label').classList.remove('active');
+  //     });
+
+  //     if (filterModel) {
+  //       filterModel.updateFilter('city', {
+  //         type: 'checkbox',
+  //         value: ['all'],
+  //       });
+  //     }
+
+  //     return;
+  //   }
+
+  //   if (input.dataset.type === 'city') {
+  //     const allCheckbox = document.querySelector('input[data-type="city-reset"]');
+
+  //     if (allCheckbox) {
+  //       allCheckbox.checked = false;
+  //       allCheckbox.closest('label').classList.remove('active');
+  //     }
+
+  //     target.classList.toggle('active', input.checked);
+  //   }
+  // });
 
   function renderCountPages(totalPages) {
     document.querySelectorAll('[data-planning-pages-count]').forEach(el => {
@@ -339,6 +398,7 @@ window.addEventListener('resize', debFilterDisable);
 document.body.addEventListener('change', function handleUIOfFilterButtons(e) {
   const target = e.target.closest('[data-project-filter-button]');
   if (!target) return;
+
   const label = target.closest('label');
   label.classList.toggle('active', target.checked);
 });
