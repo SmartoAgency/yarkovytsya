@@ -33,15 +33,13 @@ async function planningsGallery() {
       flat.city = 'ivano-frankivsk';
     } else if (adress.includes('Чернівці')) {
       flat.city = 'chernivtsi';
-    } else {
-      flat.city = 'other';
     }
   });
   // return;
 
   const allFlatIds = fetchedFlats.map(flat => flat.id);
-
   const cityResetInput = document.querySelector('input[data-type="city-reset"]');
+
   if (cityResetInput) {
     cityResetInput.addEventListener('change', e => {
       if (e.target.checked) {
