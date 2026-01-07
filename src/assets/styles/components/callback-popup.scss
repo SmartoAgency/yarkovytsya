@@ -1,232 +1,233 @@
 .callback-popup {
-    position: fixed;
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 100;
+  display: flex;
+  justify-content: flex-end;
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+
+  // transition: opacity 0.25s ease-out, visibility 0.25s ease-out;
+
+  @include to(600px) {
+    height: 100%;
+    min-height: -webkit-fill-available;
+  }
+  &.active {
+    opacity: 1;
+    visibility: visible;
+    pointer-events: all;
+  }
+
+  &.active &__content {
+    animation: popupContentReveal 0.55s cubic-bezier(0.17, 0.67, 0.24, 1) forwards;
+  }
+  &.closing {
+    animation: popupContentClose 0.55s cubic-bezier(0.17, 0.67, 0.24, 1) forwards;
+  }
+  &.active .callback-popup__left,
+  &.active .callback-popup__right {
+    animation: fadeInFromDown 0.55s cubic-bezier(0.17, 0.67, 0.24, 1) forwards;
+  }
+
+  &__content {
+    width: 100%;
+    align-self: flex-end;
+    display: flex;
+    flex-wrap: wrap;
+    position: relative;
+    z-index: 2;
+    background-color: var(--color-black);
+    min-height: pxInVh(700);
+    @include to(1024px) {
+      flex-direction: column;
+    }
+  }
+  &__close {
+    position: absolute;
+    right: 50%;
+    top: 0;
+    width: 60px;
+    height: 60px;
+    cursor: pointer;
+    z-index: 3;
+    border-radius: 100px;
+    background: var(--color-white);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transform: translateX(50%) translateY(-50%);
+    @include to(1024px) {
+      width: 46px;
+      height: 46px;
+    }
+  }
+  @media (hover: hover) {
+    &__close {
+      svg {
+        transform-origin: center;
+        transition: transform 0.25s ease-out;
+      }
+      &:hover svg {
+        transform: rotate(90deg);
+      }
+    }
+  }
+  &__bg {
+    position: absolute;
+    top: 0;
     left: 0;
-    bottom: 0;
     width: 100%;
     height: 100%;
-    z-index: 100;
+    opacity: 0.5;
+    background: var(--Gray, #4d5858);
+    cursor: pointer;
+  }
+  &__title {
+    margin-bottom: 12px;
+    padding-right: 30%;
+  }
+  &__left {
+    width: 50%;
+    padding: 60px 40px;
     display: flex;
-    justify-content: flex-end;
-    opacity: 0;
-    visibility: hidden;
-    pointer-events: none;
-
-    // transition: opacity 0.25s ease-out, visibility 0.25s ease-out;
-    
-    @include to(600px){
-        height: 100%;
-        min-height: -webkit-fill-available;
+    flex-direction: column;
+    gap: 40px;
+    @include to(1024px) {
+      width: 100%;
+      text-align: center;
+      gap: 20px;
+      padding: 60px 40px 40px 40px;
     }
-    &.active {
-        opacity: 1;
-        visibility: visible;
-        pointer-events: all;
+    @include to(600px) {
+      padding: 32px var(--page-side-fields) 0 var(--page-side-fields);
     }
-
-    &.active &__content {
-        animation: popupContentReveal 0.55s cubic-bezier(.17,.67,.24,1) forwards;
-    }
-    &.closing {
-        animation: popupContentClose 0.55s cubic-bezier(.17,.67,.24,1) forwards;
-    }
-    &.active .callback-popup__left,
-    &.active .callback-popup__right {
-        animation: fadeInFromDown 0.55s cubic-bezier(.17,.67,.24,1) forwards;
+    &--deep-black {
+      background-color: var(--color-deep-black);
+      @include to(600px) {
+        padding-bottom: 28px;
+      }
     }
 
-    &__content {
-        width: 100%;
-        align-self: flex-end;
-        display: flex;
-        flex-wrap: wrap;
-        position: relative;
-        z-index: 2;
-        background-color: var(--color-black);
-        min-height: pxInVh(700);
-        @include to(1024px){
-            flex-direction: column;
-        }
+    &-decor {
+      position: absolute;
+      bottom: 0;
+      left: 20%;
+      width: 326px;
+      height: auto;
+      @include to(1024px) {
+        display: none;
+      }
     }
-    &__close {
-        position: absolute;
-        right: 50%;
-        top: 0;
-        width: 60px;
-        height: 60px;
-        cursor: pointer;
-        z-index: 3;
-        border-radius: 100px;
-        background: var(--color-white);
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        transform: translateX(50%) translateY(-50%);
-        @include to(1024px){
-            width: 46px;
-            height: 46px;
-        }
+    p {
+      @include from(1025px) {
+        max-width: pxWidthInVw(300);
+      }
+      @include to(1024px) {
+        margin-left: auto;
+        margin-right: auto;
+      }
+      @include to(600px) {
+        @include text-style-1920-tiny;
+      }
     }
-    @media (hover: hover) {
-        &__close {
-            svg {
-                transform-origin: center;
-                transition: transform .25s ease-out;
-            }
-            &:hover svg{
-                transform: rotate(90deg);
-            }
-        }
+    button {
+      @include to(1024px) {
+        margin-left: auto;
+        margin-right: auto;
+        margin-top: 8px;
+      }
     }
-    &__bg {
-        position: absolute;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        opacity: 0.5;
-        background: var(--Gray, #4D5858);
-        cursor: pointer;
+  }
+  &__right {
+    width: 50%;
+    padding: 60px 40px;
+    max-height: 90vh;
+    overflow-y: auto;
+
+    @include to(1024px) {
+      width: 100%;
+      padding-top: 0;
+      max-height: 70vh;
+      overflow-y: auto;
     }
-    &__title {
-        margin-bottom: 12px;
-        padding-right: 30%;
+    @include to(600px) {
+      padding: 20px var(--page-side-fields);
     }
-    &__left {
-        width: 50%;
-        padding: 60px 40px;
-        display: flex;
-        flex-direction: column;
-        gap: 40px;
-        @include to(1024px){
-            width: 100%;
-            text-align: center;
-            gap: 20px;
-            padding: 60px 40px 40px 40px;
-        }
-        @include to(600px){
-            padding: 32px var(--page-side-fields) 0 var(--page-side-fields);
-        }
-        &--deep-black {
-            background-color: var(--color-deep-black);
-            @include to(600px){
-                padding-bottom: 28px;
-            }
-        }
-        
-        &-decor {
-            position: absolute;
-            bottom: 0;
-            left: 20%;
-            width: 326px;
-            height: auto;
-            @include to(1024px){
-                display: none;
-            }
-        }
-        p {
-            @include from(1025px){
-                max-width: pxWidthInVw(300);
-            }
-            @include to(1024px){
-                margin-left: auto;
-                margin-right: auto;
-            }
-            @include to(600px){
-                @include text-style-1920-tiny;
-            }
-        }
-        button {
-            @include to(1024px){
-                margin-left: auto;
-                margin-right: auto;
-                margin-top: 8px;
-            }
-        }
+    &--no-padding {
+      padding: 0;
     }
-    &__right {
-        width: 50%;
-        padding: 60px 40px;
-        
-        @include to(1024px){
-            width: 100%;
-            padding-top: 0;
-            max-height: 70vh;
-            overflow-y: auto;
-        }
-        @include to(600px){
-            padding: 20px var(--page-side-fields);
-        }
-        &--no-padding {
-            padding: 0;
-        }
-        position: relative;
-        .form {
-            position: static;
-        }
-        .form__success {
-            height: 100%;
-        }
+    position: relative;
+    .form {
+      position: static;
     }
-    &__row {
-        padding: 28px 60px;
-        display: grid;
-        grid-template-columns: 1.1fr 1fr;
-        @include to(1024px){
-            padding: 28px 20px;
-        }
-        @include to(600px){
-            padding: 12px var(--page-side-fields);
-        }
-        &-right {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 8px;
-            align-items: center;
-        }
-        
+    .form__success {
+      height: 100%;
     }
-    &__row~&__row {
-        border-top: 1px solid #28333E;
+  }
+  &__row {
+    padding: 28px 60px;
+    display: grid;
+    grid-template-columns: 1.1fr 1fr;
+    @include to(1024px) {
+      padding: 28px 20px;
     }
-    &__row:last-child {
-        border-bottom: 1px solid #28333E;
+    @include to(600px) {
+      padding: 12px var(--page-side-fields);
     }
+    &-right {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      align-items: center;
+    }
+  }
+  &__row ~ &__row {
+    border-top: 1px solid #28333e;
+  }
+  &__row:last-child {
+    border-bottom: 1px solid #28333e;
+  }
 }
 
 @keyframes popupContentReveal {
-    0% {
-        clip-path: polygon(0 100%, 100% 100%, 100% 100%, 0% 100%);
-    }
-    99% {
-        clip-path: polygon(0 100%, 100% 100%, 100% 0, 0 0);
-    }
-    100% {
-        clip-path: none;
-    }
+  0% {
+    clip-path: polygon(0 100%, 100% 100%, 100% 100%, 0% 100%);
+  }
+  99% {
+    clip-path: polygon(0 100%, 100% 100%, 100% 0, 0 0);
+  }
+  100% {
+    clip-path: none;
+  }
 }
 @keyframes fadeInFromDown {
-    0% {
-        transform: translateY(50px);
-        opacity: 0;
-    }
-    25% {
-        transform: translateY(50px);
-        opacity: 0;
-    }
-    100% {
-        transform: translateY(0);
-        opacity: 1;
-    }
+  0% {
+    transform: translateY(50px);
+    opacity: 0;
+  }
+  25% {
+    transform: translateY(50px);
+    opacity: 0;
+  }
+  100% {
+    transform: translateY(0);
+    opacity: 1;
+  }
 }
 
 @keyframes popupContentClose {
-    0% {
-        clip-path: none;
-    }
-    1% {
-        clip-path: polygon(0 0, 100% 0, 100% 100%, 0% 100%);
-    }
-    100% {
-        clip-path: polygon(0 100%, 100% 100%, 100% 100%, 0% 100%);
-    }
+  0% {
+    clip-path: none;
+  }
+  1% {
+    clip-path: polygon(0 0, 100% 0, 100% 100%, 0% 100%);
+  }
+  100% {
+    clip-path: polygon(0 100%, 100% 100%, 100% 100%, 0% 100%);
+  }
 }
