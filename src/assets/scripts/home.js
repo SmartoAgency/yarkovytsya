@@ -176,9 +176,26 @@ function homeDeveloperCirclesDesktop() {
     const circles = document.querySelectorAll('.home-developer__circle');
     if (!circles.length) return;
     circles.forEach((circle) => {
-        gsap.set(circle.querySelector('.home-developer__circle-img-wrap img'), {
-            scale: 1.1
-        })
+        const img = circle.querySelector('.home-developer__circle-img-wrap img');
+        if (!img) return;
+        gsap.set(img, { scale: 1.1 });
+        circle.addEventListener('mouseenter', () => {
+            gsap.to(img, {
+                scale: 1.2,      
+                duration: 0.5,
+                ease: "power2.out",
+                overwrite: "auto" 
+            });
+        });
+
+        circle.addEventListener('mouseleave', () => {
+            gsap.to(img, {
+                scale: 1.1,       
+                duration: 0.5,
+                ease: "power2.out",
+                overwrite: "auto"
+            });
+        });
         const tl = gsap.timeline({
             scrollTrigger: {
                 trigger: circle,

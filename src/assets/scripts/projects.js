@@ -17,9 +17,15 @@ async function planningsGallery() {
 
   const $moreButton = document.querySelector('[data-more]');
   const $paginationArrows = document.querySelector('[data-pagination]');
-  const fetchedFlats = await getFlats();
+  let fetchedFlats = await getFlats();
 
   console.log('fetchedFlats:', fetchedFlats);
+  const excludeIds = [1708, 1736, 1807]; 
+
+  fetchedFlats = fetchedFlats.filter(flat => {
+    const hasExcludedId = excludeIds.some(id => flat.class_list.includes(`post-${id}`));
+    return !hasExcludedId; 
+  });
 
   fetchedFlats.forEach((flat, index) => {
     flat.deadline = flat.acf.block.card.dd;

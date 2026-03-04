@@ -158,8 +158,16 @@
     &__circle {
         position: relative;
         height: max-content;
+        cursor: pointer;
         @include to(1024px){
             margin-bottom: 70px;
+        }
+        &:hover {
+            .home-developer__circle-deadline-bg {
+                svg {
+                    transform: rotate(180deg);
+                }
+            }
         }
         &-img {
             position: relative;
@@ -219,6 +227,7 @@
                     left: 0;
                     width: 100%;
                     height: 100%;
+                    transition: transform 0.5s ease;
                 }
             }
             &-title {
