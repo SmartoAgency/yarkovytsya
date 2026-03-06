@@ -20,7 +20,7 @@ async function planningsGallery() {
   let fetchedFlats = await getFlats();
 
   console.log('fetchedFlats:', fetchedFlats);
-  const excludeIds = [1708, 1736, 1807]; 
+  const excludeIds = [/*1708, 1736, 18078*/]; 
 
   fetchedFlats = fetchedFlats.filter(flat => {
     const hasExcludedId = excludeIds.some(id => flat.class_list.includes(`post-${id}`));
@@ -64,7 +64,7 @@ async function planningsGallery() {
     getUrlParam('filterPage') ? +getUrlParam('filterPage') : 1,
   );
   let totalPages = 0;
-  const portion = 12;
+  const portion = 100;
 
   currentPage$.subscribe(page => {
     const $container = document.querySelector('[data-planning-list]');
