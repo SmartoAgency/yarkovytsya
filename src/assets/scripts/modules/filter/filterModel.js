@@ -224,82 +224,83 @@ class FilterModel extends EventEmitter {
 
   // создает range slider (ползунки), подписывает на события
   createRange(config) {
-    if (config.type !== undefined) {
-      const self = this;
-      const { min, max } = config;
-      const $min = $(`.js-filter-range [data-type=${config.type}][data-border="min"]`);
-      const $max = $(`.js-filter-range [data-type=${config.type}][data-border="max"]`);
-      const rangeSlider = $(
-        `.js-filter-range .js-s3d-filter__${config.type}--input[data-type=${config.type}]`,
-      );
+    if (config.type === undefined) return null;
 
-      const searchParams = parseSearchUrl(window.location);
+    const { min, max, type } = config;
 
-      const initialMin =
-        toNumber(searchParams[`${SEARCH_PARAMS_FILTER_PREFIX}${config.type}_min`]) || min;
-      const initialMax =
-        toNumber(searchParams[`${SEARCH_PARAMS_FILTER_PREFIX}${config.type}_max`]) || max;
+    const $minInput = document.querySelector(`.js-s3d-filter__${type}--min`);
+    const $maxInput = document.querySelector(`.js-s3d-filter__${type}--max`);
+    const $labelMin = document.querySelector(`[data-range-label="${type}-min"]`);
+    const $labelMax = document.querySelector(`[data-range-label="${type}-max"]`);
+    const $dualRange = document.querySelector(`[data-dual-range="${type}"]`);
 
-      rangeSlider.ionRangeSlider({
-        type: 'double',
-        grid: false,
-        min,
-        max,
-        hide_from_to: true,
-        hide_min_max: true,
-        from: initialMin || 0,
-        to: initialMax || 0,
-        step: config.type === 'area' ? 0.5 : 1,
-        onStart: updateInputs,
-        onChange: updateInputs,
-        onFinish(e) {
-          updateInputs(e);
-          self.filterFlatStart({ min: e.from, max: e.to, ...{ type: config.type } });
-        },
-        onUpdate: updateInputs,
-      });
+    if (!$minInput || !$maxInput) {
+      console.warn(`[FilterModel] Range inputs not found for type: ${type}`);
+      return null;
+    }
 
-      const instance = rangeSlider.data('ionRangeSlider');
-      instance.update({
+    const searchParams = parseSearchUrl(window.location);
+    const initialMin = toNumber(searchParams[`${SEARCH_PARAMS_FILTER_PREFIX}${type}_min`]) || min;
+    const initialMax = toNumber(searchParams[`${SEARCH_PARAMS_FILTER_PREFIX}${type}_max`]) || max;
+
+    $minInput.min = min;
+    $minInput.max = max;
+    $maxInput.min = min;
+    $maxInput.max = max;
+
+    const instance = {
+      result: {
         min,
         max,
         from: initialMin,
         to: initialMax,
-      });
+      },
+      update({ from, to, min: newMin, max: newMax } = {}) {
+        if (newMin !== undefined) this.result.min = newMin;
+        if (newMax !== undefined) this.result.max = newMax;
+        if (from !== undefined) this.result.from = from;
+        if (to !== undefined) this.result.to = to;
 
-      function updateInputs(data) {
-        $min.prop('value', data.from);
-        $max.prop('value', data.to);
-      }
+        $minInput.value = this.result.from;
+        $maxInput.value = this.result.to;
 
-      $min.on('change', function() {
-        changeInput.call(this, 'from');
-      });
-      $max.on('change', function() {
-        changeInput.call(this, 'to');
-      });
+        if ($labelMin) $labelMin.value = this.result.from;
+        if ($labelMax) $labelMax.value = this.result.to;
 
-      function changeInput(key) {
-        let val = $(this).prop('value');
-        if (key === 'from') {
-          if (val < min) val = min;
-          else if (val > instance.result.to) val = instance.result.to;
-        } else if (key === 'to') {
-          if (val < instance.result.from) val = instance.result.from;
-          else if (val > max) val = max;
+        if ($dualRange) {
+          const fromPct = ((this.result.from - this.result.min) / (this.result.max - this.result.min)) * 100;
+          const toPct = ((this.result.to - this.result.min) / (this.result.max - this.result.min)) * 100;
+          $dualRange.style.setProperty('--from', `${fromPct}%`);
+          $dualRange.style.setProperty('--to', `${toPct}%`);
         }
+      },
+    };
 
-        instance.update(key === 'from' ? { from: val } : { to: val });
-        $(this).prop('value', val);
-        self.filterFlatStart({
-          min: instance.result.from,
-          max: instance.result.to,
-          ...{ type: config.type },
-        });
+    instance.update({ from: initialMin, to: initialMax });
+
+    const self = this;
+
+    function handleChange() {
+      let fromVal = +$minInput.value;
+      let toVal = +$maxInput.value;
+
+      if (fromVal > toVal) {
+        fromVal = toVal;
+        $minInput.value = fromVal;
       }
-      return instance;
+      if (toVal < fromVal) {
+        toVal = fromVal;
+        $maxInput.value = toVal;
+      }
+
+      instance.update({ from: fromVal, to: toVal });
+      self.filterFlatStart({ min: fromVal, max: toVal, type });
     }
-    return null;
+
+    $minInput.addEventListener('input', handleChange);
+    $maxInput.addEventListener('input', handleChange);
+
+    return instance;
   }
 
   createTextParam(flat, name) {
@@ -542,6 +543,11 @@ class FilterModel extends EventEmitter {
           break;
         case 'range':
           settings[key] = {};
+          if (!filter[key].elem) {
+            settings[key]['min'] = 0;
+            settings[key]['max'] = 0;
+            break;
+          }
           settings[key]['min'] = filter[key].elem.result.from;
           settings[key]['max'] = filter[key].elem.result.to;
           break;
