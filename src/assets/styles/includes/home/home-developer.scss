@@ -312,4 +312,17 @@
             margin-bottom: 20px;
         }
     }
+
+    .more-projects-button {
+        margin-top: 40px;
+
+        @include to(1024px) {
+            margin-top: 32px;
+            margin-left: 50%;
+        }
+
+        @include to(600px) {
+            margin: 32px auto 0;
+        }
+    }
 }

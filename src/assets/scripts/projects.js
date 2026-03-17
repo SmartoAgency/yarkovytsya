@@ -6,6 +6,31 @@ import FilterView from './modules/filter/filterView.js';
 import { pushParams, removeParamsByRegExp, getUrlParam } from './modules/history/history.js';
 import { debounceResize } from './modules/helpers/helpers.js';
 import { get } from 'lodash';
+import Swiper, { Navigation } from 'swiper';
+
+function archiveCard(flat) {
+  const img = get(flat, '_embedded["wp:featuredmedia"][0].source_url', false);
+  return `
+    <a class="swiper-slide archive-card" href="${flat.link}">
+      <div class="archive-card__img-wrapper">
+          <div class="archive-card__oval-label">Усі квартири продано</div>
+          <div class="archive-card__oval-label archive-card__oval-label--black">Об'єкт здано</div>
+          <div class="archive-card__img"> <img src="${img}" alt="project-photo" srcset=""></div>
+      </div>
+      <div class="archive-card__street color-body-description">${flat.city}</div>
+      <div class="archive-card__footer">
+          <div class="archive-card__name">${flat.title.rendered}</div>
+          <div class="diagonal-arrow project-card__arrow"><svg width="46" height="46" viewBox="0 0 46 46" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <g>
+                      <path d="M29.092 28.2217L28.6569 17.3431M28.6569 17.3431L17.7783 16.908M28.6569 17.3431L17.3432 28.6569" stroke="#DBE2EA" stroke-width="2" />
+                      <path transform="translate(-46, 46)" d="M29.092 28.2217L28.6569 17.3431M28.6569 17.3431L17.7783 16.908M28.6569 17.3431L17.3432 28.6569" stroke="#DBE2EA" stroke-width="2" />
+                  </g>
+              </svg>
+          </div>
+      </div>
+    </a>
+  `
+}
 
 if (document.documentElement.dataset.status != 'local') {
   planningsGallery();
@@ -20,12 +45,9 @@ async function planningsGallery() {
   let fetchedFlats = await getFlats();
 
   console.log('fetchedFlats:', fetchedFlats);
-  const excludeIds = [/*1708, 1736, 18078*/]; 
 
-  fetchedFlats = fetchedFlats.filter(flat => {
-    const hasExcludedId = excludeIds.some(id => flat.class_list.includes(`post-${id}`));
-    return !hasExcludedId; 
-  });
+  const activeFlats = [];
+  const archivedFlats = [];
 
   fetchedFlats.forEach((flat, index) => {
     flat.deadline = flat.acf.block.card.dd;
@@ -40,8 +62,19 @@ async function planningsGallery() {
     } else if (adress.includes('Чернівці')) {
       flat.city = 'chernivtsi';
     }
+
+    if (flat.acf.block.card.deadline === "1") {
+      activeFlats.push(flat);
+    } else {
+      archivedFlats.push(flat);
+    }
   });
-  // return;
+
+  const archiveListHtml = archivedFlats.map((flat) => (
+    archiveCard(flat)
+  )).join('');
+
+  document.querySelector('[data-archive-list]').innerHTML = archiveListHtml;
 
   const allFlatIds = fetchedFlats.map(flat => flat.id);
   const cityResetInput = document.querySelector('input[data-type="city-reset"]');
@@ -54,7 +87,7 @@ async function planningsGallery() {
     });
   }
 
-  const flats = fetchedFlats.reduce((acc, flat) => {
+  const flats = activeFlats.reduce((acc, flat) => {
     acc[flat.id] = flat;
     return acc;
   }, {});
@@ -405,4 +438,21 @@ document.body.addEventListener('change', function handleUIOfFilterButtons(e) {
 
   const label = target.closest('label');
   label.classList.toggle('active', target.checked);
+});
+
+document.addEventListener("DOMContentLoaded", () => {
+  const swiper = new Swiper('.archive__list', {
+    modules: [Navigation],
+    slidesPerView: "auto",
+    spaceBetween: 16,
+    navigation: {
+      prevEl: '[data-prev-project]',
+      nextEl: '[data-next-project]',
+    },
+    breakpoints: {
+      768: {
+        spaceBetween: 24,
+      }
+    }
+  })
 });
