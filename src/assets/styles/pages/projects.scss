@@ -75,7 +75,6 @@
 }
 
 .archive-card {
-    overflow: hidden;
     width: 452px;
     text-decoration: none;
 
@@ -92,6 +91,7 @@
     }
 
     &__img-wrapper {
+        overflow: hidden;
         position: relative;
         width: 452px;
         height: 454px;
