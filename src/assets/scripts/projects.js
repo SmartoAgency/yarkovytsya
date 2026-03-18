@@ -10,6 +10,7 @@ import Swiper, { Navigation } from 'swiper';
 
 function archiveCard(flat) {
   const img = get(flat, '_embedded["wp:featuredmedia"][0].source_url', false);
+  const address = get(flat, 'acf.block.screen_1.row_1', false);
   return `
     <a class="swiper-slide archive-card" href="${flat.link}">
       <div class="archive-card__img-wrapper">
@@ -17,7 +18,7 @@ function archiveCard(flat) {
           <div class="archive-card__oval-label archive-card__oval-label--black">Об'єкт здано</div>
           <div class="archive-card__img"> <img src="${img}" alt="project-photo" srcset=""></div>
       </div>
-      <div class="archive-card__street color-body-description">${flat.adress}</div>
+      <div class="archive-card__street color-body-description">${address}</div>
       <div class="archive-card__footer">
           <div class="archive-card__name">${flat.title.rendered}</div>
           <div class="diagonal-arrow project-card__arrow"><svg width="46" height="46" viewBox="0 0 46 46" fill="none" xmlns="http://www.w3.org/2000/svg">
