@@ -20,7 +20,10 @@ async function planningsGallery() {
     // console.log('fetchedFlats:', fetchedFlats);
 
     const flats = fetchedFlats.reduce((acc, flat) => {
-        acc[flat.id] = flat;
+        const id = flat.id;
+        flat.url = `/plannings/flat-${id}`
+        acc[id] = flat;
+
         return acc;
     }, {});   
 
@@ -117,6 +120,7 @@ async function planningsGallery() {
             const [_, name, valueName] = key.split('_');
             document.querySelectorAll(`input[data-${name}="${valueName}"]`).forEach((el) => {
                 el.checked = true;
+                el.dispatchEvent(new Event('change', { bubbles: true }));
             })
         }
     });
