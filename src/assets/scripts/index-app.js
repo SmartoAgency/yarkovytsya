@@ -327,6 +327,11 @@ function getCurrentProjectSlug() {
   return projectSlug.trim();
 }
 
+function getSlug(url) {
+  const urlSplit = url.split('/');
+  return urlSplit[urlSplit.length - 2];
+}
+
 function contactScreenProjectsHandler() {
   const links = document.querySelectorAll('[data-contact-project-link]');
   const currentProjectSlug = getCurrentProjectSlug();
@@ -335,7 +340,7 @@ function contactScreenProjectsHandler() {
 
   links.forEach(el => {
     const rawLinkName = el.getAttribute('data-contact-project-link');
-    const linkSlug = slugify(rawLinkName);
+    const linkSlug = getSlug(rawLinkName);
 
     if (linkSlug === currentProjectSlug) {
       initialLinkToActive = el;
@@ -344,14 +349,14 @@ function contactScreenProjectsHandler() {
     el.addEventListener('click', evt => {
       evt.preventDefault();
       const whichProjectMakeActive = el.getAttribute('data-contact-project-link');
-      const whichProjectMakeActiveSlug = slugify(whichProjectMakeActive);
+      const whichProjectMakeActiveSlug = getSlug(whichProjectMakeActive);
 
       const projects = document.querySelectorAll('[data-contact-project]');
       projects.forEach(project => {
         project.classList.remove('active');
 
         const projectAttributeRaw = project.getAttribute('data-contact-project');
-        const projectAttributeSlug = slugify(projectAttributeRaw);
+        const projectAttributeSlug = getSlug(projectAttributeRaw);
 
         if (projectAttributeSlug === whichProjectMakeActiveSlug) {
           project.classList.add('active');
