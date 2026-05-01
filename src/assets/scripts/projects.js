@@ -79,16 +79,52 @@ async function planningsGallery() {
   archiveListHtml += archiveList.innerHTML;
   archiveList.innerHTML = archiveListHtml;
 
-  const allFlatIds = fetchedFlats.map(flat => flat.id);
+  const allFlatIds = activeFlats.map(flat => flat.id); 
+
   const cityResetInput = document.querySelector('input[data-type="city-reset"]');
+  const cityInputs = document.querySelectorAll('input[data-type="city"]');
 
   if (cityResetInput) {
-    cityResetInput.addEventListener('change', e => {
-      if (e.target.checked) {
-        currentFilteredFlatIds$.next(allFlatIds);
+    cityResetInput.addEventListener('click', (e) => {
+      if (!e.target.checked) {
+        e.preventDefault();
+        return;
       }
+      
+      cityInputs.forEach(cityInput => {
+        if (cityInput.checked) {
+          cityInput.checked = false;
+          cityInput.dispatchEvent(new Event('change', { bubbles: true }));
+        }
+      });
     });
   }
+
+  cityInputs.forEach(cityInput => {
+    cityInput.addEventListener('change', (e) => {
+      if (e.target.checked) {
+        if (cityResetInput && cityResetInput.checked) {
+          cityResetInput.checked = false;
+          cityResetInput.closest('label').classList.remove('active');
+        }
+      } else {
+        const anyChecked = Array.from(cityInputs).some(input => input.checked);
+        
+        if (!anyChecked && cityResetInput) {
+          cityResetInput.checked = true;
+          cityResetInput.closest('label').classList.add('active');
+        }
+      }
+    });
+  });
+
+  setTimeout(() => {
+    const anyChecked = Array.from(cityInputs).some(input => input.checked);
+    if (!anyChecked && cityResetInput) {
+      cityResetInput.checked = true;
+      cityResetInput.closest('label').classList.add('active');
+    }
+  }, 50);
 
   const flats = activeFlats.reduce((acc, flat) => {
     acc[flat.id] = flat;
@@ -436,11 +472,10 @@ const debFilterDisable = debounceResize(() => {
 window.addEventListener('resize', debFilterDisable);
 
 document.body.addEventListener('change', function handleUIOfFilterButtons(e) {
-  const target = e.target.closest('[data-project-filter-button]');
-  if (!target) return;
+  const label = e.target.closest('[data-project-filter-button]');
+  if (!label) return;
 
-  const label = target.closest('label');
-  label.classList.toggle('active', target.checked);
+  label.classList.toggle('active', e.target.checked);
 });
 
 document.addEventListener("DOMContentLoaded", () => {
